@@ -6,6 +6,13 @@ const actiontypes=()=>{
             setPosts:'SET_POSTS'
         },
 
+        post:{
+           
+            loading:'LOADING',
+            setPost:'SET_POST'
+        },
+
+
         
     }
 }
