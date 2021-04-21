@@ -11,7 +11,10 @@ const actiontypes=()=>{
             loading:'LOADING',
             setPost:'SET_POST'
         },
-
+        shoppingCart:{
+            addToCart:'ADD_TO_CART',
+            
+        }
 
         
     }
