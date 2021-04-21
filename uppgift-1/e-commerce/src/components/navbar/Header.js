@@ -1,10 +1,10 @@
 import React from 'react'
-
+import { NavLink } from 'react-router-dom'
 const Header = () => {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
         <div className="container">
-          <a className="navbar-brand" href="/#">Pokemon.se</a>
+          <NavLink  to="/"className="navbar-brand" >Pokemon.se</NavLink>
           <button
             className="navbar-toggler"
             type="button"
@@ -18,8 +18,9 @@ const Header = () => {
           </button>
           <div className="collapse navbar-collapse " id="navbarNavAltMarkup">
             <div className="navbar-nav ms-auto ">
-              <a className="nav-link active" aria-current="page" href="#">Home</a>
-              
+              <NavLink to="/" exact className="nav-link active " aria-current="page">Home</NavLink>
+              <NavLink to="/shoppingcart" exact className="nav-link  ms-2 active" aria-current="page">Shopping Cart</NavLink>
+              <NavLink to="/login" exact className="nav-link  ms-2 active" aria-current="page">Log in</NavLink>
             </div>
           </div>
         </div>
