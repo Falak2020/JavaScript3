@@ -13,7 +13,8 @@ const actiontypes=()=>{
         },
         shoppingCart:{
             addToCart:'ADD_TO_CART',
-            
+            remove:'REMOVE_FROM_CART',
+            deleteAll:'DELETE_ALL'
         }
 
         

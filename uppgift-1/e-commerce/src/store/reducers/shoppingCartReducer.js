@@ -2,8 +2,8 @@ import actiontypes from '../actiontypes'
 
 let initState = {
    shoppings:[],
-   counter:0
-
+   counter:0,
+   totalPrice:0
 }
 
 
@@ -11,27 +11,50 @@ const shoppingCart = (state = initState, action)=>{
     switch(action.type){
       case actiontypes().shoppingCart.addToCart:
           { 
-           
-            let _product = {
+           let _product = {
               shop:action.payload,
               quantity:1 
             }
-           
-
+          
             let exists=state.shoppings.find(item=>item.shop._id === action.payload._id)
              
-           exists?
+            exists?
                 exists.quantity+=1      
                 
                 : state.shoppings.push(_product)
          
-            
-
             state.counter=cartAmount(state.shoppings)
+            state.totalPrice=totalPrice(state.shoppings)
              
           return state;
         }
-       
+
+
+      case actiontypes().shoppingCart.remove:
+        {
+          console.log(action.payload)
+          let exists=state.shoppings.find(item=>item.shop._id === action.payload)
+         
+          exists.quantity===1
+          ?
+           state.shoppings=state.shoppings.filter(item => item.shop._id !== action.payload)
+          : 
+          exists.quantity -=1
+          
+          
+          state.counter=cartAmount(state.shoppings)
+          state.totalPrice=totalPrice(state.shoppings)
+
+          return state
+      }
+
+      case actiontypes().shoppingCart.deleteAll:
+        {
+          state.shoppings=state.shoppings.filter(item => item.shop._id !== action.payload)
+          state.counter=cartAmount(state.shoppings)
+          state.totalPrice=totalPrice(state.shoppings)
+          return state
+        }
 
       default:
           return state
@@ -48,4 +71,15 @@ const cartAmount=(shoppings)=>{
   });
   return total
 }
+
+const totalPrice=(shoppings)=>{
+  let total=0
+  shoppings.forEach(element => {
+
+    total += element.shop.price*element.quantity
+    
+  });
+  return total
+}
+
 export default shoppingCart

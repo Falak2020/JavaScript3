@@ -8,3 +8,16 @@ export const addToCart = product => {
     }
 }
 
+export const removeFromCart= id =>{
+    return{
+        type:actiontypes().shoppingCart.remove,
+        payload:id
+    }
+}
+
+export const deleteAll= id =>{
+    return{
+        type:actiontypes().shoppingCart.deleteAll,
+        payload:id
+    }
+}

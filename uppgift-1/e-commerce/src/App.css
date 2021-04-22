@@ -51,3 +51,11 @@ html,body{
 .text-darkslateblue{
   color: darkslateblue;
 }
+
+.img-width{
+  width:100px;
+}
+
+.btn-gray{
+  background-color: gray;
+}
