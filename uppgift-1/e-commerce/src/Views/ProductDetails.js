@@ -14,21 +14,15 @@ const ProductDetails = (props) => {
      
     useEffect(() => {
         dispatch(getPost(id))
-    }, [dispatch,id])
+    }, [dispatch])
 
     //Functions
-    const AddtoCart =()=>{
-        let cart ={
-           shop:product,
-           quantity:1 
-        }
-        dispatch(addToCart(cart))
-    }
+    
     return (
        
         <div className="d-flex align-items-center p-5">
             {
-                (!product) && loading?<h1>Loading ...</h1>:
+             loading?<h1>Loading ...</h1>:product&&
                 <div className="card mt-5 p-5 " >
                    <div className="row g-0">
                        <div className="col-lg-4 ">
@@ -49,7 +43,7 @@ const ProductDetails = (props) => {
                             <p className="card-text">
                                <small className="text-muted">{product.modified}</small>
                             </p>
-                            <button className="btn btn-primary" onClick={ AddtoCart}><i className="fas fa-shopping-cart me-1"></i>add to cart</button>
+                            <button className="btn btn-primary" onClick={()=>dispatch(addToCart(product))}><i className="fas fa-shopping-cart me-1"></i>add to cart</button>
                          </div>
                     </div>
                   </div>

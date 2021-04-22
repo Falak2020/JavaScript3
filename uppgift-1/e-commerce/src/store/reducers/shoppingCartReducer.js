@@ -11,18 +11,25 @@ const shoppingCart = (state = initState, action)=>{
     switch(action.type){
       case actiontypes().shoppingCart.addToCart:
           { 
-            let exists=state.shoppings.find(item=>item.shop._id===action.payload.shop._id)
-             
-            if(exists){
-                exists.quantity+=1      
-              }
-            else{ 
-                state.shoppings.push(action.payload)
+           
+            let _product = {
+              shop:action.payload,
+              quantity:1 
             }
+           
+
+            let exists=state.shoppings.find(item=>item.shop._id === action.payload._id)
+             
+           exists?
+                exists.quantity+=1      
+                
+                : state.shoppings.push(_product)
+         
             
-            state.counter+=action.payload.quantity
-            
-            break;
+
+            state.counter=cartAmount(state.shoppings)
+             
+          return state;
         }
        
 
@@ -32,4 +39,13 @@ const shoppingCart = (state = initState, action)=>{
     }
 }
 
+const cartAmount=(shoppings)=>{
+  let total=0
+  shoppings.forEach(element => {
+
+    total+= element.quantity
+    
+  });
+  return total
+}
 export default shoppingCart

@@ -20,8 +20,8 @@ const ProductsList = ({product}) => {
                           </p> 
                           <div className="text-end h2 text-darkslateblue d-flex justify-content-between">
 
-                            <Link exact to ={`details/${product._id}`} className="btn btn-info shadow"> More Details</Link>
-                            <i className="fas fa-shopping-cart "  onClick={()=>dispatch(addToCart({shop:product,quantity:1}))}></i> 
+                            <Link  to ={`details/${product._id}`} className="btn btn-info shadow"> More Details</Link>
+                            <i className="fas fa-shopping-cart "  onClick={()=>dispatch(addToCart(product))}></i> 
                             
                           </div>   
                   </div>
