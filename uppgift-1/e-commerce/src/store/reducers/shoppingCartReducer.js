@@ -21,6 +21,8 @@ const shoppingCart = (state = initState, action)=>{
             }
             
             state.counter+=action.payload.quantity
+            
+            break;
         }
        
 

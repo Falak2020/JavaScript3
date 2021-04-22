@@ -35,3 +35,19 @@ html,body{
    width: 100%;
   
 }
+.pos-r{
+  position: relative;
+}
+.pos-a{
+  position: absolute;
+  top:-10px;
+  background-color: rgb(233, 13, 13);
+  width:30px;
+  height: 30px;
+  border-radius: 50%;
+  text-align: center;
+  color: #ffffff;
+}
+.text-darkslateblue{
+  color: darkslateblue;
+}

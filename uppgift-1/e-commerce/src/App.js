@@ -15,7 +15,7 @@ function App() {
       <div className="container mt-5 page-container">
         <Switch>
            <Route  exact path="/"  component={Home}/>
-           <Route  exact path="/:id"  component={ProductDetails}/>
+           <Route  exact path="/details/:id"  component={ProductDetails}/>
            <Route  exact path="/shoppingcart"  component={ShoppingCart}/>
            <Route  exact path="/login"  component={Login}/>
         </Switch> 
