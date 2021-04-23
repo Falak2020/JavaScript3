@@ -15,6 +15,11 @@ const actiontypes=()=>{
             addToCart:'ADD_TO_CART',
             remove:'REMOVE_FROM_CART',
             deleteAll:'DELETE_ALL'
+        },
+
+        user:{
+            logIn:'LOGIN',
+            loading:'LOADING'
         }
 
         

@@ -9,6 +9,7 @@ let initState = {
 
 const shoppingCart = (state = initState, action)=>{
     switch(action.type){
+      //Add to Cart
       case actiontypes().shoppingCart.addToCart:
           { 
            let _product = {
@@ -29,6 +30,7 @@ const shoppingCart = (state = initState, action)=>{
           return state;
         }
 
+  // Remove from cart
 
       case actiontypes().shoppingCart.remove:
         {
@@ -47,7 +49,7 @@ const shoppingCart = (state = initState, action)=>{
 
           return state
       }
-
+// Delete all item
       case actiontypes().shoppingCart.deleteAll:
         {
           state.shoppings=state.shoppings.filter(item => item.shop._id !== action.payload)
