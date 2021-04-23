@@ -3,7 +3,7 @@ import actiontypes from '../actiontypes'
 
 let initState={
     token:null,
-    loading:true
+    error:false
 }
 
 const loginReducer= (state = initState,action) =>{
@@ -12,10 +12,10 @@ const loginReducer= (state = initState,action) =>{
         case actiontypes().user.logIn:
             state.token=action.payload
             return state
-        case actiontypes().user.loading:
+        case actiontypes().user.error:
             return{
                 ...state,
-                loading:action.payload
+                error:action.payload
             }
         default :
         return state

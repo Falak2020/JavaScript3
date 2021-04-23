@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import { useDispatch,useSelector} from 'react-redux'
 import { login } from '../store/actions/loginAction'
 import {useHistory} from 'react-router-dom'
+import auth from '../services/authService'
 
 const Login = () => {
 
@@ -10,7 +11,7 @@ const Login = () => {
     const [password,setPassword] = useState('')
     const history =useHistory()
     const token = useSelector(state=>state.loginReducer.token)
-    const loading = useSelector(state=>state.loginReducer.loading)
+    const error = useSelector(state=>state.loginReducer.error)
     
     
     
@@ -23,12 +24,26 @@ const Login = () => {
           email,
           password
       }
+      auth.login((user),()=> {
+          if(auth.authenticated)
+           history.push('/')
+          else
+          history.push('/login')
+        
+        // try{ history.push(history.location.state.from.pathname) }
+        // catch{ history.push('/') }
 
-     dispatch(login(user))  
-     history.push('/')
+      })
      
+    //   dispatch(login(user))
+    //     setTimeout(() => {
+    //        console.log(error)
+    //        error? history.push('/login') :history.push('/') 
+    //     }, 2000);
+         
+    
     }
-
+   
     return (
         <div className="d-flex align-items-center justify-content-center"> 
            <div className="border p-5 bg-white mt-5">
@@ -40,8 +55,9 @@ const Login = () => {
                     <div className="text-center mt-2">
                         {/* <p>Not a member? <router-link to="/register">Register</router-link></p> */}
                     </div>
-                    
+                    <small className="text-danger">{auth.error}</small>
                 </form>
+                
             </div>
         </div>
     )

@@ -107,6 +107,13 @@ exports.login = (req, res) => {
         })
       }
     })
+    .catch(()=>{
+     return res.status(500).json({
+          statusCode:500,
+          status:false,
+          message:'can not login'
+      })
+   })
 }
 
 exports.updateUser = (req, res) => {

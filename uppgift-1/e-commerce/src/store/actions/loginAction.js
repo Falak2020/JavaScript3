@@ -4,24 +4,38 @@ import axios from '../../axios'
 
 export const login = (payload)=>{
    
-    return async dispatch =>{
+    return  dispatch =>{
       
-        dispatch(loading(true))
-        const res = await axios.post('/users/login',payload)
-        
-        dispatch(setToken(res.data.token))  
-        
-        dispatch(loading(false))
+        try{
+             axios.post('/users/login',payload)
+               .then(res=>{
+                   console.log(res)
+                   if (res.data.statusCode){
+
+                     dispatch(setToken(res.data.token))  
+                   }
+                   
+                   else
+                   dispatch(errormsg(true))
+                })
+                .catch(err=>{
+                    console.log(err)
+                    dispatch(errormsg(true))
+                })
+        }
+         catch{dispatch(errormsg(true))}
     }
+          
+}
        
 
-}
 
 
-export const loading = (payload) => {
+
+export const errormsg = (error) => {
     return {
-        type:actiontypes().user.loading,
-        payload
+        type:actiontypes().user.error,
+        payload:error
     }
 }
 

@@ -19,7 +19,7 @@ const actiontypes=()=>{
 
         user:{
             logIn:'LOGIN',
-            loading:'LOADING'
+            error:'ERROR'
         }
 
         
