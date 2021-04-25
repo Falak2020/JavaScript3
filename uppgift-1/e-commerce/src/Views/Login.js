@@ -45,20 +45,25 @@ const Login = () => {
     }
    
     return (
-        <div className="d-flex align-items-center justify-content-center"> 
-           <div className="border p-5 bg-white mt-5">
-                <h5 className="mb-3">Welcome to our e-commerce website, please enter your user information</h5>
-                <form className=" p-3" onSubmit = {handelSubmit} >
-                    <input type="email" placeholder="Enter your email" className="form-control border mb-4" value={email} onChange={(e)=>setEmail(e.target.value)}/>
-                    <input type="password"  className="form-control border" placeholder="Enter your password" value ={password}  onChange={(e)=>setPassword(e.target.value)}/>
-                    <button  type="submit" className="btn btn-info form-control mt-5 text-white text-uppercase mb-3">Log in</button>    
-                    <div className="text-center mt-2">
-                        <p>Not a member? <NavLink to="/register">Register</NavLink></p> 
-                    </div>
-                    <small className="text-danger">{auth.error}</small>
-                </form>
-                
-            </div>
+        <div>
+         <div className="d-flex align-items-center justify-content-center"> 
+          {
+            auth.authenticated?<h1>welcome to our app</h1>
+                :
+                 <div className="border p-5 bg-white mt-5">
+                    <h5 className="mb-3">Welcome to our e-commerce website, please enter your user information</h5>
+                    <form className=" p-3" onSubmit = {handelSubmit} >
+                        <input type="email" placeholder="Enter your email" className="form-control border mb-4" value={email} onChange={(e)=>setEmail(e.target.value)}/>
+                        <input type="password"  className="form-control border" placeholder="Enter your password" value ={password}  onChange={(e)=>setPassword(e.target.value)}/>
+                        <button  type="submit" className="btn btn-info form-control mt-5 text-white text-uppercase mb-3">Log in</button>    
+                        <div className="text-center mt-2">
+                            <p>Not a member? <NavLink to="/register">Register</NavLink></p> 
+                        </div>
+                        <small className="text-danger">{auth.error}</small>
+                    </form>
+                 </div>
+          }
+         </div>
         </div>
     )
 }

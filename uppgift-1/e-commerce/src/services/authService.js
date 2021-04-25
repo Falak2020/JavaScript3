@@ -45,9 +45,9 @@ class AuthService {
       axios.post('/users/register',payload)
       .then(res=>{
         
-          if (res.status===200){
+          if (res.status===201){
             this.error=''
-            this.authenticated=res.data.token 
+            this.login(payload)
           }
           
           else
@@ -60,7 +60,7 @@ class AuthService {
        setTimeout(cb, 1000)
     }
 
-    
+
   }
   
   export default new AuthService();

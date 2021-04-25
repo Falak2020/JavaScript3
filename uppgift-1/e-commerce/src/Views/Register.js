@@ -1,5 +1,6 @@
 import React,{ useRef, useState} from 'react'
 import Select from 'react-select'
+import auth from '../services/authService'
 const Register = (props) => {
 
  const firstName = useRef()
@@ -15,7 +16,7 @@ const Register = (props) => {
   { value: 'admin', label: 'admin' },
 ]
 
-const MyComponent = () => (
+const SelectComponent = () => (
   <Select options={options} value={role} onChange={(e)=>setRole(e.value)} placeholder={role}/>
 )
 
@@ -31,7 +32,9 @@ const MyComponent = () => (
      password:password.current.value,
      role
    }
-   console.log(_user)
+   auth.register(_user,()=>{
+     
+   })
  }
 
     return (
@@ -50,7 +53,7 @@ const MyComponent = () => (
           </select>
         </div> */}
         <div className="mt-3">  
-          {MyComponent()}
+          {SelectComponent()}
         </div> 
          <button  type="submit" className="btn btn-info form-control mt-5 text-white text-uppercase">register</button>
      </form>
