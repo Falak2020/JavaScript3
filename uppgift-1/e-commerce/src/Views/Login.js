@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import { useDispatch,useSelector} from 'react-redux'
 import { login } from '../store/actions/loginAction'
-import {useHistory} from 'react-router-dom'
+import {useHistory,NavLink} from 'react-router-dom'
 import auth from '../services/authService'
 
 const Login = () => {
@@ -53,7 +53,7 @@ const Login = () => {
                     <input type="password"  className="form-control border" placeholder="Enter your password" value ={password}  onChange={(e)=>setPassword(e.target.value)}/>
                     <button  type="submit" className="btn btn-info form-control mt-5 text-white text-uppercase mb-3">Log in</button>    
                     <div className="text-center mt-2">
-                        {/* <p>Not a member? <router-link to="/register">Register</router-link></p> */}
+                        <p>Not a member? <NavLink to="/register">Register</NavLink></p> 
                     </div>
                     <small className="text-danger">{auth.error}</small>
                 </form>
