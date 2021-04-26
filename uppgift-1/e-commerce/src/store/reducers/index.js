@@ -2,11 +2,11 @@ import { combineReducers } from 'redux'
 import postsReducer from './postsReducer'
 import postReducer from './postReducer'
 import shoppingCart from './shoppingCartReducer'
-import loginReducer from './loginReducer'
+import userReducer from './userReducer'
 export default combineReducers({
 
     postsReducer,
     postReducer,
     shoppingCart,
-    loginReducer
+    userReducer
 })

@@ -14,12 +14,17 @@ const actiontypes=()=>{
         shoppingCart:{
             addToCart:'ADD_TO_CART',
             remove:'REMOVE_FROM_CART',
-            deleteAll:'DELETE_ALL'
+            deleteAll:'DELETE_ALL',
+            addToDB:'ADD_TO_DB',
+            getUserCart:'GET_USER_CART',
+            setUserCart:'SET_USER_CART'
         },
 
         user:{
             logIn:'LOGIN',
-            error:'ERROR'
+            sugnUp:'SIGNUP',
+            logError:'LOG_ERROR',
+            regError:'REG_ERROR'
         }
 
         

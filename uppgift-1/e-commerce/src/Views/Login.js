@@ -1,54 +1,59 @@
 import React,{useState} from 'react'
 import { useDispatch,useSelector} from 'react-redux'
-import { login } from '../store/actions/loginAction'
+import { login } from '../store/actions/userAction'
 import {useHistory,NavLink} from 'react-router-dom'
+import {getUserCart} from '../store/actions/shoppingAction'
 import auth from '../services/authService'
 
 const Login = () => {
 
     const dispatch= useDispatch()
+    const token = useSelector(state=>state.userReducer.token)
+    const error = useSelector(state=>state.userReducer.logError)
+    const history =useHistory()
+
     const [email,setEmail]  = useState('')
     const [password,setPassword] = useState('')
-    const history =useHistory()
-    const token = useSelector(state=>state.loginReducer.token)
-    const error = useSelector(state=>state.loginReducer.error)
     
     
+
     
     //Functions
 
    const handelSubmit = (e) => {
-        e.preventDefault();
 
+    e.preventDefault();
       let user={
           email,
           password
       }
-      auth.login((user),()=> {
-          if(auth.authenticated)
-           history.push('/')
-          else
-          history.push('/login')
-        
-        // try{ history.push(history.location.state.from.pathname) }
-        // catch{ history.push('/') }
-
-      })
+    //   auth.login((user),()=> {
+    //       if(auth.authenticated)
+    //        history.push('/')
+    //       else
+    //       history.push('/login')
      
-    //   dispatch(login(user))
-    //     setTimeout(() => {
-    //        console.log(error)
-    //        error? history.push('/login') :history.push('/') 
-    //     }, 2000);
-         
-    
+
+    //   })
+     
+      dispatch(login(user))
+
+      
+    //  setTimeout(() => {
+      
+    //    console.log(error)
+    //   error? history.push('/login') :history.push('/')  
+    //  }, 2000);
+      
+      
     }
    
     return (
         <div>
          <div className="d-flex align-items-center justify-content-center"> 
           {
-            auth.authenticated?<h1>welcome to our app</h1>
+            token?
+                  <h1>Welcome to our app</h1>
                 :
                  <div className="border p-5 bg-white mt-5">
                     <h5 className="mb-3">Welcome to our e-commerce website, please enter your user information</h5>
@@ -59,10 +64,15 @@ const Login = () => {
                         <div className="text-center mt-2">
                             <p>Not a member? <NavLink to="/register">Register</NavLink></p> 
                         </div>
-                        <small className="text-danger">{auth.error}</small>
+                       {
+                       error?<small className="text-danger">Incorrect Email or password</small>:''
+                       } 
                     </form>
                  </div>
+
+                
           }
+          
          </div>
         </div>
     )

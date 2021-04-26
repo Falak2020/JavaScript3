@@ -1,11 +1,18 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import { NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import auth from '../../services/authService'
+
 const Header = () => {
 
   const counter =  useSelector(state => state.shoppingCart.counter)
+  const status =  useSelector(state => state.userReducer.status)
+  
+  
     return (
+      
       <nav className="navbar navbar-expand-lg navbar-dark navbar-bg py-3">
+       
         <div className="container">
           <NavLink  to="/"className="navbar-brand" >Pokemon.se</NavLink>
           <button
@@ -24,10 +31,11 @@ const Header = () => {
               <NavLink to="/" exact className="nav-link active " aria-current="page"> <i className="fas fa-home me-2"></i>Home</NavLink>
               <NavLink to="/shoppingcart" exact  aria-current="page" className="nav-link  ms-lg-5 active "> <i className=" me-2 fas fa-shopping-cart"> </i>
                 {counter===0?<span className=" pos-r">Shopping Cart </span>
-                             : <span className=" pos-r">Shopping Cart <span  className="pos-a pt-1 ">{counter}</span></span> }
-                             
+                             : <span className=" pos-r">Shopping Cart <span  className="pos-a pt-1 ">{counter}</span></span> }            
                </NavLink>
-              <NavLink to="/login" exact className="nav-link  ms-lg-5 active" aria-current="page"><i className="fas fa-user me-2"></i>Log in</NavLink>
+              
+               <NavLink to="/login" exact className="nav-link  ms-lg-5 active" aria-current="page"  ><i className="fas fa-user me-2"></i>{status}</NavLink>
+               
             </div>
           </div>
         </div>

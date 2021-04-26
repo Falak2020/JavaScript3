@@ -8,10 +8,12 @@ import Login from './Views/Login';
 import ProductDetails from './Views/ProductDetails';
 import Appfooter from './components/navbar/Appfooter';
 import Register from './Views/Register';
+
 function App() {
+ 
   return (
     <Router >
-      <Header />
+      <Header  />
       
       <div className="container mt-5 page-container">
         <Switch>

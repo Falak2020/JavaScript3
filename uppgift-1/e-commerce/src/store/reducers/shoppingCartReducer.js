@@ -8,6 +8,8 @@ let initState = {
 
 
 const shoppingCart = (state = initState, action)=>{
+
+  
     switch(action.type){
       //Add to Cart
       case actiontypes().shoppingCart.addToCart:
@@ -57,7 +59,14 @@ const shoppingCart = (state = initState, action)=>{
           state.totalPrice=totalPrice(state.shoppings)
           return state
         }
-
+      case actiontypes().shoppingCart.setUserCart:
+       {
+          
+          state.shoppings=action.payload
+          state.counter=cartAmount(state.shoppings)
+          state.totalPrice=totalPrice(state.shoppings)
+          return state
+        }
       default:
           return state
         

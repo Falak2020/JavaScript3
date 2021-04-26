@@ -1,5 +1,6 @@
 
 import actiontypes from '../actiontypes'
+import axios from '../../axios'
 
 export const addToCart = product => {
     return{
@@ -19,5 +20,26 @@ export const deleteAll= id =>{
     return{
         type:actiontypes().shoppingCart.deleteAll,
         payload:id
+    }
+}
+
+
+export const  getUserCart=(id)=>{
+           
+    return dispatch  => {
+     axios.get('/shoppings/'+id)
+    .then((res)=>{
+     console.log(res)
+       dispatch(setCart(res.data.cartContents))
+    })   
+    }
+    
+  }
+
+
+  export const setCart = data => {
+    return{
+       type:actiontypes().shoppingCart.setUserCart,
+       payload:data
     }
 }
