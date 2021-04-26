@@ -35,6 +35,15 @@ const loginReducer= (state = initState,action) =>{
                 ...state,
                 regError:action.payload
             }
+
+        case actiontypes().user.logOut:
+            {
+                state.token=action.payload
+                state.userId=action.payload
+                state.status='log in'
+                state.logError=false
+            return state
+            }
            
         default :
         return state

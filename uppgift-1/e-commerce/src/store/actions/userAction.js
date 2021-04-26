@@ -85,3 +85,10 @@ export const errorRegMsg = (error) => {
         payload:error
     }
 }
+
+export const logout=()=>{
+    return{
+        type:actiontypes().user.logOut,
+        payload:null
+    }
+}

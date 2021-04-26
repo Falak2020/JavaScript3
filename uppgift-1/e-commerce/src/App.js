@@ -8,7 +8,7 @@ import Login from './Views/Login';
 import ProductDetails from './Views/ProductDetails';
 import Appfooter from './components/navbar/Appfooter';
 import Register from './Views/Register';
-
+import Orders from './Views/Orders'
 function App() {
  
   return (
@@ -22,6 +22,7 @@ function App() {
            <Route  exact path="/shoppingcart"  component={ShoppingCart}/>
            <Route  exact path="/login"  component={Login}/>
            <Route  exact path="/register"  component={Register}/>
+           <Route  exact path="/myorders"  component={Orders}/>
         </Switch> 
         
       </div>

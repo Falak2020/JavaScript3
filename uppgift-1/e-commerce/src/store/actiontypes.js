@@ -24,7 +24,8 @@ const actiontypes=()=>{
             logIn:'LOGIN',
             sugnUp:'SIGNUP',
             logError:'LOG_ERROR',
-            regError:'REG_ERROR'
+            regError:'REG_ERROR',
+            logOut:'LOG_OUT'
         }
 
         
