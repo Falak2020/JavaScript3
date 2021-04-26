@@ -2,7 +2,7 @@
 import actiontypes from '../actiontypes'
 import axios from '../../axios'
 
-export const addToCart = product => {
+export const addToCart =(product) => {
     return{
        type:actiontypes().shoppingCart.addToCart,
        payload:product
@@ -35,6 +35,37 @@ export const  getUserCart=(id)=>{
     }
     
   }
+
+ export const postCart = (payload)=>{
+     return dispatch =>{
+
+        let id = payload._id 
+        axios.get('/shoppings/'+id)//if there is an object in db with the same id then make update otherwise send the data
+        .then(res=>{
+
+       if(res.data){
+          
+        axios.patch('/shoppings/'+id,
+            {cartContents:payload.cart},
+             {headers:{'Authorization': `Bearer ${payload.token}`}} )
+             .then(res=>console.log(res))
+
+        
+      }
+      else{
+       axios.post('/shoppings/add',{
+         _id:payload._id,
+         cartContents:payload.cart},
+         {headers:{'Authorization': `Bearer ${payload.token}`}})
+      
+      .then(res=>{
+        console.log(res)
+      })
+      } 
+    }) 
+   }
+}
+
 
 
   export const setCart = data => {

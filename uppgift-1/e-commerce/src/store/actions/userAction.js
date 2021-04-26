@@ -13,7 +13,8 @@ export const login = (payload)=>{
                    console.log(res)
                    if (res.status===200){
                      dispatch(errorLogMsg(false))
-                     dispatch(setToken(res.data.token)) 
+                     dispatch(setToken(res.data))
+                    
                      dispatch(getUserCart(res.data.userId)) 
 
                    }
@@ -76,6 +77,7 @@ export const setToken = token => {
        payload:token
     }
 }
+
 
 export const errorRegMsg = (error) => {
     return {

@@ -2,6 +2,10 @@ import React,{useEffect} from 'react'
 import{ useDispatch,useSelector} from 'react-redux'
 import { getPost } from '../store/actions/postAction'
 import { addToCart } from '../store/actions/shoppingAction'
+import { postCart } from '../store/actions/shoppingAction'
+
+
+
 const ProductDetails = (props) => {
 
     const id = props.match.params.id
@@ -11,13 +15,29 @@ const ProductDetails = (props) => {
     // const shoppings = useSelector(state => state.shoppingCart.shoppings)
     // const counter = useSelector(state => state.shoppingCart.counter)
     const loading = useSelector(state => state.postReducer.loading)
-     
+    const _id = useSelector(state => state.userReducer.userId)
+    const token = useSelector(state => state.userReducer.token)
+    const shoppingCart = useSelector(state => state.shoppingCart.shoppings)
+
     useEffect(() => {
         dispatch(getPost(id))
     }, [dispatch])
 
     //Functions
-    
+    const AddtoCart=()=>{
+      let payload={
+         _id:_id,
+         cart: shoppingCart,
+         token:token
+     }
+     
+      dispatch(addToCart(product))
+      if(_id){
+         dispatch(postCart(payload))
+      }
+      
+      
+    }
     return (
        
         <div className="d-flex align-items-center p-5">
@@ -43,7 +63,7 @@ const ProductDetails = (props) => {
                             <p className="card-text">
                                <small className="text-muted">{product.modified}</small>
                             </p>
-                            <button className="btn btn-primary" onClick={()=>dispatch(addToCart(product))}><i className="fas fa-shopping-cart me-1"></i>add to cart</button>
+                            <button className="btn btn-primary" onClick = {AddtoCart}><i className="fas fa-shopping-cart me-1"></i>add to cart</button>
                          </div>
                     </div>
                   </div>

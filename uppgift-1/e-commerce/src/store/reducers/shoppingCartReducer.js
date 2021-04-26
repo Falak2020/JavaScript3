@@ -1,10 +1,12 @@
 import actiontypes from '../actiontypes'
 
+
 let initState = {
    shoppings:[],
    counter:0,
    totalPrice:0
 }
+
 
 
 const shoppingCart = (state = initState, action)=>{

@@ -1,10 +1,18 @@
 import React from 'react'
 import { useDispatch, useSelector} from 'react-redux'
 import { addToCart, removeFromCart,deleteAll } from '../store/actions/shoppingAction'
+
 const Cartdetails = ({item}) => {
 
     const dispatch = useDispatch()
     
+  
+    const AddtoCart = () => { 
+       
+        dispatch(addToCart(item.shop))
+       
+        
+    }
     return (
        
         <div>
@@ -23,7 +31,7 @@ const Cartdetails = ({item}) => {
                         </div>  
                     </div> 
                     <div className="d-flex align-items-center">
-                        <button className="btn btn-gray text-white" onClick={()=>dispatch(addToCart(item.shop))}>+</button>
+                        <button className="btn btn-gray text-white" onClick={AddtoCart}>+</button>
                         <button className="btn btn-gray text-white ms-3" onClick={()=>dispatch(removeFromCart(item.shop._id))}>-</button>
                         <h4 className="m-0" onClick={()=>dispatch(deleteAll(item.shop._id))}><i className="text-danger fas fa-trash ms-3"></i></h4>
                     </div>
