@@ -48,7 +48,7 @@ export const  getUserCart=(id)=>{
         axios.patch('/shoppings/'+id,
             {cartContents:payload.cart},
              {headers:{'Authorization': `Bearer ${payload.token}`}} )
-             .then(res=>console.log(res))
+             .then(res=>console.log('update'))
 
         
       }
@@ -59,12 +59,21 @@ export const  getUserCart=(id)=>{
          {headers:{'Authorization': `Bearer ${payload.token}`}})
       
       .then(res=>{
-        console.log(res)
+        console.log('send new')
       })
       } 
     }) 
    }
 }
+
+export const deleteDB=(payload) =>{
+    
+       axios.delete('/shoppings/'+payload._id,
+      {headers:{'Authorization': `Bearer ${payload.token}`}})
+       .then(res=>{
+       console.log('deleted')})
+     }
+  
 
 
 

@@ -1,17 +1,41 @@
 import React from 'react'
 import { useDispatch, useSelector} from 'react-redux'
 import { addToCart, removeFromCart,deleteAll } from '../store/actions/shoppingAction'
-
+import { postCart,deleteDB } from '../store/actions/shoppingAction'
 const Cartdetails = ({item}) => {
 
     const dispatch = useDispatch()
     
-  
+    const _id = useSelector(state => state.userReducer.userId)
+    const token = useSelector(state => state.userReducer.token)
+    const shoppingCart = useSelector(state => state.shoppingCart.shoppings)
+     const payload={
+            _id:_id,
+            cart: shoppingCart,
+            token:token
+        }
     const AddtoCart = () => { 
        
-        dispatch(addToCart(item.shop))
-       
         
+         dispatch(addToCart(item.shop))
+
+         if(_id){
+            dispatch(postCart(payload))
+         }
+        
+    }
+
+    const Sub=()=>{
+        console.log(item.shop._id)
+        dispatch(removeFromCart(item.shop._id))
+        console.log(shoppingCart)
+        if(_id){
+            console.log(shoppingCart.length)
+                if(shoppingCart.length===1)
+                  deleteDB(payload)
+                else
+                  dispatch(postCart(payload))
+         }
     }
     return (
        
@@ -32,7 +56,7 @@ const Cartdetails = ({item}) => {
                     </div> 
                     <div className="d-flex align-items-center">
                         <button className="btn btn-gray text-white" onClick={AddtoCart}>+</button>
-                        <button className="btn btn-gray text-white ms-3" onClick={()=>dispatch(removeFromCart(item.shop._id))}>-</button>
+                        <button className="btn btn-gray text-white ms-3" onClick={Sub}>-</button>
                         <h4 className="m-0" onClick={()=>dispatch(deleteAll(item.shop._id))}><i className="text-danger fas fa-trash ms-3"></i></h4>
                     </div>
                    

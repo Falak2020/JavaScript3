@@ -9,7 +9,7 @@ const ShoppingCart = () => {
     return (
         <div>
             {
-              shoppingCart.length>0? shoppingCart.map(item => (<Cartdetails key={item.shop._id} item={item}/>))
+              (shoppingCart.length>0)? shoppingCart.map(item => (<Cartdetails key={item.shop._id} item={item}/>))
               : 
               <div className="card mt-5 p-4 text-center"> 
                 <div className="card-header text-info"><i className="fas fa-shopping-bag"></i></div>

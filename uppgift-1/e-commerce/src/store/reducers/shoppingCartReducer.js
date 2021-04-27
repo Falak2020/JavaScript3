@@ -11,6 +11,7 @@ let initState = {
 
 const shoppingCart = (state = initState, action)=>{
 
+ 
   
     switch(action.type){
       //Add to Cart
@@ -38,14 +39,15 @@ const shoppingCart = (state = initState, action)=>{
 
       case actiontypes().shoppingCart.remove:
         {
-          console.log(action.payload)
+    
+
           let exists=state.shoppings.find(item=>item.shop._id === action.payload)
-         
+          
           exists.quantity===1
           ?
            state.shoppings=state.shoppings.filter(item => item.shop._id !== action.payload)
           : 
-          exists.quantity -=1
+          exists.quantity -= 1
           
           
           state.counter=cartAmount(state.shoppings)

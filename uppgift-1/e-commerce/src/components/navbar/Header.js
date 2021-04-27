@@ -42,19 +42,19 @@ const Header = () => {
                       data-mdb-toggle="dropdown"
                       aria-expanded="false">
                     
-                        <span class="ms-1"><i className="fas fa-user me-2"></i>User Acount</span> 
+                        <span className="ms-1"><i className="fas fa-user me-2"></i>User Acount</span> 
                   </a>
                   <ul  className="dropdown-menu p-3 " aria-labelledby="navbarDropdown">
                       <li  className="text-center border  mb-2 dropdown-item" >
                         {
-                        status==='log in'?<NavLink exact to='/login' className="text-dark py-2 px-5" >{status}</NavLink>
+                        status==='log in'?<NavLink  to='/login' className="text-dark py-2 px-5" >{status}</NavLink>
                         :<div className="text-dark py-2 px-5" onClick={()=> dispatch(logout())} >{status}</div>
                         }
                         </li>
-                      <li  className="text-center dropdown-item"><NavLink exact to='/register' className="text-dark  py-2 px-5 " >Sign up</NavLink></li>
+                      <li  className="text-center dropdown-item"><NavLink  to='/register' className="text-dark  py-2 px-5 " >Sign up</NavLink></li>
 
                       <li><hr className="dropdown-divider" /></li>
-                      <li  className="text-center dropdown-item"><NavLink exact to='/myorders' className="text-dark  py-2 px-5 " >My orders</NavLink></li>
+                      <li  className="text-center dropdown-item"><NavLink  to='/myorders' className="text-dark  py-2 px-5 " >My orders</NavLink></li>
                   </ul>   
               </div>
             </div>
