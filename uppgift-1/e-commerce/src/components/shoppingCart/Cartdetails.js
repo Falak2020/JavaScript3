@@ -71,13 +71,11 @@ const Cartdetails = ({item}) => {
                         <button className="btn fixed btn-gray text-white ms-3" onClick={Sub}>-</button>
                         <button className="btn fixed btn-danger ms-3" onClick={Delete}><i className=" fas fa-trash "></i></button>
                     </div>
-                    
                    
                 </div>
                 <hr/>
               
             </div>  
-              
         </div>
             
         

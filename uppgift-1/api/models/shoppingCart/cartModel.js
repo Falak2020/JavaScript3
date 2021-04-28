@@ -103,7 +103,9 @@ exports.updateCart = (req, res) => {
     })
 
         Card.updateOne( { _id:req.params.id }, {
-         notdone:{},
+         notdone:{
+           cart:[]
+         },
 
          done:doneOrders,
 

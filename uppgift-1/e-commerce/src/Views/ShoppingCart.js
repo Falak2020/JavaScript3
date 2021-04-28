@@ -12,11 +12,7 @@ const ShoppingCart = () => {
     const token = useSelector(state => state.userReducer.token)
     const role = useSelector(state => state.userReducer.role)
   
-     const payload={
-            _id:_id,
-            cart: shoppingCart,
-            token:token
-        }
+     
         
     return (
         <div>
@@ -38,11 +34,8 @@ const ShoppingCart = () => {
                (totalPrice>0) &&<strong className="card p-3 text-center">Total Price={totalPrice}</strong>
      
             }
-           {
-               role==='admin'?<button onClick={()=> dispatch(changeToCompleted(payload))}>slut</button>
-               :''
-           } 
-           <button className="btn btn-info" onClick={()=>dispatch(getAllCart(token))}>getall</button>
+          
+          
         </div>
     )
 }
