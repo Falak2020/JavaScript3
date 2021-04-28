@@ -1,7 +1,7 @@
 import actiontypes from '../actiontypes'
 
 import axios from '../../axios'
-import { getUserCart } from './shoppingAction'
+import { getAllCart, getUserCart, setCart } from './shoppingAction'
 
 export const login = (payload)=>{
    
@@ -16,7 +16,7 @@ export const login = (payload)=>{
                      dispatch(setToken(res.data))
                     
                      dispatch(getUserCart(res.data.userId)) 
-
+                     dispatch(getAllCart(res.data.token))
                    }
                    
                    else
@@ -86,9 +86,23 @@ export const errorRegMsg = (error) => {
     }
 }
 
+
+export const logoutUser=()=>{
+    return dispatch =>{
+       
+        dispatch(setCart(null))
+        
+        dispatch(logout())
+
+       
+        
+    }
+}
+
 export const logout=()=>{
     return{
-        type:actiontypes().user.logOut,
-        payload:null
+        type:actiontypes().user.logoutUser,
+        payload:null,
+        
     }
 }

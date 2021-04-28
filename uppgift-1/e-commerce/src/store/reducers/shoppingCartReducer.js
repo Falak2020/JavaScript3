@@ -5,7 +5,8 @@ let initState = {
    shoppings:[],
    counter:0,
    totalPrice:0,
-   doneOrders:{}
+   doneOrders:{},
+   allOrders:{}
 }
 
 
@@ -76,6 +77,12 @@ const shoppingCart = (state = initState, action)=>{
         return{
           ...state,
           doneOrders:action.payload
+        }
+
+        case actiontypes().shoppingCart.setOrders:
+        return{
+          ...state,
+          allOrders:action.payload
         }
       default:
           return state

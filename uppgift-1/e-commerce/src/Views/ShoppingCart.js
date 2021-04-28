@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector,useDispatch } from 'react-redux'
 import Cartdetails from '../components/shoppingCart/Cartdetails'
 import {NavLink} from 'react-router-dom'
-import { changeToCompleted } from '../store/actions/shoppingAction'
+import { changeToCompleted,getAllCart } from '../store/actions/shoppingAction'
 const ShoppingCart = () => {
     const dispatch = useDispatch()
     const shoppingCart = useSelector(state => state.shoppingCart.shoppings)
@@ -10,6 +10,7 @@ const ShoppingCart = () => {
 
     const _id = useSelector(state => state.userReducer.userId)
     const token = useSelector(state => state.userReducer.token)
+    const role = useSelector(state => state.userReducer.role)
   
      const payload={
             _id:_id,
@@ -37,7 +38,11 @@ const ShoppingCart = () => {
                (totalPrice>0) &&<strong className="card p-3 text-center">Total Price={totalPrice}</strong>
      
             }
-            <button onClick={()=> dispatch(changeToCompleted(payload))}>slut</button>
+           {
+               role==='admin'?<button onClick={()=> dispatch(changeToCompleted(payload))}>slut</button>
+               :''
+           } 
+           <button className="btn btn-info" onClick={()=>dispatch(getAllCart(token))}>getall</button>
         </div>
     )
 }

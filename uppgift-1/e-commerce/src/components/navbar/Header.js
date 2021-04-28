@@ -7,7 +7,7 @@ const Header = () => {
 
   const counter =  useSelector(state => state.shoppingCart.counter)
   const status =  useSelector(state => state.userReducer.status)
-  
+  const role = useSelector(state => state.userReducer.role)
   const dispatch = useDispatch()
     return (
       
@@ -29,10 +29,16 @@ const Header = () => {
           <div className="collapse navbar-collapse " id="navbarNavAltMarkup">
             <div className="navbar-nav ms-auto ">
               <NavLink to="/" exact className="nav-link active " aria-current="page"> <i className="fas fa-home me-2"></i>Home</NavLink>
-              <NavLink to="/shoppingcart" exact  aria-current="page" className="nav-link  ms-lg-5 active "> <i className=" me-2 fas fa-shopping-cart"> </i>
-                {counter===0?<span className=" pos-r">Shopping Cart </span>
-                             : <span className=" pos-r">Shopping Cart <span  className="pos-a pt-1 ">{counter}</span></span> }            
-               </NavLink>
+              {
+                role==='admin'? 
+                  <NavLink  to="/allcarts" exact  aria-current="page" className="nav-link  ms-lg-5  "><i className=" me-2 fas fa-shopping-cart"></i>All Orders</NavLink>
+                    :
+                  <NavLink to="/shoppingcart" exact  aria-current="page" className="nav-link  ms-lg-5 active "> <i className=" me-2 fas fa-shopping-cart"> </i>
+                    {counter===0?<span className=" pos-r">Shopping Cart </span>
+                                : <span className=" pos-r">Shopping Cart <span  className="pos-a pt-1 ">{counter}</span></span> }            
+                  </NavLink>
+              }
+              
               
                <div to="/login" exact className="nav-link nav-item dropdown nav-link ms-lg-5 active" aria-current="page"  >
                   <a 

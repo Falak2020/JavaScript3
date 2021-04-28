@@ -9,6 +9,7 @@ import ProductDetails from './Views/ProductDetails';
 import Appfooter from './components/navbar/Appfooter';
 import Register from './Views/Register';
 import Orders from './Views/Orders'
+import AllOrders from './Views/AllOrders';
 function App() {
  
   return (
@@ -20,6 +21,7 @@ function App() {
            <Route  exact path="/"  component={Home}/>
            <Route  exact path="/details/:id"  component={ProductDetails}/>
            <Route  exact path="/shoppingcart"  component={ShoppingCart}/>
+           <Route  exact path="/allcarts"  component={AllOrders}/>
            <Route  exact path="/login"  component={Login}/>
            <Route  exact path="/register"  component={Register}/>
            <Route  exact path="/myorders"  component={Orders}/>

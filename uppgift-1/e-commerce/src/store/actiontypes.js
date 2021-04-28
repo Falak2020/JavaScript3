@@ -18,7 +18,8 @@ const actiontypes=()=>{
             addToDB:'ADD_TO_DB',
             getUserCart:'GET_USER_CART',
             setUserCart:'SET_USER_CART',
-            setDoneorders:'SET_Done_ORDERS'
+            setDoneorders:'SET_Done_ORDERS',
+            setOrders:'SET_ORDERS'
         },
 
         user:{
@@ -26,7 +27,7 @@ const actiontypes=()=>{
             sugnUp:'SIGNUP',
             logError:'LOG_ERROR',
             regError:'REG_ERROR',
-            logOut:'LOG_OUT'
+            logoutUser:'LOG_OUT_USER'
         }
 
         

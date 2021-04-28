@@ -6,7 +6,8 @@ let initState={
     userId:null,
     logError:false,
     regError:false,
-    status:'log in'
+    status:'log in',
+    role:'user'
 }
 
 const loginReducer= (state = initState,action) =>{
@@ -16,6 +17,7 @@ const loginReducer= (state = initState,action) =>{
             {
              state.token=action.payload.token
              state.userId=action.payload.userId
+             state.role = action.payload.role
              state.status='log out'
              state.logError=false
             return state
@@ -36,10 +38,11 @@ const loginReducer= (state = initState,action) =>{
                 regError:action.payload
             }
 
-        case actiontypes().user.logOut:
+        case actiontypes().user.logoutUser:
             {
                 state.token=action.payload
                 state.userId=action.payload
+                state.role='user'
                 state.status='log in'
                 state.logError=false
             return state

@@ -9,7 +9,11 @@ exports.getone=(req,res)=>{
   .catch(err=>res.status(500).json(err))
 }
 
-
+exports.getAll=(req,res)=>{
+  Card.find()
+  .then(data=>res.status(200).json(data))
+  .catch(err=>res.status(500).json(err))
+}
 
 exports.saveShoppings=(req,res)=>{
 

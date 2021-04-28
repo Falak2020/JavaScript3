@@ -2,8 +2,7 @@ import React,{useState} from 'react'
 import { useDispatch,useSelector} from 'react-redux'
 import { login } from '../store/actions/userAction'
 import {useHistory,NavLink} from 'react-router-dom'
-import {getUserCart} from '../store/actions/shoppingAction'
-import auth from '../services/authService'
+
 
 const Login = () => {
 

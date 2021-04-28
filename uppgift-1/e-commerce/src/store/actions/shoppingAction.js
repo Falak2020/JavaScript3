@@ -30,11 +30,25 @@ export const  getUserCart=(id)=>{
     return dispatch  => {
      axios.get('/shoppings/'+id)
     .then((res)=>{
-      
+     
       if(res.data.notdone)
         dispatch(setCart(res.data.notdone.cart))
       dispatch(setDoneorders(res.data.done))
-    })   
+    })  
+    .catch(err=>console.log(err)) 
+    }
+    
+  }
+
+  export const  getAllCart=(token)=>{
+   
+    return dispatch  => {
+     axios.get('/shoppings/', {headers:{'Authorization': `Bearer ${token}`}})
+    .then((res)=>{
+     dispatch(setOrders(res.data))
+     
+    })  
+    .catch(err=>console.log(err)) 
     }
     
   }
@@ -96,8 +110,7 @@ export const deleteDB=(payload) =>{
   
 
 
-
-  export const setCart = data => {
+ export const setCart = data => {
     return{
        type:actiontypes().shoppingCart.setUserCart,
        payload:data
@@ -107,6 +120,13 @@ export const deleteDB=(payload) =>{
 export const setDoneorders = data => {
   return{
      type:actiontypes().shoppingCart.setDoneorders,
+     payload:data
+  }
+}
+
+export const setOrders = data => {
+  return{
+     type:actiontypes().shoppingCart.setOrders,
      payload:data
   }
 }
