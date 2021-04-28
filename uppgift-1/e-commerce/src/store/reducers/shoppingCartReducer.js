@@ -4,7 +4,8 @@ import actiontypes from '../actiontypes'
 let initState = {
    shoppings:[],
    counter:0,
-   totalPrice:0
+   totalPrice:0,
+   doneOrders:{}
 }
 
 
@@ -70,6 +71,11 @@ const shoppingCart = (state = initState, action)=>{
           state.counter=cartAmount(state.shoppings)
           state.totalPrice=totalPrice(state.shoppings)
           return state
+       }
+      case actiontypes().shoppingCart.setDoneorders:
+        return{
+          ...state,
+          doneOrders:action.payload
         }
       default:
           return state

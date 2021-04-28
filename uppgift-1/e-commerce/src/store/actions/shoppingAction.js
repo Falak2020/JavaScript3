@@ -23,15 +23,17 @@ export const deleteAll= id =>{
     }
 }
 
+// BRING ALL ORDERS FOR THE USER FROM DB
 
 export const  getUserCart=(id)=>{
    
     return dispatch  => {
      axios.get('/shoppings/'+id)
     .then((res)=>{
-      if(res.data)
+      
+      if(res.data.notdone)
         dispatch(setCart(res.data.notdone.cart))
-
+      dispatch(setDoneorders(res.data.done))
     })   
     }
     
@@ -100,4 +102,11 @@ export const deleteDB=(payload) =>{
        type:actiontypes().shoppingCart.setUserCart,
        payload:data
     }
+}
+
+export const setDoneorders = data => {
+  return{
+     type:actiontypes().shoppingCart.setDoneorders,
+     payload:data
+  }
 }

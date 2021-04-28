@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector} from 'react-redux'
-import { addToCart, removeFromCart,deleteAll } from '../store/actions/shoppingAction'
-import { postCart,deleteDB } from '../store/actions/shoppingAction'
+
+import { postCart,deleteDB ,addToCart, removeFromCart,deleteAll } from '../../store/actions/shoppingAction'
 const Cartdetails = ({item}) => {
 
     const dispatch = useDispatch()

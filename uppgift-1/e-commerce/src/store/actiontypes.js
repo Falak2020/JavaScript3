@@ -17,7 +17,8 @@ const actiontypes=()=>{
             deleteAll:'DELETE_ALL',
             addToDB:'ADD_TO_DB',
             getUserCart:'GET_USER_CART',
-            setUserCart:'SET_USER_CART'
+            setUserCart:'SET_USER_CART',
+            setDoneorders:'SET_Done_ORDERS'
         },
 
         user:{

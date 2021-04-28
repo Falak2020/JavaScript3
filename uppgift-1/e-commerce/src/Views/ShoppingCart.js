@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector,useDispatch } from 'react-redux'
-import Cartdetails from '../components/Cartdetails'
+import Cartdetails from '../components/shoppingCart/Cartdetails'
 import {NavLink} from 'react-router-dom'
 import { changeToCompleted } from '../store/actions/shoppingAction'
 const ShoppingCart = () => {
