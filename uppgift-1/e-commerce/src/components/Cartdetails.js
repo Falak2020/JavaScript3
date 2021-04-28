@@ -26,11 +26,23 @@ const Cartdetails = ({item}) => {
     }
 
     const Sub=()=>{
-        console.log(item.shop._id)
+       
         dispatch(removeFromCart(item.shop._id))
-        console.log(shoppingCart)
+      
         if(_id){
-            console.log(shoppingCart.length)
+           
+                if(shoppingCart.length===1)
+                  deleteDB(payload)
+                else
+                  dispatch(postCart(payload))
+         }
+    }
+    const Delete=()=>{
+        
+        dispatch(deleteAll(item.shop._id))
+      
+        if(_id){
+           
                 if(shoppingCart.length===1)
                   deleteDB(payload)
                 else
@@ -55,15 +67,17 @@ const Cartdetails = ({item}) => {
                         </div>  
                     </div> 
                     <div className="d-flex align-items-center">
-                        <button className="btn btn-gray text-white" onClick={AddtoCart}>+</button>
-                        <button className="btn btn-gray text-white ms-3" onClick={Sub}>-</button>
-                        <h4 className="m-0" onClick={()=>dispatch(deleteAll(item.shop._id))}><i className="text-danger fas fa-trash ms-3"></i></h4>
+                        <button className="btn fixed btn-gray text-white" onClick={AddtoCart}>+</button>
+                        <button className="btn fixed btn-gray text-white ms-3" onClick={Sub}>-</button>
+                        <button className="btn fixed btn-danger ms-3" onClick={Delete}><i className=" fas fa-trash "></i></button>
                     </div>
+                    
                    
                 </div>
                 <hr/>
+              
             </div>  
-            
+              
         </div>
             
         

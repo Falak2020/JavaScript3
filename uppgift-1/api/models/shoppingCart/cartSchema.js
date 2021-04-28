@@ -2,14 +2,29 @@ mongoDb=require('mongoose')
 var ObjectId = mongoDb.Schema.Types.ObjectId;
 const CartSchema = mongoDb.Schema({
     _id: {type: ObjectId, required:true},
-    cartContents: {
-        type: [Object],
+    notdone:  {
+       
+       type:  {
+             orderNumber:{type:Date,default:Date.now()},
+             cart:[],
+             completed:{type:Boolean,default:false}
+            }
+        
+      ,
+        
         required:true
         
     },
+    done:{
+        type:[{
+            orderNumber:{type:Date,default:Date.now()},
+             cart:[],
+             completed:{type:Boolean,default:true}
+        }]
+    },
     date: {
         type: Date,
-        default: Date.now
+        default: Date.now()
     },
     modified:{
         type:Date,

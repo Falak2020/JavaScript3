@@ -25,12 +25,13 @@ const ProductDetails = (props) => {
 
     //Functions
     const AddtoCart=()=>{
+      
       let payload={
-         _id:_id,
-         cart: shoppingCart,
-         token:token
+         _id,
+         cart:shoppingCart,
+         token,
      }
-     
+     console.log(payload)
       dispatch(addToCart(product))
       if(_id){
          dispatch(postCart(payload))

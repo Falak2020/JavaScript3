@@ -55,7 +55,10 @@ html,body{
 .img-width{
   width:100px;
 }
-
+ 
 .btn-gray{
   background-color: gray;
+}
+.fixed{
+  width:40px;
 }

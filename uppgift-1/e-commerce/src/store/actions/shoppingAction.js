@@ -25,12 +25,13 @@ export const deleteAll= id =>{
 
 
 export const  getUserCart=(id)=>{
-           
+   
     return dispatch  => {
      axios.get('/shoppings/'+id)
     .then((res)=>{
-     console.log(res)
-       dispatch(setCart(res.data.cartContents))
+      if(res.data)
+        dispatch(setCart(res.data.notdone.cart))
+
     })   
     }
     
@@ -40,12 +41,13 @@ export const  getUserCart=(id)=>{
      return dispatch =>{
 
         let id = payload._id 
+        
         axios.get('/shoppings/'+id)//if there is an object in db with the same id then make update otherwise send the data
         .then(res=>{
 
        if(res.data){
-          
-        axios.patch('/shoppings/'+id,
+           
+            axios.patch('/shoppings/'+id,
             {cartContents:payload.cart},
              {headers:{'Authorization': `Bearer ${payload.token}`}} )
              .then(res=>console.log('update'))
@@ -53,6 +55,7 @@ export const  getUserCart=(id)=>{
         
       }
       else{
+        console.log(payload.cart)
        axios.post('/shoppings/add',{
          _id:payload._id,
          cartContents:payload.cart},
@@ -72,7 +75,22 @@ export const deleteDB=(payload) =>{
       {headers:{'Authorization': `Bearer ${payload.token}`}})
        .then(res=>{
        console.log('deleted')})
-     }
+ }
+
+
+ export const changeToCompleted=(payload)=>{
+   return dispatch => {
+
+
+    axios.patch('/shoppings/admin/'+payload._id,{
+      cartContents:payload.cart,
+      completed:true},
+    
+   {headers:{'Authorization': `Bearer ${payload.token}`}} )
+   .then(res=>console.log('update'))
+
+  }
+ }
   
 
 

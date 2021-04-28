@@ -1,11 +1,22 @@
 import React from 'react'
-import { useSelector} from 'react-redux'
+import { useSelector,useDispatch } from 'react-redux'
 import Cartdetails from '../components/Cartdetails'
 import {NavLink} from 'react-router-dom'
+import { changeToCompleted } from '../store/actions/shoppingAction'
 const ShoppingCart = () => {
-
+    const dispatch = useDispatch()
     const shoppingCart = useSelector(state => state.shoppingCart.shoppings)
     const totalPrice = useSelector(state => state.shoppingCart.totalPrice)
+
+    const _id = useSelector(state => state.userReducer.userId)
+    const token = useSelector(state => state.userReducer.token)
+  
+     const payload={
+            _id:_id,
+            cart: shoppingCart,
+            token:token
+        }
+        
     return (
         <div>
             {
@@ -26,6 +37,7 @@ const ShoppingCart = () => {
                (totalPrice>0) &&<strong className="card p-3 text-center">Total Price={totalPrice}</strong>
      
             }
+            <button onClick={()=> dispatch(changeToCompleted(payload))}>slut</button>
         </div>
     )
 }

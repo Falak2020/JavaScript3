@@ -89,11 +89,14 @@ const cartAmount=(shoppings)=>{
 
 const totalPrice=(shoppings)=>{
   let total=0
-  shoppings.forEach(element => {
+  if(shoppings.length>0){
+    shoppings.forEach(element => {
 
     total += element.shop.price*element.quantity
     
-  });
+   });
+  }
+  
   return total
 }
 
