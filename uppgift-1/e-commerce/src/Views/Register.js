@@ -39,21 +39,9 @@ const SelectComponent = () => (
      password:password.current.value,
      role
    }
-  //  auth.register(_user,()=>{
-  //    console.log(auth.error)
-  //    if(!auth.error){
-  //       history.push('/')
   
-  //    }
-
-  //    else
-  //      history.push('/register')
-  //  }) 
-  
-
     dispatch(signUp(_user))
     
-    console.log(error)
     error?  history.push('/register'):  history.push('/')
  
  
@@ -67,13 +55,7 @@ const SelectComponent = () => (
             <input type="text"  className="form-control border mb-3" placeholder="Last Name" ref={lastName} />
             <input type="email" className="form-control border mb-3"  placeholder="Email" ref={email} />
             <input type="password" className="form-control border"  placeholder="Password" ref={password}  /> 
-            {/* <div className="mt-3"  ref={role} >
-              <select className="form-control" > 
-                <option  >Select Role</option>
-                <option ref={user} >user</option>
-                <option ref={password} >admin</option>
-              </select>
-            </div> */}
+           
             <div className="mt-3">  
               {SelectComponent()}
             </div> 

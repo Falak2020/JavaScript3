@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink,Link } from 'react-router-dom'
 import { useSelector,useDispatch } from 'react-redux'
 // import auth from '../../services/authService'
 import { logout } from '../../store/actions/userAction'
@@ -28,19 +28,19 @@ const Header = () => {
           </button>
           <div className="collapse navbar-collapse " id="navbarNavAltMarkup">
             <div className="navbar-nav ms-auto ">
-              <NavLink to="/" exact className="nav-link active " aria-current="page"> <i className="fas fa-home me-2"></i>Home</NavLink>
+              <NavLink exact to="/" className="nav-link active " aria-current="page"> <i className="fas fa-home me-2"></i>Home</NavLink>
               {
                 role==='admin'? 
-                  <NavLink  to="/allcarts" exact  aria-current="page" className="nav-link  ms-lg-5  "><i className=" me-2 fas fa-shopping-cart"></i>All Orders</NavLink>
+                  <NavLink  to="/allcarts"  aria-current="page" className="nav-link  ms-lg-5  "><i className=" me-2 fas fa-shopping-cart"></i>All Orders</NavLink>
                     :
-                  <NavLink to="/shoppingcart" exact  aria-current="page" className="nav-link  ms-lg-5 active "> <i className=" me-2 fas fa-shopping-cart"> </i>
+                  <NavLink to="/shoppingcart"  aria-current="page" className="nav-link  ms-lg-5  "> <i className=" me-2 fas fa-shopping-cart"> </i>
                     {counter===0?<span className=" pos-r">Shopping Cart </span>
                                 : <span className=" pos-r">Shopping Cart <span  className="pos-a pt-1 ">{counter}</span></span> }            
                   </NavLink>
               }
               
               
-               <div to="/login" exact className="nav-link nav-item dropdown nav-link ms-lg-5 active" aria-current="page"  >
+               <div to="/login"  className="nav-link nav-item dropdown nav-link ms-lg-5 active" aria-current="page"  >
                   <span 
                       
                       className="nav-link dropdown-toggle d-inline"
@@ -54,14 +54,14 @@ const Header = () => {
                   <ul  className="dropdown-menu p-3 " aria-labelledby="navbarDropdown">
                       <li  className="text-center border  mb-2 dropdown-item" >
                         {
-                        status==='log in'?<NavLink  to='/login' className="text-dark py-2 px-5" >{status}</NavLink>
+                        status==='log in'?<Link  to='/login' className="text-dark py-2 px-5" >{status}</Link>
                         :<div className="text-dark py-2 px-5" onClick={()=> dispatch(logout())} >{status}</div>
                         }
                         </li>
-                      <li  className="text-center dropdown-item"><NavLink  to='/register' className="text-dark  py-2 px-5 " >Sign up</NavLink></li>
+                      <li  className="text-center dropdown-item"><Link   to='/register' className="text-dark  py-2 px-5 " >Sign up</Link></li>
 
                       <li><hr className="dropdown-divider" /></li>
-                      <li  className="text-center dropdown-item"><NavLink  to='/myorders' className="text-dark  py-2 px-5 " >My orders</NavLink></li>
+                      <li  className="text-center dropdown-item"><Link  to='/myorders' className="text-dark  py-2 px-5 " >My orders</Link></li>
                   </ul>   
               </div>
             </div>
