@@ -1,17 +1,13 @@
 import React from 'react'
-import { useSelector,useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import Cartdetails from '../components/shoppingCart/Cartdetails'
 import {NavLink} from 'react-router-dom'
-import { changeToCompleted,getAllCart } from '../store/actions/shoppingAction'
+
 const ShoppingCart = () => {
-    const dispatch = useDispatch()
+   
     const shoppingCart = useSelector(state => state.shoppingCart.shoppings)
     const totalPrice = useSelector(state => state.shoppingCart.totalPrice)
 
-    const _id = useSelector(state => state.userReducer.userId)
-    const token = useSelector(state => state.userReducer.token)
-    const role = useSelector(state => state.userReducer.role)
-  
      
         
     return (

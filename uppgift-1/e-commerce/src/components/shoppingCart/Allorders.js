@@ -1,9 +1,10 @@
 import React from 'react'
 import Cartdetails from './Cartdetails'
-import Details from './Details'
 import Order from './Order'
 import { changeToCompleted } from '../../store/actions/shoppingAction'
 import { useDispatch,useSelector } from 'react-redux'
+
+
 const Allorders = ({order}) => {
     const dispatch = useDispatch()
  
@@ -29,8 +30,8 @@ const Allorders = ({order}) => {
            </div>
       )
     return (
-        <div className="mt-5">
-         
+        <div className="mt-5 card p-3">
+          <h4>User: {order._id}</h4>
          {CurrentCart}
 
          <div>

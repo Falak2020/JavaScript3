@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react'
+import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { useSelector,useDispatch } from 'react-redux'
 // import auth from '../../services/authService'
@@ -41,7 +41,8 @@ const Header = () => {
               
               
                <div to="/login" exact className="nav-link nav-item dropdown nav-link ms-lg-5 active" aria-current="page"  >
-                  <a 
+                  <span 
+                      
                       className="nav-link dropdown-toggle d-inline"
                       id="navbarDropdown"
                       role="button"
@@ -49,7 +50,7 @@ const Header = () => {
                       aria-expanded="false">
                     
                         <span className="ms-1"><i className="fas fa-user me-2"></i>User Acount</span> 
-                  </a>
+                  </span>
                   <ul  className="dropdown-menu p-3 " aria-labelledby="navbarDropdown">
                       <li  className="text-center border  mb-2 dropdown-item" >
                         {

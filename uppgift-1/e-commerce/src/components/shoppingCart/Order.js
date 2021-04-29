@@ -1,7 +1,6 @@
 import React from 'react'
-import shoppingCart from '../../store/reducers/shoppingCartReducer'
-
 import OrderDetails from './OrderDetails'
+
 const Order = ({order}) => {
     return (
         <div  >

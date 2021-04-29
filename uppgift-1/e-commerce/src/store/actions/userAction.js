@@ -1,31 +1,32 @@
 import actiontypes from '../actiontypes'
-
 import axios from '../../axios'
 import { getAllCart, getUserCart, setCart } from './shoppingAction'
 
 export const login = (payload)=>{
-   
-    return  dispatch =>{
-      
+  
+    return async dispatch =>{
+        
         try{
-             axios.post('/users/login',payload)
-               .then(res=>{
-                   console.log(res)
+            const res= await  axios.post('/users/login',payload)
+
+               
                    if (res.status===200){
                      dispatch(errorLogMsg(false))
                      dispatch(setToken(res.data))
                     
                      dispatch(getUserCart(res.data.userId)) 
                      dispatch(getAllCart(res.data.token))
+                      
                    }
                    
-                   else
-                   dispatch(errorLogMsg(true))
-                })
-                .catch(err=>{
-                    console.log(err)
-                    dispatch(errorLogMsg(true))
-                })
+                   else{
+                       dispatch(errorLogMsg(true))
+                      
+                   }
+                   
+               
+                
+              
         }
          catch{dispatch(errorLogMsg(true))}
     }

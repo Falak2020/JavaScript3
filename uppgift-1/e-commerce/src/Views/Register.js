@@ -1,9 +1,9 @@
 import React,{ useRef, useState} from 'react'
 import Select from 'react-select'
-import auth from '../services/authService'
 import {useHistory} from 'react-router-dom'
 import {signUp} from '../store/actions/userAction'
 import { useDispatch,useSelector } from 'react-redux'
+
 const Register = () => {
 
 const dispatch = useDispatch()
