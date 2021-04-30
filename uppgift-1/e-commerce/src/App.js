@@ -10,11 +10,15 @@ import Appfooter from './components/navbar/Appfooter';
 import Register from './Views/Register';
 import Orders from './Views/Orders'
 import AllOrders from './Views/AllOrders';
+import UserContextProvider  from './contexts/userContext';
 function App() {
  
   return (
     <Router >
-      <Header  />
+      <UserContextProvider>
+        <Header  />
+      </UserContextProvider>
+      
       
       <div className="container mt-5 page-container">
         <Switch>

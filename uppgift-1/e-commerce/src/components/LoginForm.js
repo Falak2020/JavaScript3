@@ -36,7 +36,7 @@ const LoginForm = () => {
         <form className=" p-3" onSubmit = {handelSubmit} >
                 <input type="email" placeholder="Enter your email" className="form-control border mb-4" value={email} onChange={(e)=>setEmail(e.target.value)}/>
                 <input type="password"  className="form-control border" placeholder="Enter your password" value ={password}  onChange={(e)=>setPassword(e.target.value)}/>
-                <button  type="submit" className="btn btn-info form-control mt-5 text-white text-uppercase mb-3">Log in</button>    
+                <button  type="submit" className="btn btn-gray form-control mt-5 text-white text-uppercase mb-3">Log in</button>    
                 <div className="text-center mt-2">
                     <p>Not a member? <NavLink to="/register">Register</NavLink></p> 
                 </div>

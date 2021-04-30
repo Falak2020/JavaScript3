@@ -1,7 +1,8 @@
-import React from 'react'
+import React,{ useContext } from 'react'
 import { NavLink,Link } from 'react-router-dom'
 import { useSelector,useDispatch } from 'react-redux'
 // import auth from '../../services/authService'
+import { userContext } from '../../contexts/userContext'
 import { logout } from '../../store/actions/userAction'
 const Header = () => {
 
@@ -9,9 +10,12 @@ const Header = () => {
   const status =  useSelector(state => state.userReducer.status)
   const role = useSelector(state => state.userReducer.role)
   const dispatch = useDispatch()
+  
+  const {active,inActive} =useContext(userContext)
+  const userStatus= status==='log in'?inActive:active
     return (
       
-      <nav className="navbar navbar-expand-lg navbar-dark navbar-bg py-3">
+      <nav className="navbar navbar-expand-lg navbar-light navbar-bg py-3">
        
         <div className="container">
           <NavLink  to="/"className="navbar-brand" >Pokemon.se</NavLink>
@@ -49,7 +53,7 @@ const Header = () => {
                       data-mdb-toggle="dropdown"
                       aria-expanded="false">
                     
-                        <span className="ms-1"><i className="fas fa-user me-2"></i>User Acount</span> 
+                        <span className="ms-1"><i className={userStatus.name} style={{color:userStatus.color}}></i> User Acount</span> 
                   </span>
                   <ul  className="dropdown-menu p-3 " aria-labelledby="navbarDropdown">
                       <li  className="text-center border  mb-2 dropdown-item" >
