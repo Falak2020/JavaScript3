@@ -25,20 +25,22 @@ const ProductsList = ({product}) => {
   }
     return (
              <div className="col col-lg-4 col-md-6 ">
-               <div  className="card  h-100 hover-shadow h-100  p-3">
-                  <img src={product.image} className="img-height card-img-top img-fluid " alt=""/>
-                  <div className="card-body text-dark ">
+               <div  className="card  h-100 hover-shadow p-3">
+                   <img src={product.image} className=" img-height card-img-top " alt=""/>
+               
+                  <div className="card-body text-dark">
                           <h4 className="card-title text-decoration-underline ">{product.name}</h4>
                           <p className="text-danger ">
                             {product.price} kr
                           </p>
-                          <p className="card-text">
+                          <p className="card-text mb-5">
                             {product.short}
                           </p> 
-                          <div className="text-end h2 text-darkslateblue d-flex justify-content-between">
+                          <div className="text-end h2 text-darkslateblue d-flex justify-content-between text-botom mt-5">
 
-                            <Link  to ={`details/${product._id}`} className="btn btn-info shadow"> More Details</Link>
-                            <i className="fas fa-shopping-cart "  onClick={AddtoCart}></i> 
+                            <Link  to ={`details/${product._id}`} className="btn btn-info"> More Details</Link>
+                            
+                            <i className="fas fa-shopping-cart shop-icon "  onClick={AddtoCart}></i> 
                             
                           </div>   
                   </div>

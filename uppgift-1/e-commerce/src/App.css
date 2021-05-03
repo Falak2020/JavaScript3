@@ -68,3 +68,14 @@ html,body{
   height:200px;
   
 }
+
+.shop-icon{
+  cursor: pointer;
+  color: gray;
+}
+.text-botom{
+  position: absolute;
+  bottom: 10px;
+  right:20px;
+  left: 20px;
+}

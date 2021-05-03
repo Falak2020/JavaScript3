@@ -95,16 +95,20 @@ export const deleteDB=(payload) =>{
 
 
  export const changeToCompleted=(payload)=>{
+   
    return dispatch => {
 
-
     axios.patch('/shoppings/admin/'+payload._id,{
-      cartContents:payload.cart,
-      completed:true},
+     
+      cartContents:payload.cart
+      
+    },
     
    {headers:{'Authorization': `Bearer ${payload.token}`}} )
    .then(res=>console.log('update'))
-
+   
+ // Bring the last copy of Allorders
+   dispatch(getAllCart(payload.token))
   }
  }
   

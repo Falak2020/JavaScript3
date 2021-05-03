@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import Allorders from '../components/shoppingCart/Allorders'
+import AllordersDetail from '../components/shoppingCart/AllordersDetail'
 const AllOrders = () => {
 
     const allOrders = useSelector(state => state.shoppingCart.allOrders)
@@ -8,7 +8,7 @@ const AllOrders = () => {
     return (
         <div>
             {
-              allOrders.length>0? allOrders.map(order=>(<Allorders key={order.index} order={order}/>)) 
+              allOrders.length>0? allOrders.map(order=>(<AllordersDetail key={order._id} order={order}/>)) 
               :'' 
             }
         </div>

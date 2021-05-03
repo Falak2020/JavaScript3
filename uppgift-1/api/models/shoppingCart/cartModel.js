@@ -1,7 +1,7 @@
 const mongoDb=require('mongoose')
 const Card=require('./cartSchema')
 var ObjectId = require('mongodb').ObjectId;
-let doneOrders=[]
+
 
 exports.getone=(req,res)=>{
   Card.findOne({_id:req.params.id})
@@ -55,7 +55,7 @@ exports.updateCart = (req, res) => {
         cart:req.body.cartContents,
         completed:false
       },
-     
+      
       modified: Date.now()
       })
       .then(() => {
@@ -95,28 +95,27 @@ exports.updateCart = (req, res) => {
     }
 
   exports.CompletedOrder = (req, res) => {
-    doneOrders.push({
+
+   let doneOrder=[]
+    let newObj={
       orderNumber:Date.now(),
       cart:req.body.cartContents,
       completed:req.body.completed
     
-    })
+    }
+    doneOrder.push(newObj)
 
         Card.updateOne( { _id:req.params.id }, {
          notdone:{
            cart:[]
          },
 
-         done:doneOrders,
-
-         modified: Date.now()})
+          done: [...req.body.cartContents]
+           
+          ,
+           
+          modified: Date.now()})
          
-          // notdone:{
-          //   ...orderNumber,
-          // cart: req.body.cartContents,
-          // completed:true},
-          // modified: Date.now()
-          // })
           .then(() => {
             res.status(200).json({
               statusCode: 200,
@@ -145,3 +144,6 @@ exports.updateCart = (req, res) => {
   //     })
   
   //  }
+
+
+  

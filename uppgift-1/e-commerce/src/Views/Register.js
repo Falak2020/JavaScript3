@@ -8,7 +8,7 @@ import Home from './Home'
 const Register = () => {
 
 const dispatch = useDispatch()
-const error = useSelector(state=>state.userReducer.regError)
+const error = useSelector(state=>state.userReducer.regError) //server error the user is already exists
 const token = useSelector(state=>state.userReducer.token)
 const history= useHistory()
 
@@ -17,7 +17,7 @@ const history= useHistory()
  const email = useRef()
  const password = useRef()
  
- const[usererr,setUsererr] = useState(false)
+ const[usererr,setUsererr] = useState(false) // if the user didnot fill all the fields
  const [role,setRole]=useState('')
  
 
@@ -68,7 +68,7 @@ const SelectComponent = () => (
       <div>
         {token?<Home />:
       
-        <form className="container mt-3 bg-light p-4" onSubmit={RegisterUser}  >
+        <form className="container mt-3 bg-light p-5" onSubmit={RegisterUser}  >
             <p className="h2">Are you a new customer?</p>
             <p className="h4 my-4">Register you now </p>
             <input type="text" className="form-control mb-3 border"  placeholder="First Name"  ref={firstName} />

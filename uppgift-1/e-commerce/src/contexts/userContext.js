@@ -5,8 +5,7 @@ export const userContext = createContext();
 const UserContextProvider = (props) => {
  
   const [inActive] = useState({
-    name: 'fas fa-user me-2',
-    color:'text-white'
+    name: 'fas fa-user',
   })
   const [active] = useState({
     name :'fas fa-user-check',

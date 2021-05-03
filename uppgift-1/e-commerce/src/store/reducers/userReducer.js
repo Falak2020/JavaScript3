@@ -7,21 +7,14 @@ let initState={
     logError:false,
     regError:false,
     status:'log in',
-    role:'user'
+    role:'user',
 }
 
 const loginReducer= (state = initState,action) =>{
    
     switch(action.type){
         case actiontypes().user.logIn:
-            // {
-            //  state.token=action.payload.token
-            //  state.userId=action.payload.userId
-            //  state.role = action.payload.role
-            //  state.status='log out'
-            //  state.logError=false
-            // return state
-            // }
+          
             return {
                 ...state,
                 token: action.payload.token,
@@ -31,12 +24,7 @@ const loginReducer= (state = initState,action) =>{
             }
            
         case actiontypes().user.logError:
-            // {
-            //     state.token=null
-            //     state.logError=action.payload
-            //     state.status='log in'
-            //     return state
-            // }
+        
             return {
                 ...state,
                 token: null,
@@ -52,14 +40,7 @@ const loginReducer= (state = initState,action) =>{
             }
 
         case actiontypes().user.logoutUser:
-            // {
-            //     state.token=action.payload
-            //     state.userId=action.payload
-            //     state.role='user'
-            //     state.status='log in'
-            //     state.logError=false
-            // return state
-            // }
+          
             return {
                 ...state,
                 token: action.payload,

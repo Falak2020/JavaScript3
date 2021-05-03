@@ -24,7 +24,7 @@ const Orders = () => {
 
             {      
                orders.length>0?
-               orders.map(order => (<Order key ={order.index} order={order} />))
+               orders.map(order => (<Order key ={order.ON} order={order} />))
                :''
             }
         </div>

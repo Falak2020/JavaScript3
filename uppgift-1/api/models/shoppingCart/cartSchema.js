@@ -16,11 +16,7 @@ const CartSchema = mongoDb.Schema({
         
     },
     done:{
-        type:[{
-            orderNumber:{type:Date,default:Date.now()},
-             cart:[],
-             completed:{type:Boolean,default:true}
-        }]
+        type:[]
     },
     date: {
         type: Date,
