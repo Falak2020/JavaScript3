@@ -6,7 +6,9 @@ let initState = {
    counter:0,
    totalPrice:0,
    doneOrders:{},
-   allOrders:{}
+   allOrders:{},
+   paid:false,
+   orderNumber:''
 }
 
 
@@ -57,7 +59,7 @@ const shoppingCart = (state = initState, action)=>{
 
           return state
       }
-// Delete all item
+// Delete all items
       case actiontypes().shoppingCart.deleteAll:
         {
           state.shoppings=state.shoppings.filter(item => item.shop._id !== action.payload)
@@ -67,8 +69,9 @@ const shoppingCart = (state = initState, action)=>{
         }
       case actiontypes().shoppingCart.setUserCart:
        {
-          
-          state.shoppings=action.payload
+          state.shoppings=action.payload.cart
+          state.paid=action.payload.paid
+          state.orderNumber=action.payload.orderNumber
           state.counter=cartAmount(state.shoppings)
           state.totalPrice=totalPrice(state.shoppings)
           return state
@@ -83,6 +86,14 @@ const shoppingCart = (state = initState, action)=>{
         return{
           ...state,
           allOrders:action.payload
+        }
+
+        case actiontypes().shoppingCart.distroyShoppingCart:
+        return{
+          ...state,
+          shoppings:[],
+          counter:0,
+          totalPrice:0
         }
       default:
           return state

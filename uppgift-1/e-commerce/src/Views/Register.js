@@ -23,12 +23,20 @@ const history= useHistory()
 
 
  const options = [
+  { value: '', label: 'Select Role' },
   { value: 'user', label: 'user' },
   { value: 'admin', label: 'admin' },
 ]
 
 const SelectComponent = () => (
-  <Select options={options} value={role} onChange={(e)=>setRole(e.value)} placeholder={role}/>
+  <select className="w-25 p-2 " value={role}  onChange={(e)=>setRole(e.value)}>
+   {
+     options.map((option) => (
+           <option value={option.value}>{option.label}</option>
+      ))
+    } 
+  </select>
+  // <Select options={options} value={role}  onChange={(e)=>setRole(e.value)} placeholder={role}/>
 )
 
  
@@ -76,7 +84,7 @@ const SelectComponent = () => (
             <input type="email" className="form-control border mb-3"  placeholder="Email" ref={email} />
             <input type="password" className="form-control border"  placeholder="Password" ref={password}  /> 
            
-            <div className="mt-3 w-50">  
+            <div className="mt-3 ">  
               {SelectComponent()}
             </div> 
             <button  type="submit" className="btn btn-gray  mt-5 text-white text-uppercase">register</button>

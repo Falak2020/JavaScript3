@@ -1,9 +1,10 @@
 import React,{ useContext } from 'react'
 import { NavLink,Link } from 'react-router-dom'
 import { useSelector,useDispatch } from 'react-redux'
-// import auth from '../../services/authService'
+import auth from '../../services/authService'
 import { userContext } from '../../contexts/userContext'
 import { logout } from '../../store/actions/userAction'
+import { distroyShoppingCart } from '../../store/actions/shoppingAction'
 const Header = () => {
 
   const counter =  useSelector(state => state.shoppingCart.counter)
@@ -13,6 +14,14 @@ const Header = () => {
   
   const {active,inActive} =useContext(userContext)
   const userStatus= status==='log in'?inActive:active
+
+
+  const logOut=()=>{
+     dispatch(logout())
+     dispatch(distroyShoppingCart())
+     auth.authenticated=false
+  }
+
     return (
       
       <nav className="navbar navbar-expand-lg navbar-light navbar-bg py-3">
@@ -59,7 +68,7 @@ const Header = () => {
                       <li  className="text-center border  mb-2 dropdown-item" >
                         {
                         status==='log in'?<Link  to='/login' className="text-dark py-2 px-5" >{status}</Link>
-                        :<div className="text-dark py-2 px-5" onClick={()=> dispatch(logout())} >{status}</div>
+                        :<div className="text-dark py-2 px-5" onClick={logOut} >{status}</div>
                         }
                         </li>
                       <li  className="text-center dropdown-item"><Link   to='/register' className="text-dark  py-2 px-5 " >Sign up</Link></li>

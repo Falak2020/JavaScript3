@@ -14,8 +14,10 @@ const AllordersDetail = ({order}) => {
   
 
     let Obj={
-      ON:order.notdone.orderNumber,
-      cart:currentCart
+      // ON:order.notdone.orderNumber,
+      // cart:currentCart,
+      // completed:true
+      ...order.notdone,completed:true
     }
    const ToCompleted=()=>{
     

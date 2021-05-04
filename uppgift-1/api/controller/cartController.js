@@ -11,6 +11,6 @@ router.get('/',auth.verifyToken,cartModel.getAll)
 router.get('/:id',cartModel.getone)
 router.post('/add',auth.verifyToken, cartModel.saveShoppings)
 router.delete('/:id',auth.verifyToken,cartModel.deleteOrder)
-
+// router.patch('/shoppingcart/:id',auth.verifyToken,cartModel.paid )
 router.patch('/admin/:id',auth.verifyToken,cartModel.CompletedOrder )
 module.exports = router;

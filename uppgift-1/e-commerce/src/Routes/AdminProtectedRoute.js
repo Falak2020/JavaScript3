@@ -1,10 +1,9 @@
 import { Route, Redirect } from 'react-router-dom';
-import react, {useSelector} from 'react'
+
 import auth from '../services/authService'
 export const ProtectedRoute = ({component: Component, ...rest}) => {
-
-  
-  
+    
+   
   return (
     <Route {...rest} render={ props => {
       if(auth.authenticated) {

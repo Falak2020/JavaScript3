@@ -91,11 +91,8 @@ export const errorRegMsg = (error) => {
 export const logoutUser=()=>{
     return dispatch =>{
        
-        dispatch(setCart(null))
-        
+    
         dispatch(logout())
-
-       
         
     }
 }

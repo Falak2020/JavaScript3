@@ -23,7 +23,7 @@ exports.saveShoppings=(req,res)=>{
     notdone:{
       orderNumber:Date.now(),
       cart:req.body.cartContents,
-      completed:false
+      paid:false
     }
     
    })
@@ -51,9 +51,10 @@ exports.updateCart = (req, res) => {
   
     Card.updateOne( { _id:req.params.id }, {
       notdone:{
-        orderNumber:Date.now(),
+        orderNumber:req.body.orderNumber,
         cart:req.body.cartContents,
-        completed:false
+        paid:req.body.paid,
+        completed:req.body.completed
       },
       
       modified: Date.now()
@@ -96,54 +97,63 @@ exports.updateCart = (req, res) => {
 
   exports.CompletedOrder = (req, res) => {
 
-   let doneOrder=[]
-    let newObj={
-      orderNumber:Date.now(),
-      cart:req.body.cartContents,
-      completed:req.body.completed
+  
+
+    Card.updateOne( { _id:req.params.id }, {
+      notdone:{cart:[]},
+
+      done: [...req.body.cartContents]
+        
+      ,
+        
+      modified: Date.now()})
+      
+      .then(() => {
+        res.status(200).json({
+          statusCode: 200,
+          status: true,
+          message: 'The shopping cart is updated'
+        })
+
+        
+      })
+      .catch((err) => {
+        res.status(500).json({
+          statusCode: 500,
+          status: false,
+          message: 'Failed to update the shopping cart'
+        })
+      })
     
     }
-    doneOrder.push(newObj)
 
-        Card.updateOne( { _id:req.params.id }, {
-         notdone:{
-           cart:[]
-         },
-
-          done: [...req.body.cartContents]
-           
-          ,
-           
-          modified: Date.now()})
-         
-          .then(() => {
-            res.status(200).json({
-              statusCode: 200,
-              status: true,
-              message: 'The shopping cart is updated'
-            })
-
-            
-          })
-          .catch((err) => {
-            res.status(500).json({
-              statusCode: 500,
-              status: false,
-              message: 'Failed to update the shopping cart'
-            })
-          })
-        
-        }
-    
       
-  //  exports.MovetoDone=(notdone)=>{
-
-  //   Card.updateOne( done=notdone)
-  //   .then(() => {
-  //       console.log('ok')
-  //     })
-  
-  //  }
+// exports.paid = (req, res) => {
+//   console.log(req.body)
+//   Card.updateOne({ _id: req.params.id }, 
+//    {
+//     notdone:{
+//     ...req.body
+//     },
+//     modified: Date.now()
+//     })
+    
+    
+//   .then(() => {
+//     res.status(200).json({
+//       statusCode: 200,
+//       status: true,
+//       message: 'successfully'
+//     })
+//   })
+//   .catch(() => {
+//     res.status(500).json({
+//       statusCode: 500,
+//       status: false,
+//       message: 'Failed'
+//     })
+//   })
+// }
 
 
   

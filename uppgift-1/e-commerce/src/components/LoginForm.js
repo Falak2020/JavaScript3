@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react'
 import { useDispatch,useSelector} from 'react-redux'
 import { login } from '../store/actions/userAction'
 import { NavLink } from 'react-router-dom'
+import auth from '../services/authService'
 
 const LoginForm = () => {
     
@@ -10,14 +11,11 @@ const LoginForm = () => {
     const [email,setEmail]  = useState('')
     const [password,setPassword] = useState('')
     
+   
     
-    useEffect(() => {
-       
-         
-     }, [dispatch])
     const handelSubmit = (e) => {
-      
-        e.preventDefault();
+       
+       e.preventDefault();
         let user={
             email,
             password
@@ -25,7 +23,8 @@ const LoginForm = () => {
 
        if(user.email !== '' && user.password !== '')
         {
-          dispatch(login(user))  
+          dispatch(login(user)) 
+          auth.authenticated=true  
           setEmail('')
           setPassword('')
         

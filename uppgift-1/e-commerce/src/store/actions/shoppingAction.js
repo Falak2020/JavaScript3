@@ -32,14 +32,14 @@ export const  getUserCart=(id)=>{
     .then((res)=>{
      
       if(res.data.notdone)
-        dispatch(setCart(res.data.notdone.cart))
+        dispatch(setCart(res.data.notdone))
       dispatch(setDoneorders(res.data.done))
     })  
     .catch(err=>console.log(err)) 
     }
     
   }
-
+// Bring All orders for all users to admin
   export const  getAllCart=(token)=>{
    
     return dispatch  => {
@@ -60,21 +60,42 @@ export const  getUserCart=(id)=>{
         
         axios.get('/shoppings/'+id)//if there is an object in db with the same id then make update otherwise send the data
         .then(res=>{
+         
+          
+      if(res.data.notdone){
 
-       if(res.data){
-           
-            axios.patch('/shoppings/'+id,
-            {cartContents:payload.cart},
+         if(res.data.notdone.orderNumber){
+               let orderNumber=res.data.notdone.orderNumber
+               
+               axios.patch('/shoppings/'+id,
+                { orderNumber,
+                  cartContents:payload.cart,
+                  paid:false,
+                  completed:false
+                },
              {headers:{'Authorization': `Bearer ${payload.token}`}} )
              .then(res=>console.log('update'))
 
-        
+            }
+            else{
+              axios.patch('/shoppings/'+id,
+              { 
+                orderNumber:Date.now(),
+                cartContents:payload.cart,
+                paid:false,
+                completed:false
+              },
+             {headers:{'Authorization': `Bearer ${payload.token}`}} )
+              .then(res=>console.log('update'))
+            }
+          
       }
       else{
-        console.log(payload.cart)
+        
        axios.post('/shoppings/add',{
          _id:payload._id,
-         cartContents:payload.cart},
+         cartContents:payload.cart
+         },
          {headers:{'Authorization': `Bearer ${payload.token}`}})
       
       .then(res=>{
@@ -82,6 +103,18 @@ export const  getUserCart=(id)=>{
       })
       } 
     }) 
+    .catch(()=>{
+      axios.post('/shoppings/add',{
+        _id:payload._id,
+        cartContents:payload.cart
+        },
+        {headers:{'Authorization': `Bearer ${payload.token}`}})
+     
+     .then(res=>{
+       console.log('send new')})
+     }) 
+
+    
    }
 }
 
@@ -94,10 +127,33 @@ export const deleteDB=(payload) =>{
  }
 
 
+ export const changeToPaid=(payload)=>{
+   console.log(payload)
+   axios.get('/shoppings/'+payload._id)
+        .then(res=>{
+         
+          if(res.data){
+           let orderNumber=res.data.notdone.orderNumber   
+           axios.patch('/shoppings/'+ payload._id,{
+            orderNumber,
+            cartContents:payload.shoppingCart,
+            paid:true ,
+            completed:false    
+           },
+           {headers:{'Authorization': `Bearer ${payload.token}`}} )
+           .then(res=>console.log('paid'))
+           }})
+        
+   
+ 
+ 
+}
+ 
+
  export const changeToCompleted=(payload)=>{
    
    return dispatch => {
-
+    
     axios.patch('/shoppings/admin/'+payload._id,{
      
       cartContents:payload.cart
@@ -134,3 +190,13 @@ export const setOrders = data => {
      payload:data
   }
 }
+
+export const distroyShoppingCart = () => {
+  return{
+     type:actiontypes().shoppingCart.distroyShoppingCart,
+     payload:null
+  }
+}
+
+
+

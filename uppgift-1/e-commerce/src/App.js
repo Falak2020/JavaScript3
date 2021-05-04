@@ -11,6 +11,9 @@ import Register from './Views/Register';
 import Orders from './Views/Orders'
 import AllOrders from './Views/AllOrders';
 import UserContextProvider  from './contexts/userContext';
+
+import { ProtectedRoute } from './Routes/ProtectedRoute';
+
 function App() {
  
   return (
@@ -28,7 +31,7 @@ function App() {
            <Route  exact path="/allcarts"  component={AllOrders}/>
            <Route  exact path="/login"  component={Login}/>
            <Route  exact path="/register"  component={Register}/>
-           <Route  exact path="/myorders"  component={Orders}/>
+           <ProtectedRoute  exact path="/myorders"  component={Orders}/>
         </Switch> 
         
       </div>
