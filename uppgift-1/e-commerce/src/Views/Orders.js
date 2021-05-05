@@ -13,6 +13,7 @@ const Orders = () => {
     const totalPrice = useSelector(state => state.shoppingCart.totalPrice)
     const _id = useSelector(state => state.userReducer.userId)
     const dispatch = useDispatch()
+
     useEffect(() => {
         dispatch(getUserCart(_id))
     }, [dispatch])
@@ -32,10 +33,11 @@ const Orders = () => {
             
             {
                isPaid?<h5 className="text-success"> status : paid</h5>:''
+               
             }
             {      
                orders.length>0?
-               orders.map(order => (<Order key ={order.ON} order={order} />))
+               orders.map(order => (<Order key ={order.orderNumber} order={order} />))
                :''
             }
         </div>

@@ -52,6 +52,7 @@ export const  getUserCart=(id)=>{
     }
     
   }
+//Send users shopping cart to DB
 
  export const postCart = (payload)=>{
      return dispatch =>{
@@ -117,7 +118,7 @@ export const  getUserCart=(id)=>{
     
    }
 }
-
+//Delete order from DB
 export const deleteDB=(payload) =>{
     
        axios.delete('/shoppings/'+payload._id,
@@ -126,6 +127,7 @@ export const deleteDB=(payload) =>{
        console.log('deleted')})
  }
 
+//Change order to paid i DB
 
  export const changeToPaid=(payload)=>{
    console.log(payload)
@@ -149,6 +151,7 @@ export const deleteDB=(payload) =>{
  
 }
  
+//change order to completed i DB
 
  export const changeToCompleted=(payload)=>{
    
@@ -163,19 +166,24 @@ export const deleteDB=(payload) =>{
    {headers:{'Authorization': `Bearer ${payload.token}`}} )
    .then(res=>console.log('update'))
    
+   axios.put('/users/messages/'+payload._id,{
+    message:'Your order is completed'
+   })
+   .then(res=>console.log('message sent to user'))
  // Bring the last copy of Allorders
    dispatch(getAllCart(payload.token))
   }
  }
   
 
-
+// Save the shopping cart which found in DB in users shoppingcart
  export const setCart = data => {
     return{
        type:actiontypes().shoppingCart.setUserCart,
        payload:data
     }
 }
+// Save Done order 
 
 export const setDoneorders = data => {
   return{
@@ -183,13 +191,14 @@ export const setDoneorders = data => {
      payload:data
   }
 }
-
+// Save all orders 
 export const setOrders = data => {
   return{
      type:actiontypes().shoppingCart.setOrders,
      payload:data
   }
 }
+// distroy shopping cart when the user log out
 
 export const distroyShoppingCart = () => {
   return{

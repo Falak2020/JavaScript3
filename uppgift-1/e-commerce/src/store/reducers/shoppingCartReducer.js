@@ -8,7 +8,8 @@ let initState = {
    doneOrders:{},
    allOrders:{},
    paid:false,
-   orderNumber:''
+   orderNumber:'',
+   
 }
 
 

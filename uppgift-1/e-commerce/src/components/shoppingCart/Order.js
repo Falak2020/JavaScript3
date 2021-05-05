@@ -5,11 +5,18 @@ const Order = ({order}) => {
     
     return (
         <div  >
-            <div className=" mt-5 p-3">
+            <div className="card mt-5 p-3">
 
                <hr/>
-                <h3>Order Number:{order.ON}</h3> 
-                <h4 className="text-success">status : paid</h4>
+                <h3>Order Number:{order.orderNumber}</h3> 
+                {
+                 order.paid? <h4 className="text-success">status : paid</h4>:''
+                
+                }
+                {
+                 order.completed?<h4 className="text-success">completed</h4>:''   
+                }
+                
                 <div className="d-flex flex-column flex-md-row justify-content-around align-items-center">
                  {
             

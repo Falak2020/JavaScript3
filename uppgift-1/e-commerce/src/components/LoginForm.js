@@ -3,14 +3,17 @@ import { useDispatch,useSelector} from 'react-redux'
 import { login } from '../store/actions/userAction'
 import { NavLink } from 'react-router-dom'
 import auth from '../services/authService'
-
+import { useHistory } from 'react-router-dom'
 const LoginForm = () => {
     
     const dispatch= useDispatch()
     const error = useSelector(state=>state.userReducer.logError)
+    const token = useSelector(state=>state.userReducer.token)
+
     const [email,setEmail]  = useState('')
     const [password,setPassword] = useState('')
     
+    const history=useHistory()
    
     
     const handelSubmit = (e) => {
@@ -30,7 +33,13 @@ const LoginForm = () => {
         
         }  
       }
-
+      useEffect(() => {
+        if(token){
+          console.log(token)
+            history.push('/')
+        }
+        
+    }, [token])
     return (
         <form className=" p-3" onSubmit = {handelSubmit} >
                 <input type="email" placeholder="Enter your email" className="form-control border mb-4" value={email} onChange={(e)=>setEmail(e.target.value)}/>

@@ -2,6 +2,7 @@ import actiontypes from '../actiontypes'
 import axios from '../../axios'
 import { getAllCart, getUserCart, setCart } from './shoppingAction'
 
+//Log in
 export const login = (payload)=>{
   
     return async dispatch =>{
@@ -13,7 +14,7 @@ export const login = (payload)=>{
                    if (res.status===200){
                      dispatch(errorLogMsg(false))
                      dispatch(setToken(res.data))
-                    
+                     console.log(res.data)
                      dispatch(getUserCart(res.data.userId)) 
                      dispatch(getAllCart(res.data.token))
                       
@@ -22,11 +23,7 @@ export const login = (payload)=>{
                    else{
                        dispatch(errorLogMsg(true))
                       
-                   }
-                   
-               
-                
-              
+                   }                  
         }
          catch{dispatch(errorLogMsg(true))}
     }
@@ -34,7 +31,7 @@ export const login = (payload)=>{
 }
        
 ///////////////////////////////////////////////////
-
+//Sign Up
 export const signUp= (payload) => {
     let user={
         email:payload.email,
@@ -51,12 +48,9 @@ export const signUp= (payload) => {
             }
             
           else
-          dispatch(errorRegMsg(true))
-      
-       
+          dispatch(errorRegMsg(true))   
     }
     catch{dispatch(errorRegMsg(true))}
-   
  
 }
 
@@ -64,6 +58,7 @@ export const signUp= (payload) => {
 
 
 
+// When the user information doesnot correct
 
 export const errorLogMsg = (error) => {
     return {
@@ -71,6 +66,7 @@ export const errorLogMsg = (error) => {
         payload:error
     }
 }
+// Save Token
 
 export const setToken = token => {
     return{
@@ -79,6 +75,7 @@ export const setToken = token => {
     }
 }
 
+//When the user is already exists
 
 export const errorRegMsg = (error) => {
     return {
@@ -87,14 +84,14 @@ export const errorRegMsg = (error) => {
     }
 }
 
+// log out
 
 export const logoutUser=()=>{
     return dispatch =>{
        
     
         dispatch(logout())
-        
-    }
+  }
 }
 
 export const logout=()=>{

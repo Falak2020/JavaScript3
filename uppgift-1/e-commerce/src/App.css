@@ -79,3 +79,14 @@ html,body{
   right:20px;
   left: 20px;
 }
+.pos-bell{
+  position: absolute;
+  top:15px;
+  background-color: rgb(233, 13, 13);
+  width:30px;
+  height: 30px;
+  border-radius: 50%;
+  text-align: center;
+  color: #ffffff;
+  
+}

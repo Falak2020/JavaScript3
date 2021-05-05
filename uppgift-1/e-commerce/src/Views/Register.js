@@ -1,9 +1,8 @@
-import React,{ useRef, useState} from 'react'
+import React,{ useRef, useState,useEffect } from 'react'
 import Select from 'react-select'
 import {useHistory} from 'react-router-dom'
 import {signUp} from '../store/actions/userAction'
 import { useDispatch,useSelector } from 'react-redux'
-import Home from './Home'
 
 const Register = () => {
 
@@ -64,7 +63,7 @@ const SelectComponent = () => (
      password.current.value=''
  
      firstName.current.focus()
-     // error?  history.push('/register'):  history.push('/')
+    
   
    }
    else{
@@ -72,9 +71,17 @@ const SelectComponent = () => (
    }
  }
 
+ useEffect(() => {
+  if(token){
+    console.log(token)
+      history.push('/')
+  }
+  
+}, [token])
+
     return (
       <div>
-        {token?<Home />:
+      
       
         <form className="container mt-3 bg-light p-5" onSubmit={RegisterUser}  >
             <p className="h2">Are you a new customer?</p>
@@ -94,7 +101,7 @@ const SelectComponent = () => (
               {usererr?<small className="text-danger">Please fill in all the fields</small>:''}
             </div>       
        </form>
-      }
+   
     </div>
     )
 }

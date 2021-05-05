@@ -10,6 +10,8 @@ const Header = () => {
   const counter =  useSelector(state => state.shoppingCart.counter)
   const status =  useSelector(state => state.userReducer.status)
   const role = useSelector(state => state.userReducer.role)
+  const notice = useSelector(state => state.userReducer.message)
+
   const dispatch = useDispatch()
   
   const {active,inActive} =useContext(userContext)
@@ -53,7 +55,7 @@ const Header = () => {
               }
               
               
-               <div to="/login"  className="nav-link nav-item dropdown nav-link ms-lg-5 active" aria-current="page"  >
+               <div   className="nav-link nav-item dropdown nav-link ms-lg-5 active" aria-current="page"  >
                   <span 
                       
                       className="nav-link dropdown-toggle d-inline"
@@ -77,6 +79,13 @@ const Header = () => {
                       <li  className="text-center dropdown-item"><Link  to='/myorders' className="text-dark  py-2 px-5 " >My orders</Link></li>
                   </ul>   
               </div>
+             <NavLink exact to="/message" className="nav-link  " aria-current="page">
+               {
+                notice? <i class="fas fa-bell"><span  className="pos-bell pt-1 ">1</span></i>:<i class="fas fa-bell"></i>
+               } 
+               
+               </NavLink>
+
             </div>
           </div>
         </div>

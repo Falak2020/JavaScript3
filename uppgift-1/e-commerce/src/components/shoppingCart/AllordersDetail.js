@@ -35,7 +35,10 @@ const AllordersDetail = ({order}) => {
         <div>
           <div className="text-end">
             {
-            currentCart.length >0?  <button  className ="btn btn-info "onClick={ToCompleted}>Complete order</button>:''
+            currentCart.length >0?  
+              order.notdone.paid?
+               <button  className ="btn btn-info "onClick={ToCompleted}>Complete order</button>:<button  className ="btn btn-info " disabled >Complete order</button>
+            :''
             }
           </div>
            

@@ -88,7 +88,8 @@ exports.login = (req, res) => {
                 token: auth.generateToken(user),
                 username:user.firstName,
                 userId:user._id,
-                role:user.role
+                role:user.role,
+                notice:user.messages
               })
 
             }
@@ -149,4 +150,29 @@ exports.updateUser = (req, res) => {
     })
   })
  })
+}
+
+
+exports.message = (req, res) => {
+  
+ 
+  User.updateOne( { _id: req.params.id }, {
+    messages:req.body.message,
+    modified: Date.now()
+  })
+  .then(() => {
+    res.status(200).json({
+      statusCode: 200,
+      status: true,
+      message: 'user updated'
+    })
+  })
+  .catch(() => {
+    res.status(500).json({
+      statusCode: 500,
+      status: false,
+      message: 'Failed to update user'
+    })
+  })
+
 }

@@ -7,7 +7,8 @@ const userS=mongoDb.Schema({
     passwordHash: {type:String,required:true},
     created:{type:Date, default:Date.now},
     modified:{type:Date, default:Date.now},
-    role:{type:String}
+    role:{type:String},
+    messages:''
 })
 
 module.exports=mongoDb.model('User',userS)
