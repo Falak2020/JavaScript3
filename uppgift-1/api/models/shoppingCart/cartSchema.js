@@ -9,12 +9,11 @@ const CartSchema = mongoDb.Schema({
              cart:[],
              paid:{type:Boolean,default:false},
              completed:{type:Boolean,default:false}
-            }
-        
-      ,
-        
+            },
         required:true
-        
+    },
+    paid:{
+        type:[]
     },
     done:{
         type:[]

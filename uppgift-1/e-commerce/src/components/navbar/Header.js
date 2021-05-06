@@ -5,13 +5,16 @@ import auth from '../../services/authService'
 import { userContext } from '../../contexts/userContext'
 import { logout } from '../../store/actions/userAction'
 import { distroyShoppingCart } from '../../store/actions/shoppingAction'
+import { readMsg } from '../../store/actions/userAction'
+import ReadMsg from '../ReadMsg'
 const Header = () => {
 
   const counter =  useSelector(state => state.shoppingCart.counter)
   const status =  useSelector(state => state.userReducer.status)
   const role = useSelector(state => state.userReducer.role)
   const notice = useSelector(state => state.userReducer.message)
-
+  const _id = useSelector(state => state.userReducer.userId)
+  
   const dispatch = useDispatch()
   
   const {active,inActive} =useContext(userContext)
@@ -24,6 +27,11 @@ const Header = () => {
      auth.authenticated=false
   }
 
+
+ const readMessage=()=>{
+   console.log('hhh')
+  dispatch(readMsg(_id))
+ }
     return (
       
       <nav className="navbar navbar-expand-lg navbar-light navbar-bg py-3">
@@ -44,6 +52,8 @@ const Header = () => {
           <div className="collapse navbar-collapse " id="navbarNavAltMarkup">
             <div className="navbar-nav ms-auto ">
               <NavLink exact to="/" className="nav-link active " aria-current="page"> <i className="fas fa-home me-2"></i>Home</NavLink>
+
+              {/* shopping cart // all orders */}
               {
                 role==='admin'? 
                   <NavLink  to="/allcarts"  aria-current="page" className="nav-link  ms-lg-5  "><i className=" me-2 fas fa-shopping-cart"></i>All Orders</NavLink>
@@ -54,15 +64,16 @@ const Header = () => {
                   </NavLink>
               }
               
-              
-               <div   className="nav-link nav-item dropdown nav-link ms-lg-5 active" aria-current="page"  >
+              {/* User account */}
+               <div   className="nav-link nav-item  dropdown nav-link ms-lg-5 active" aria-current="page"  >
                   <span 
                       
-                      className="nav-link dropdown-toggle d-inline"
+                      className="nav-link   dropdown-toggle d-inline"
                       id="navbarDropdown"
                       role="button"
                       data-mdb-toggle="dropdown"
-                      aria-expanded="false">
+                      aria-expanded="false"
+                      >
                     
                         <span className="ms-1"><i className={userStatus.name} style={{color:userStatus.color}}></i> User Acount</span> 
                   </span>
@@ -79,13 +90,32 @@ const Header = () => {
                       <li  className="text-center dropdown-item"><Link  to='/myorders' className="text-dark  py-2 px-5 " >My orders</Link></li>
                   </ul>   
               </div>
-             <NavLink exact to="/message" className="nav-link  " aria-current="page">
-               {
-                notice? <i class="fas fa-bell"><span  className="pos-bell pt-1 ">1</span></i>:<i class="fas fa-bell"></i>
-               } 
-               
-               </NavLink>
 
+                    {/* Notices which come from admin */}
+
+              <div   className="nav-link nav-item dropdown nav-link ms-lg-5 active" aria-current="page" >
+                  <span 
+                      
+                      className="nav-link dropdown-toggle d-inline hidden-arrow"
+                      id="navbarDropdown"
+                      role="button"
+                      data-mdb-toggle="dropdown"
+                      aria-expanded="false"
+                     >
+                    
+                        <span > 
+                        {
+                          notice? <i class="fas fa-bell"  ><span  className="pos-bell pt-1 ">1</span></i>
+                           :''
+                        } 
+                        
+                        </span> 
+                  </span>
+                  <ul  className="dropdown-menu p-3 " aria-labelledby="navbarDropdown"  onClick={readMessage} >
+                     <ReadMsg />   
+                  </ul>   
+              </div>
+             
             </div>
           </div>
         </div>

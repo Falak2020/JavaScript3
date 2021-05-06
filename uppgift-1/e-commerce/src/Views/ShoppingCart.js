@@ -1,29 +1,31 @@
 import React,{ useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector,useDispatch } from 'react-redux'
 import Cartdetails from '../components/shoppingCart/Cartdetails'
 import {NavLink} from 'react-router-dom'
-import { changeToPaid } from '../store/actions/shoppingAction'
+import { changeToPaid,getUserCart } from '../store/actions/shoppingAction'
 const ShoppingCart = () => {
    
     const shoppingCart = useSelector(state => state.shoppingCart.shoppings)
     const totalPrice = useSelector(state => state.shoppingCart.totalPrice)
     const token = useSelector(state=>state.userReducer.token)
     const _id = useSelector(state => state.userReducer.userId)
-   
+    const dispatch = useDispatch()
     const ToPaid=()=>{
        let payload={
          _id,
          token,
          shoppingCart
        }
-       changeToPaid(payload)
-      
+      changeToPaid(payload)
+      dispatch(getUserCart(_id))
+       
     } 
         
     return (
         <div>
             {
               (shoppingCart.length>0)? shoppingCart.map(item => (<Cartdetails key={item.shop._id} item={item}/>))
+             
               : 
               <div className="card mt-5 p-4 text-center"> 
                 <div className="card-header text-info"><i className="fas fa-shopping-bag"></i></div>
@@ -43,15 +45,13 @@ const ShoppingCart = () => {
      
             }
             
-              <div className="text-center ">
-                 <button className="btn btn-gray text-white w-50  mt-3 p-3 " onClick={ToPaid}>go to checkout</button>   
-              </div>
-        
-            
-             
+            <div className="text-center ">
+              {
+              (totalPrice>0) && <button className="btn btn-gray text-white w-50  mt-3 p-3 " onClick={ToPaid}>go to checkout</button>   
+              }  
             </div>
-            
-          
+        
+         </div>   
         </div>
     )
 }

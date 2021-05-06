@@ -101,3 +101,21 @@ export const logout=()=>{
         
     }
 }
+
+export const readMsg = (_id) => {
+    return dispatch => {
+      axios.put('/users/messages/'+_id,{
+      message:''
+     
+     })
+     dispatch(deleteMessage())
+    }
+  }
+
+  export const deleteMessage=()=>{
+    return{
+        type:actiontypes().user.deleteMessage,
+        payload:null,
+        
+    }
+}

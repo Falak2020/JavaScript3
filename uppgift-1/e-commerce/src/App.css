@@ -81,10 +81,11 @@ html,body{
 }
 .pos-bell{
   position: absolute;
-  top:15px;
+  top:-14px;
+  left:20px;
   background-color: rgb(233, 13, 13);
-  width:30px;
-  height: 30px;
+  width:25px;
+  height: 25px;
   border-radius: 50%;
   text-align: center;
   color: #ffffff;

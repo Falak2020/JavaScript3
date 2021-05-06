@@ -51,7 +51,15 @@ const loginReducer= (state = initState,action) =>{
                 status: 'log in',
                 logError: false
             }
-           
+
+
+        case actiontypes().user.deleteMessage:
+            return{
+                ...state,
+                message:action.payload
+            }
+
+
         default :
         return state
     }

@@ -28,7 +28,8 @@ const actiontypes=()=>{
             sugnUp:'SIGNUP',
             logError:'LOG_ERROR',
             regError:'REG_ERROR',
-            logoutUser:'LOG_OUT_USER'
+            logoutUser:'LOG_OUT_USER',
+            deleteMessage:'DELETE_MESSAGE'
         }
 
         

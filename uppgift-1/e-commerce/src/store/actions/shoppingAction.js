@@ -130,8 +130,10 @@ export const deleteDB=(payload) =>{
 //Change order to paid i DB
 
  export const changeToPaid=(payload)=>{
-   console.log(payload)
-   axios.get('/shoppings/'+payload._id)
+  
+   
+        axios.get('/shoppings/'+payload._id)
+        
         .then(res=>{
          
           if(res.data){
@@ -142,13 +144,14 @@ export const deleteDB=(payload) =>{
             paid:true ,
             completed:false    
            },
+
            {headers:{'Authorization': `Bearer ${payload.token}`}} )
+           
            .then(res=>console.log('paid'))
            }})
+      
+ 
         
-   
- 
- 
 }
  
 //change order to completed i DB
@@ -206,6 +209,7 @@ export const distroyShoppingCart = () => {
      payload:null
   }
 }
+
 
 
 
