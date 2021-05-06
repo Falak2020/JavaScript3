@@ -3,6 +3,8 @@ import OrderDetails from './OrderDetails'
 
 const Order = ({order}) => {
     
+    
+    
     return (
         <div  >
             <div className="card mt-5 p-3">
@@ -16,7 +18,7 @@ const Order = ({order}) => {
                 {
                  order.completed?<h4 className="text-success">completed</h4>:''   
                 }
-                
+              
                 <div className="d-flex flex-column flex-md-row justify-content-around align-items-center">
                  {
             

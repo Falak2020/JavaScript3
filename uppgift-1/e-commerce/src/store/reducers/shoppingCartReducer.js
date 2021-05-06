@@ -6,10 +6,11 @@ let initState = {
    counter:0,
    totalPrice:0,
    doneOrders:{},
+   paidOrders:{},
    allOrders:{},
    paid:false,
    orderNumber:'',
-   
+   currentCart:[]
 }
 
 
@@ -71,6 +72,7 @@ const shoppingCart = (state = initState, action)=>{
       case actiontypes().shoppingCart.setUserCart:
        {
           state.shoppings=action.payload.cart
+          state.currentCart=action.payload
           state.paid=action.payload.paid
           state.orderNumber=action.payload.orderNumber
           state.counter=cartAmount(state.shoppings)
@@ -81,6 +83,12 @@ const shoppingCart = (state = initState, action)=>{
         return{
           ...state,
           doneOrders:action.payload
+        }
+      
+      case actiontypes().shoppingCart.setPaidOrders:
+          return{
+            ...state,
+            paidOrders:action.payload
         }
 
         case actiontypes().shoppingCart.setOrders:

@@ -19,6 +19,7 @@ const actiontypes=()=>{
             getUserCart:'GET_USER_CART',
             setUserCart:'SET_USER_CART',
             setDoneorders:'SET_Done_ORDERS',
+            setPaidOrders:'SET_PAID_ORDERS',
             setOrders:'SET_ORDERS',
             distroyShoppingCart:'DISTROY_SHOPPING_CART'
         },

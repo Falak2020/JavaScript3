@@ -23,7 +23,8 @@ exports.saveShoppings=(req,res)=>{
     notdone:{
       orderNumber:Date.now(),
       cart:req.body.cartContents,
-      paid:false
+      paid:false,
+      completed:false
     }
     
    })
@@ -101,7 +102,7 @@ exports.updateCart = (req, res) => {
 
     Card.updateOne( { _id:req.params.id }, {
       notdone:{cart:[]},
-      
+      paid:[],
       done: [...req.body.cartContents]
         
       ,
@@ -128,32 +129,33 @@ exports.updateCart = (req, res) => {
     }
 
       
-// exports.paid = (req, res) => {
-//   console.log(req.body)
-//   Card.updateOne({ _id: req.params.id }, 
-//    {
-//     notdone:{
-//     ...req.body
-//     },
-//     modified: Date.now()
-//     })
-    
-    
-//   .then(() => {
-//     res.status(200).json({
-//       statusCode: 200,
-//       status: true,
-//       message: 'successfully'
-//     })
-//   })
-//   .catch(() => {
-//     res.status(500).json({
-//       statusCode: 500,
-//       status: false,
-//       message: 'Failed'
-//     })
-//   })
-// }
 
+exports.paidOrder = (req, res) => {
 
+  Card.updateOne( { _id:req.params.id }, {
+    notdone:{cart:[]},
+    
+    paid: [...req.body.paidOrders]
+      
+    ,
+      
+    modified: Date.now()})
+    
+    .then(() => {
+      res.status(200).json({
+        statusCode: 200,
+        status: true,
+        message: 'The shopping cart is updated'
+      })
+
+      
+    })
+    .catch((err) => {
+      res.status(500).json({
+        statusCode: 500,
+        status: false,
+        message: 'Failed to update the shopping cart'
+      })
+    })
   
+  }

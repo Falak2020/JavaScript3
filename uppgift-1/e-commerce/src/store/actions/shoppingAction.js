@@ -34,6 +34,7 @@ export const  getUserCart=(id)=>{
       if(res.data.notdone)
         dispatch(setCart(res.data.notdone))
       dispatch(setDoneorders(res.data.done))
+      dispatch(setPaidOrders(res.data.paid))
     })  
     .catch(err=>console.log(err)) 
     }
@@ -101,13 +102,16 @@ export const  getUserCart=(id)=>{
       
       .then(res=>{
         console.log('send new')
+        
       })
+     
       } 
     }) 
     .catch(()=>{
       axios.post('/shoppings/add',{
         _id:payload._id,
         cartContents:payload.cart
+        
         },
         {headers:{'Authorization': `Bearer ${payload.token}`}})
      
@@ -115,7 +119,6 @@ export const  getUserCart=(id)=>{
        console.log('send new')})
      }) 
 
-    
    }
 }
 //Delete order from DB
@@ -131,24 +134,32 @@ export const deleteDB=(payload) =>{
 
  export const changeToPaid=(payload)=>{
   
+   axios.patch('/shoppings/pay/'+payload._id,{
+     
+    paidOrders:payload.paidOrders
+    
+  },
+  
+ {headers:{'Authorization': `Bearer ${payload.token}`}} )
+ .then(res=>console.log('update'))
    
-        axios.get('/shoppings/'+payload._id)
+        // axios.get('/shoppings/'+payload._id)
         
-        .then(res=>{
+        // .then(res=>{
          
-          if(res.data){
-           let orderNumber=res.data.notdone.orderNumber   
-           axios.patch('/shoppings/'+ payload._id,{
-            orderNumber,
-            cartContents:payload.shoppingCart,
-            paid:true ,
-            completed:false    
-           },
+        //   if(res.data){
+        //    let orderNumber=res.data.notdone.orderNumber   
+        //    axios.patch('/shoppings/'+ payload._id,{
+        //     orderNumber,
+        //     cartContents:payload.shoppingCart,
+        //     paid:true ,
+        //     completed:false    
+        //    },
 
-           {headers:{'Authorization': `Bearer ${payload.token}`}} )
+        //    {headers:{'Authorization': `Bearer ${payload.token}`}} )
            
-           .then(res=>console.log('paid'))
-           }})
+        //    .then(res=>console.log('paid'))
+        //    }})
       
  
         
@@ -194,6 +205,14 @@ export const setDoneorders = data => {
      payload:data
   }
 }
+// SAVE PAID ORDERS
+export const setPaidOrders = data => {
+  return{
+     type:actiontypes().shoppingCart.setPaidOrders,
+     payload:data
+  }
+}
+
 // Save all orders 
 export const setOrders = data => {
   return{

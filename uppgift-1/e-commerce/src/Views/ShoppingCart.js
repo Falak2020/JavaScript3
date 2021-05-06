@@ -1,4 +1,4 @@
-import React,{ useState } from 'react'
+import React,{ useState,useEffect } from 'react'
 import { useSelector,useDispatch } from 'react-redux'
 import Cartdetails from '../components/shoppingCart/Cartdetails'
 import {NavLink} from 'react-router-dom'
@@ -6,21 +6,35 @@ import { changeToPaid,getUserCart } from '../store/actions/shoppingAction'
 const ShoppingCart = () => {
    
     const shoppingCart = useSelector(state => state.shoppingCart.shoppings)
+    const currentCart = useSelector(state => state.shoppingCart.currentCart)
+
+    const paidOrders = useSelector(state => state.shoppingCart.paidOrders)
+
     const totalPrice = useSelector(state => state.shoppingCart.totalPrice)
     const token = useSelector(state=>state.userReducer.token)
     const _id = useSelector(state => state.userReducer.userId)
     const dispatch = useDispatch()
+   
+    let Obj={
+      
+      ...currentCart,paid:true
+    }
+    
     const ToPaid=()=>{
-       let payload={
-         _id,
-         token,
-         shoppingCart
-       }
+
+      let payload={
+        _id,
+        paidOrders:[...paidOrders,Obj],
+        token
+    }
+      
       changeToPaid(payload)
-      dispatch(getUserCart(_id))
+     
        
     } 
-        
+    useEffect(() => {
+      dispatch(getUserCart(_id))
+    }, [currentCart])
     return (
         <div>
             {
