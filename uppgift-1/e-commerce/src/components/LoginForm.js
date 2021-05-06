@@ -9,6 +9,9 @@ const LoginForm = () => {
     const dispatch= useDispatch()
     const error = useSelector(state=>state.userReducer.logError)
     const token = useSelector(state=>state.userReducer.token)
+    const role = useSelector(state=>state.userReducer.role)
+
+
 
     const [email,setEmail]  = useState('')
     const [password,setPassword] = useState('')
@@ -28,15 +31,18 @@ const LoginForm = () => {
         {
           dispatch(login(user)) 
           auth.authenticated=true  
+          auth.role=role
           setEmail('')
           setPassword('')
-        
+          
         }  
       }
       useEffect(() => {
         if(token){
-          console.log(token)
+          
             history.push('/')
+            auth.role=role
+            
         }
         
     }, [token])

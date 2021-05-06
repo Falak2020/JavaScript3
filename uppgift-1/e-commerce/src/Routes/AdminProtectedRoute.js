@@ -6,7 +6,7 @@ export const ProtectedRoute = ({component: Component, ...rest}) => {
    
   return (
     <Route {...rest} render={ props => {
-      if(auth.authenticated) {
+      if(auth.role) {
         return <Component {...props} />
       } else {
         return <Redirect to={{pathname: '/login', state:{ from: props.location }}} />

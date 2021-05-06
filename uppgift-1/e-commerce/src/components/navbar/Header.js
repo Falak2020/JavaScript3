@@ -25,6 +25,7 @@ const Header = () => {
      dispatch(logout())
      dispatch(distroyShoppingCart())
      auth.authenticated=false
+     auth.role='user'
   }
 
 

@@ -11,8 +11,8 @@ const AllordersDetail = ({order}) => {
     let doneOrder = order.done
     let paidOrders = order.paid
     let _id = order._id
-  
-  
+   
+    
     const PaidCart = (
         
         <div>

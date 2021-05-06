@@ -28,7 +28,8 @@ function App() {
            <Route  exact path="/"  component={Home}/>
            <Route  exact path="/details/:id"  component={ProductDetails}/>
            <Route  exact path="/shoppingcart"  component={ShoppingCart}/>
-           <Route  exact path="/allcarts"  component={AllOrders}/>
+           {/* <Route  exact path="/allcarts"  component={AllOrders}/> */}
+           <ProtectedRoute  exact path="/allcarts"  component={AllOrders}/>
            <Route  exact path="/login"  component={Login}/>
            <Route  exact path="/register"  component={Register}/>
            <ProtectedRoute  exact path="/myorders"  component={Orders}/>
