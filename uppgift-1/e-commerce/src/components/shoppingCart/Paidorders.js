@@ -2,21 +2,27 @@ import React from 'react'
 import OrderDetails from './OrderDetails'
 import { useDispatch,useSelector } from 'react-redux'
 import { changeToCompleted } from '../../store/actions/shoppingAction'
-const Paidorders = ({order,_id,doneOrder}) => {
+
+const Paidorders = ({order,_id,doneOrder,paidOrders}) => {
   
     const dispatch = useDispatch()
     const token = useSelector(state => state.userReducer.token)
     const role = useSelector(state => state.userReducer.role)
+   
+    
+     const ToCompleted=()=>{
 
-    let Obj={
+      let Obj={
      
         ...order,completed:true
       }
-     const ToCompleted=()=>{
-      
+
+      paidOrders = paidOrders.filter(item => item.orderNumber !== Obj.orderNumber)
+      console.log(paidOrders)
         let payload={
           _id,
           cart:[...doneOrder,Obj],
+          paidOrders,
           token:token
       }
   

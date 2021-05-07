@@ -8,13 +8,13 @@ const AllOrders = () => {
     const {role,token} = useSelector(state => state.userReducer)
     const history=useHistory()
     
-    useEffect(() => {
-   
-       if(role==='user')
+    useEffect(() => {    
+
+   if(role==='user')
          history.push('/login')
     }, [role,token])
     return (
-
+       
         <div>
             {
               allOrders.length>0? allOrders.map(order=>(<AllordersDetail key={order._id} order={order}/>)) 

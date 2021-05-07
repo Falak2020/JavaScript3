@@ -111,7 +111,7 @@ const Header = () => {
                     
                         <span > 
                         {
-                          notice? <i class="fas fa-bell"  ><span  className="pos-bell pt-1 ">1</span></i>
+                          notice? <i className="fas fa-bell"  ><span  className="pos-bell pt-1 ">1</span></i>
                            :''
                         } 
                         

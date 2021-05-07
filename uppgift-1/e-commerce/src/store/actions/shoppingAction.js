@@ -173,7 +173,8 @@ export const deleteDB=(payload) =>{
     
     axios.patch('/shoppings/admin/'+payload._id,{
      
-      cartContents:payload.cart
+      cartContents:payload.cart,
+      paidOrders:payload.paidOrders
       
     },
     

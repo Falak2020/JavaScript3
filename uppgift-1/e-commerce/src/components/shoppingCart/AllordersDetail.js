@@ -14,11 +14,11 @@ const AllordersDetail = ({order}) => {
     const PaidCart = (
         
         <div>
-          
+          <div className="navbar-bg shadow  p-4 text-center mt-5 "><h2>Paid Orders</h2></div>
           {
             paidOrders? 
            
-              paidOrders.map(order=>(<Paidorders key={order.orderNumber} order={order} doneOrder={doneOrder} _id={_id}/>))
+              paidOrders.map(order=>(<Paidorders key={order.orderNumber} order={order} doneOrder={doneOrder} _id={_id} paidOrders={paidOrders}/>))
               
             
             : <h3 className="text-center p-5 border">There is Nothing to be completed</h3>
@@ -29,7 +29,7 @@ const AllordersDetail = ({order}) => {
     
     const DoneOrders = (
       <div >
-        <div className="bg-info p-4 text-center mt-5 text-light"><h2>Completed Orders</h2></div>
+        <div className="navbar-bg shadow  p-4 text-center mt-5 "><h2>Completed Orders</h2></div>
          
             {
              doneOrder.length>0?
@@ -45,7 +45,7 @@ const AllordersDetail = ({order}) => {
             {PaidCart}
 
            
-           {DoneOrders}
+           {/* {DoneOrders} */}
 
         </div>
     )
