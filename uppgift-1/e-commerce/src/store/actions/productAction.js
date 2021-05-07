@@ -2,13 +2,13 @@ import actiontypes from '../actiontypes'
 
 import axios from '../../axios'
 
-export const getPost = (id)=>{
+export const getProduct = (id)=>{
     return async dispatch =>{
         dispatch(loading(true))
 
         const res = await axios.get('/products/'+id)
         
-        dispatch(setPost(res.data))
+        dispatch(setProduct(res.data))
         dispatch(loading(false))
     }
 }
@@ -16,14 +16,14 @@ export const getPost = (id)=>{
 
 export const loading = (payload) => {
     return {
-        type:actiontypes().post.loading,
+        type:actiontypes().product.loading,
         payload
     }
 }
 
-export const setPost = (payload) => {
+export const setProduct = (payload) => {
     return{
-       type:actiontypes().post.setPost,
+       type:actiontypes().product.setProduct,
        payload
     }
 }

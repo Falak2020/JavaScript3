@@ -1,22 +1,22 @@
 import actiontypes from '../actiontypes'
 
 let initState = {
-    post:null,
+    product:null,
     loading:true
 }
 
 const postsReducer = (state = initState, action)=>{
     switch(action.type){
-      case actiontypes().posts.loading:
+      case actiontypes().product.loading:
           return{
               ...state,
               loading:action.payload
           }
 
-      case actiontypes().post.setPost:
+      case actiontypes().product.setProduct:
           return {
               ...state, 
-              post:action.payload
+              product:action.payload
             } 
             
       default:

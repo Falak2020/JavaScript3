@@ -1,15 +1,15 @@
 const actiontypes=()=>{
     return{
-        posts:{
-            getPosts:'GET_POSTS',
+        products:{
+            getProducts:'GET_PRODUCTS',
             loading:'LOADING',
-            setPosts:'SET_POSTS'
+            setProducts:'SET_PRODUCTS'
         },
 
-        post:{
+        product:{
            
             loading:'LOADING',
-            setPost:'SET_POST'
+            setProduct:'SET_PRODUCT'
         },
         shoppingCart:{
             addToCart:'ADD_TO_CART',

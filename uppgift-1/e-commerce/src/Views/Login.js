@@ -4,9 +4,7 @@ import {useSelector} from 'react-redux'
 import LoginForm from '../components/LoginForm'
 
 const Login = () => {
-  
-    
-     const token = useSelector(state=>state.userReducer.token)
+
      
     return (
         <div>

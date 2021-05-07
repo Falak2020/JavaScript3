@@ -1,7 +1,7 @@
 import React from 'react'
 import OrderDetails from './OrderDetails'
 import { useDispatch,useSelector } from 'react-redux'
-import { changeToCompleted, getAllCart } from '../../store/actions/shoppingAction'
+import { changeToCompleted } from '../../store/actions/shoppingAction'
 const Paidorders = ({order,_id,doneOrder}) => {
   
     const dispatch = useDispatch()

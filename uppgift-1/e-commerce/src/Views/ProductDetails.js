@@ -1,6 +1,6 @@
 import React,{useEffect} from 'react'
 import{ useDispatch,useSelector} from 'react-redux'
-import { getPost } from '../store/actions/postAction'
+import { getProduct } from '../store/actions/productAction'
 import { addToCart } from '../store/actions/shoppingAction'
 import { postCart } from '../store/actions/shoppingAction'
 
@@ -11,16 +11,16 @@ const ProductDetails = (props) => {
     const id = props.match.params.id
     
     const dispatch = useDispatch()
-    const product = useSelector(state => state.postReducer.post)
+    const product = useSelector(state => state.productReducer.product)
     // const shoppings = useSelector(state => state.shoppingCart.shoppings)
     // const counter = useSelector(state => state.shoppingCart.counter)
-    const loading = useSelector(state => state.postReducer.loading)
+    const loading = useSelector(state => state.productReducer.loading)
     const _id = useSelector(state => state.userReducer.userId)
     const token = useSelector(state => state.userReducer.token)
     const shoppingCart = useSelector(state => state.shoppingCart.shoppings)
 
     useEffect(() => {
-        dispatch(getPost(id))
+        dispatch(getProduct(id))
     }, [dispatch])
 
     //Functions

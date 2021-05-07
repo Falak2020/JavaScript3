@@ -1,4 +1,4 @@
-import React,{ useState,useEffect } from 'react'
+import React,{ useEffect } from 'react'
 import { useSelector,useDispatch } from 'react-redux'
 import Cartdetails from '../components/shoppingCart/Cartdetails'
 import {NavLink} from 'react-router-dom'
@@ -33,6 +33,7 @@ const ShoppingCart = () => {
        
     } 
     useEffect(() => {
+      if(_id)
       dispatch(getUserCart(_id))
     }, [currentCart])
     return (

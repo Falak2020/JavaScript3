@@ -2,15 +2,15 @@ import React,{useEffect} from 'react'
 
 import { useDispatch, useSelector } from 'react-redux'
 import ProductsList from '../components/ProductsList'
-import { getPosts } from '../store/actions/postsAction'
+import { getProducts } from '../store/actions/productsAction'
 const Home = () => {
 
    const dispatch = useDispatch()
-   const products = useSelector(state => state.postsReducer.posts)
-   const loading = useSelector(state => state.postsReducer.loading)
+   const products = useSelector(state => state.productsReducer.products)
+   const loading = useSelector(state => state.productsReducer.loading)
 
    useEffect(() => {
-      dispatch(getPosts())
+      dispatch(getProducts())
        
    }, [dispatch])
     return (

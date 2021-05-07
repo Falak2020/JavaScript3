@@ -13,6 +13,8 @@ import AllOrders from './Views/AllOrders';
 import UserContextProvider  from './contexts/userContext';
 
 import { ProtectedRoute } from './Routes/ProtectedRoute';
+import { AdminProtectedRoute } from './Routes/AdminProtectedRoute';
+
 
 function App() {
  
@@ -29,7 +31,7 @@ function App() {
            <Route  exact path="/details/:id"  component={ProductDetails}/>
            <Route  exact path="/shoppingcart"  component={ShoppingCart}/>
            {/* <Route  exact path="/allcarts"  component={AllOrders}/> */}
-           <ProtectedRoute  exact path="/allcarts"  component={AllOrders}/>
+           <AdminProtectedRoute  exact path="/allcarts"  component={AllOrders}/>
            <Route  exact path="/login"  component={Login}/>
            <Route  exact path="/register"  component={Register}/>
            <ProtectedRoute  exact path="/myorders"  component={Orders}/>

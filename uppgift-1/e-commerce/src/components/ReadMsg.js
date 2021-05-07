@@ -1,16 +1,12 @@
-import React,{useEffect} from 'react'
-import { useSelector,useDispatch } from 'react-redux'
-// import { readMsg,login } from '../store/actions/userAction'
+import React from 'react'
+import { useSelector } from 'react-redux'
+
 const ReadMsg = () => {
   
-//   const _id = useSelector(state => state.userReducer.userId)
+
      const notice = useSelector(state => state.userReducer.message)
 
-//   const dispatch=useDispatch()
-//     useEffect(() => {
-//         dispatch(readMsg(_id))
-    
-//     }, [notice])
+
     return (
         <div>
             {notice}

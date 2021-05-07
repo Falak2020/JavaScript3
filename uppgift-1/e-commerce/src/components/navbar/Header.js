@@ -86,9 +86,14 @@ const Header = () => {
                         }
                         </li>
                       <li  className="text-center dropdown-item"><Link   to='/register' className="text-dark  py-2 px-5 " >Sign up</Link></li>
-
                       <li><hr className="dropdown-divider" /></li>
-                      <li  className="text-center dropdown-item"><Link  to='/myorders' className="text-dark  py-2 px-5 " >My orders</Link></li>
+                      {
+                        role==='admin'?''
+                        :
+                       
+                        <li  className="text-center dropdown-item"><Link  to='/myorders' className="text-dark  py-2 px-5 " >My orders</Link></li>
+                      }
+                         
                   </ul>   
               </div>
 

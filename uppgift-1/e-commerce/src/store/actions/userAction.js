@@ -1,6 +1,6 @@
 import actiontypes from '../actiontypes'
 import axios from '../../axios'
-import { getAllCart, getUserCart, setCart } from './shoppingAction'
+import { getAllCart, getUserCart } from './shoppingAction'
 
 //Log in
 export const login = (payload)=>{

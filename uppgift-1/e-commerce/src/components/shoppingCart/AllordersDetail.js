@@ -1,12 +1,10 @@
 import React from 'react'
-import Cartdetails from './Cartdetails'
 import Order from './Order'
-import { changeToCompleted, getAllCart } from '../../store/actions/shoppingAction'
-import { useDispatch,useSelector } from 'react-redux'
+
 import Paidorders from './Paidorders'
 
 const AllordersDetail = ({order}) => {
-    const dispatch = useDispatch()
+   
    
     let doneOrder = order.done
     let paidOrders = order.paid
@@ -23,17 +21,10 @@ const AllordersDetail = ({order}) => {
               paidOrders.map(order=>(<Paidorders key={order.orderNumber} order={order} doneOrder={doneOrder} _id={_id}/>))
               
             
-            : <h3 className="text-center p-5 border">Your shopping cart is empty</h3>
-           
+            : <h3 className="text-center p-5 border">There is Nothing to be completed</h3>
             
           }
-           
-          {/* {
-            currentCart.length >0? currentCart.map(item=>(<Cartdetails key={item.shop._id} item={item} />))
-            : <h3 className="text-center p-5 border">Your shopping cart is empty</h3>
-          } */}
-       
-           </div>
+         </div>
       )
     
     const DoneOrders = (
@@ -53,13 +44,7 @@ const AllordersDetail = ({order}) => {
 
             {PaidCart}
 
-           {/* <div>
-            {
-             doneOrder.length>0?
-             doneOrder.map(order => (<Order key ={order.ON} order={order} />))
-             :''
-            } 
-         </div>  */}
+           
            {DoneOrders}
 
         </div>
