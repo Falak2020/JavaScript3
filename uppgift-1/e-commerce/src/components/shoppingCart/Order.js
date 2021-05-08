@@ -8,8 +8,6 @@ const Order = ({order}) => {
     return (
         <div  >
             <div className="card mt-5 p-3">
-
-               <hr/>
                 <h3>Order Number:{order.orderNumber}</h3> 
                 {
                  order.paid? <h4 className="text-success">status : paid</h4>:''
@@ -24,7 +22,9 @@ const Order = ({order}) => {
             
                     order.cart.map(item =>(<OrderDetails key={item.shop._id} item={item} />))
                  
-                }      
+                }    
+
+               
                 </div>
                 
             </div>

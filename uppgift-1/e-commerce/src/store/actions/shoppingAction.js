@@ -182,7 +182,7 @@ export const deleteDB=(payload) =>{
    .then(res=>console.log('update'))
    
    axios.put('/users/messages/'+payload._id,{
-    message:'Your order is completed'
+    message:` ${payload.orderNumber} `
    })
    .then(res=>console.log('message sent to user'))
  // Bring the last copy of Allorders

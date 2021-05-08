@@ -1,6 +1,7 @@
 import React,{ useEffect }  from 'react'
 import { useSelector } from 'react-redux'
-import AllordersDetail from '../components/shoppingCart/AllordersDetail'
+import AllordersDetail from './AllordersDetail'
+import AllordersList from '../components/shoppingCart/AllordersList'
 import { useHistory } from 'react-router-dom'
 const AllOrders = () => {
     
@@ -17,7 +18,7 @@ const AllOrders = () => {
        
         <div>
             {
-              allOrders.length>0? allOrders.map(order=>(<AllordersDetail key={order._id} order={order}/>)) 
+              allOrders.length>0? allOrders.map(order=>(<AllordersList key={order._id} order={order}/>)) 
               :'' 
             }
         </div>

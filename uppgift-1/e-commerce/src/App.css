@@ -81,7 +81,7 @@ html,body{
 }
 .pos-bell{
   position: absolute;
-  top:-14px;
+  top:-6px;
   left:20px;
   background-color: rgb(233, 13, 13);
   width:25px;
@@ -90,4 +90,7 @@ html,body{
   text-align: center;
   color: #ffffff;
   
+}
+.message{
+  min-width: 400px;
 }

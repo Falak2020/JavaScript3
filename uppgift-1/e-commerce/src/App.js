@@ -14,6 +14,7 @@ import UserContextProvider  from './contexts/userContext';
 
 import { ProtectedRoute } from './Routes/ProtectedRoute';
 import { AdminProtectedRoute } from './Routes/AdminProtectedRoute';
+import AllordersDetail from './Views/AllordersDetail';
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
            <AdminProtectedRoute  exact path="/allcarts"  component={AllOrders}/>
            <Route  exact path="/login"  component={Login}/>
            <Route  exact path="/register"  component={Register}/>
+           <Route  exact path="/allordersdetail"  component={AllordersDetail}/>
            <ProtectedRoute  exact path="/myorders"  component={Orders}/>
         </Switch> 
         

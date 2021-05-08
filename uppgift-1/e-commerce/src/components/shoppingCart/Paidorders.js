@@ -18,12 +18,13 @@ const Paidorders = ({order,_id,doneOrder,paidOrders}) => {
       }
 
       paidOrders = paidOrders.filter(item => item.orderNumber !== Obj.orderNumber)
-      console.log(paidOrders)
+      
         let payload={
           _id,
           cart:[...doneOrder,Obj],
           paidOrders,
-          token:token
+          token:token,
+          orderNumber:Obj.orderNumber
       }
   
       dispatch(changeToCompleted(payload))
@@ -32,8 +33,6 @@ const Paidorders = ({order,_id,doneOrder,paidOrders}) => {
     return (
         <div  >
           <div className="card mt-5 p-3">
-
-           <hr/>
            {
              role==='admin'
              ?

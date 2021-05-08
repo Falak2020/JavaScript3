@@ -111,13 +111,13 @@ const Header = () => {
                     
                         <span > 
                         {
-                          notice? <i className="fas fa-bell"  ><span  className="pos-bell pt-1 ">1</span></i>
+                          notice? <i className="fas fa-bell"  ><span  className="pos-bell pt-1"  >1</span></i>
                            :''
                         } 
                         
                         </span> 
                   </span>
-                  <ul  className="dropdown-menu p-3 " aria-labelledby="navbarDropdown"  onClick={readMessage} >
+                  <ul  className="dropdown-menu message dropdown-menu-end" aria-labelledby="navbarDropdown"  onClick={readMessage} >
                      <ReadMsg />   
                   </ul>   
               </div>

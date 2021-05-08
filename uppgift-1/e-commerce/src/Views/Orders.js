@@ -50,7 +50,7 @@ const Orders = () => {
               paidOrders.map(order=>(<Paidorders key={order.orderNumber} order={order} doneOrder={orders} _id={_id}/>))
               
             
-            : <h3 className="text-center p-5 border">Your shopping cart is empty</h3>   
+            : <h3 className="text-center p-5 ">Your have not any paid orders</h3>   
           }
             </div>
             

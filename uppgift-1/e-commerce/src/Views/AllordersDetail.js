@@ -1,11 +1,13 @@
 import React from 'react'
-import Order from './Order'
+import Order from '../components/shoppingCart/Order'
 
-import Paidorders from './Paidorders'
+import Paidorders from '../components/shoppingCart/Paidorders'
 
-const AllordersDetail = ({order}) => {
+const AllordersDetail = (props) => {
    
-   
+  console.log(props.location.state)
+   let order = props.location.state.order.order
+   console.log(order._id)
     let doneOrder = order.done
     let paidOrders = order.paid
     let _id = order._id
@@ -27,17 +29,17 @@ const AllordersDetail = ({order}) => {
          </div>
       )
     
-    const DoneOrders = (
-      <div >
-        <div className="navbar-bg shadow  p-4 text-center mt-5 "><h2>Completed Orders</h2></div>
+    // const DoneOrders = (
+    //   <div >
+    //     <div className="navbar-bg shadow  p-4 text-center mt-5 "><h2>Completed Orders</h2></div>
          
-            {
-             doneOrder.length>0?
-             doneOrder.map(order => (<Order key ={order.orderNumber} order={order} />))
-             :''
-            } 
-      </div> 
-    )
+    //         {
+    //          doneOrder.length>0?
+    //          doneOrder.map(order => (<Order key ={order.orderNumber} order={order} />))
+    //          :''
+    //         } 
+    //   </div> 
+    // )
     return (
         <div className="mt-5 p-5">
           <h4 >User Id: <span className="mark">{order._id}</span></h4> 

@@ -9,7 +9,7 @@ const ReadMsg = () => {
 
     return (
         <div>
-            {notice}
+            <p className="p-3">Your order which has the number <mark className="text-primary">{notice}</mark> is completed</p>
         </div>
     )
 }
