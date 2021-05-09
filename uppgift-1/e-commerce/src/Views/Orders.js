@@ -10,8 +10,6 @@ const Orders = () => {
     const orders = useSelector(state => state.shoppingCart.doneOrders)
     const paidOrders = useSelector(state => state.shoppingCart.paidOrders)
     const shoppingCart = useSelector(state => state.shoppingCart.shoppings)
-    const isPaid = useSelector(state => state.shoppingCart.paid)
-
     const totalPrice = useSelector(state => state.shoppingCart.totalPrice)
     const _id = useSelector(state => state.userReducer.userId)
     const dispatch = useDispatch()

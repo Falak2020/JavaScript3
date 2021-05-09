@@ -2,7 +2,6 @@ import React,{useState,useEffect} from 'react'
 import { useDispatch,useSelector} from 'react-redux'
 import { login } from '../store/actions/userAction'
 import { NavLink } from 'react-router-dom'
-import auth from '../services/authService'
 import { useHistory } from 'react-router-dom'
 const LoginForm = () => {
     
@@ -30,8 +29,8 @@ const LoginForm = () => {
        if(user.email !== '' && user.password !== '')
         {
           dispatch(login(user)) 
-          auth.authenticated=true  
-          auth.role=role
+         
+         
           setEmail('')
           setPassword('')
           
@@ -39,9 +38,9 @@ const LoginForm = () => {
       }
       useEffect(() => {
         if(token){
-          
-            history.push('/')
-            auth.role=role
+          role==='admin'?history.push('/allcarts'): history.push('/')
+            
+            
             
         }
         

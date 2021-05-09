@@ -1,6 +1,5 @@
 import React,{ useEffect }  from 'react'
 import { useSelector } from 'react-redux'
-import AllordersDetail from './AllordersDetail'
 import AllordersList from '../components/shoppingCart/AllordersList'
 import { useHistory } from 'react-router-dom'
 const AllOrders = () => {

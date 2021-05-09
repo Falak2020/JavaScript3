@@ -1,5 +1,5 @@
 import React from 'react'
-
+import {Link} from 'react-router-dom'
 const Appfooter = () => {
     return (
       
@@ -9,7 +9,8 @@ const Appfooter = () => {
                     <p className="d-flex justify-content-center align-items-center">
                     <span className="me-3">Register for free</span>
                     
-                    <i className="fas fa-hand-point-right me-2"></i> Sign up! 
+                    <i className="fas fa-hand-point-right me-2"></i> 
+                     <Link to="/register" >Sign up! </Link>
                     </p> 
                 </section>
                 </div>

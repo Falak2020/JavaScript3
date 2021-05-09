@@ -80,7 +80,7 @@ const SelectComponent = () => (
 
     return (
       <div>
-        <form className="container mt-3 bg-light p-5" onSubmit={RegisterUser}  >
+        <form className="container mt-3 bg-light p-5 shadow" onSubmit={RegisterUser}  >
           <div className=" p-3 navbar-bg shadow  text-center mb-5">
             <p className="h2 ">Are you a new customer?</p>
             <p className="h4 my-4">Register you now </p>
@@ -125,19 +125,15 @@ const SelectComponent = () => (
                 />
              </div>
          </div>
-            {/* <input type="text" className="form-control mb-3 border"  placeholder="First Name"  ref={firstName} />
-            <input type="text"  className="form-control border mb-3" placeholder="Last Name" ref={lastName} /> */}
-            {/* <input type="email" className="form-control border mb-3"  placeholder="Email" ref={email} /> */}
-            {/* <input type="password" className="form-control border"  placeholder="Password" ref={password}  /> 
-            */}
+
          <div className="row px-4">
              <div className="col-md-8 mb-3">
               {SelectComponent()}
               </div>
          </div> 
 
-         <div className="">
-           <button  type="submit" className="  btn btn-gray  mt-5 text-white text-uppercase">register</button>
+         <div className="px-4 col-md-3">
+           <button  type="submit" className="w-100  btn btn-gray  mt-5 text-white text-uppercase">Complete Registration</button>
          </div>
          
 
