@@ -11,6 +11,7 @@ const AllordersList = ({order}) => {
                     <thead>
                         <tr className="table-warning">
                             <th scope="col">User Id</th>
+                            <th scope="col">User Name</th>
                             <th scope="col">Change To Complete</th>
                             <th scope="col">Users Orders</th>
                         </tr>
@@ -18,13 +19,13 @@ const AllordersList = ({order}) => {
                     <tbody>
                         <tr>
                           <td>{order._id}</td>
-                            
+                          <td>{order.userName}</td>
                           <td>
                             {order.paid.length>0?
                             <Link to={{
                                 pathname: '/allordersdetail',
                                 state: {
-                                    order: {order}
+                                    usersOrder: {order}
                                 }
                                 }} >click to complete the order </Link> 
                             :''}
@@ -32,7 +33,7 @@ const AllordersList = ({order}) => {
 
                           <td><Link to={{
                             pathname: '/usersorders',
-                            state:{ order: {order}}
+                            state:{ usersOrder: {order}}
                             }} > Show all users orders </Link>
                           </td> 
                           

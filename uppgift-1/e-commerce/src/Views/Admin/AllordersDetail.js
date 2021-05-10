@@ -5,9 +5,8 @@ import Paidorders from '../../components/shoppingCart/Paidorders'
 
 const AllordersDetail = (props) => {
    
-  console.log(props.location.state)
-   let order = props.location.state.order.order
-   console.log(order._id)
+   let order = props.location.state.usersOrder.order
+   
     let doneOrder = order.done
     let paidOrders = order.paid
     let _id = order._id

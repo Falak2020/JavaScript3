@@ -4,11 +4,11 @@ import Cartdetails from '../../components/shoppingCart/Cartdetails'
 import Order from '../../components/shoppingCart/Order'
 import {getUserCart} from '../../store/actions/shoppingAction'
 import Paidorders from '../../components/shoppingCart/Paidorders'
-import {Link} from 'react-router-dom'
+
 const UsersOrders = (props) => {
-    console.log(props.location.state)
-    let order = props.location.state.order.order
-    console.log(order)
+   
+    let order = props.location.state.usersOrder.order
+   
     const shoppingCart = order.notdone.cart
     const orders=order.done
     const paidOrders = order.paid
@@ -35,12 +35,7 @@ const UsersOrders = (props) => {
                         (totalPrice>0) &&<strong className=" p-3 text-center">Total Price={totalPrice}</strong>
                         }   
                     </div>
-                    <div>
-                        {
-                        shoppingCart.length>0? <Link to="/shoppingcart"  aria-current="page" ><button className="btn btn-info" >Continue shopping</button></Link>:''
-
-                        }
-                    </div>
+                    
                 </div>
             </div>
             <div className="text-center mt-5 py-5"><h2 className="navbar-bg shadow py-4">Paid Orders</h2>
