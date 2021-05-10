@@ -17,6 +17,7 @@ const ProductDetails = (props) => {
     const loading = useSelector(state => state.productReducer.loading)
     const _id = useSelector(state => state.userReducer.userId)
     const token = useSelector(state => state.userReducer.token)
+    const userName = useSelector(state => state.userReducer.userName)
     const shoppingCart = useSelector(state => state.shoppingCart.shoppings)
 
     useEffect(() => {
@@ -30,8 +31,9 @@ const ProductDetails = (props) => {
          _id,
          cart:shoppingCart,
          token,
+         userName
      }
-     console.log(payload)
+    
       dispatch(addToCart(product))
       if(_id){
          dispatch(postCart(payload))

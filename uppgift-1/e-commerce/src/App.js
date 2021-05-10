@@ -9,12 +9,14 @@ import ProductDetails from './Views/ProductDetails';
 import Appfooter from './components/navbar/Appfooter';
 import Register from './Views/Register';
 import Orders from './Views/Orders'
-import AllOrders from './Views/AllOrders';
+import AllOrders from './Views/Admin/AllOrders';
+import UsersOrders from './Views/Admin/UsersOrders';
+
 import UserContextProvider  from './contexts/userContext';
 
 import { ProtectedRoute } from './Routes/ProtectedRoute';
 import { AdminProtectedRoute } from './Routes/AdminProtectedRoute';
-import AllordersDetail from './Views/AllordersDetail';
+import AllordersDetail from './Views/Admin/AllordersDetail';
 
 
 function App() {
@@ -36,6 +38,7 @@ function App() {
            <Route  exact path="/login"  component={Login}/>
            <Route  exact path="/register"  component={Register}/>
            <Route  exact path="/allordersdetail"  component={AllordersDetail}/>
+           <Route  exact path="/usersorders"  component={UsersOrders}/>
            <ProtectedRoute  exact path="/myorders"  component={Orders}/>
         </Switch> 
         

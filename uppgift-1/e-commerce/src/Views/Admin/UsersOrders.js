@@ -1,17 +1,19 @@
 import React,{ useEffect } from 'react'
 import { useSelector,useDispatch } from 'react-redux'
-import Cartdetails from '../components/shoppingCart/Cartdetails'
-import Order from '../components/shoppingCart/Order'
-import {getUserCart} from '../store/actions/shoppingAction'
-import Paidorders from '../components/shoppingCart/Paidorders'
+import Cartdetails from '../../components/shoppingCart/Cartdetails'
+import Order from '../../components/shoppingCart/Order'
+import {getUserCart} from '../../store/actions/shoppingAction'
+import Paidorders from '../../components/shoppingCart/Paidorders'
 import {Link} from 'react-router-dom'
-const Orders = () => {
-   
-    const orders = useSelector(state => state.shoppingCart.doneOrders)
-    const paidOrders = useSelector(state => state.shoppingCart.paidOrders)
-    const shoppingCart = useSelector(state => state.shoppingCart.shoppings)
+const UsersOrders = (props) => {
+    console.log(props.location.state)
+    let order = props.location.state.order.order
+    console.log(order)
+    const shoppingCart = order.notdone.cart
+    const orders=order.done
+    const paidOrders = order.paid
+    const _id =order._id
     const totalPrice = useSelector(state => state.shoppingCart.totalPrice)
-    const _id = useSelector(state => state.userReducer.userId)
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -62,6 +64,6 @@ const Orders = () => {
             }
         </div>
     )
-}
+ }
 
-export default Orders
+export default UsersOrders

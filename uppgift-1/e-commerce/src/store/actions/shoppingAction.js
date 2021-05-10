@@ -53,6 +53,21 @@ export const  getUserCart=(id)=>{
     }
     
   }
+  //
+  export const postToShoppingCart=(payload) =>{
+   
+    axios.post('/shoppings/add',{
+      _id:payload._id,
+      cartContents:payload.cart,
+      userName:payload.userName
+      },
+      {headers:{'Authorization': `Bearer ${payload.token}`}})
+   
+   .then(res=>{
+     console.log('send new')
+     
+   })
+  }
 //Send users shopping cart to DB
 
  export const postCart = (payload)=>{
@@ -60,25 +75,25 @@ export const  getUserCart=(id)=>{
 
         let id = payload._id 
         
-        axios.get('/shoppings/'+id)//if there is an object in db with the same id then make update otherwise send the data
-        .then(res=>{
+      axios.get('/shoppings/'+id)//if there is an object in db with the same id then make update otherwise send the data
+      .then(res=>{
          
           
       if(res.data.notdone){
-
+        // order is already existed
          if(res.data.notdone.orderNumber){
                let orderNumber=res.data.notdone.orderNumber
-               
                axios.patch('/shoppings/'+id,
                 { orderNumber,
                   cartContents:payload.cart,
                   paid:false,
                   completed:false
                 },
-             {headers:{'Authorization': `Bearer ${payload.token}`}} )
-             .then(res=>console.log('update'))
-
+               {headers:{'Authorization': `Bearer ${payload.token}`}} )
+                .then(res=>console.log('update'))
             }
+
+            // New Order
             else{
               axios.patch('/shoppings/'+id,
               { 
@@ -93,30 +108,15 @@ export const  getUserCart=(id)=>{
           
       }
       else{
-        
-       axios.post('/shoppings/add',{
-         _id:payload._id,
-         cartContents:payload.cart
-         },
-         {headers:{'Authorization': `Bearer ${payload.token}`}})
+        // New Order 
+        postToShoppingCart(payload)
       
-      .then(res=>{
-        console.log('send new')
-        
-      })
-     
       } 
     }) 
+    //New Order in DB
     .catch(()=>{
-      axios.post('/shoppings/add',{
-        _id:payload._id,
-        cartContents:payload.cart
-        
-        },
-        {headers:{'Authorization': `Bearer ${payload.token}`}})
-     
-     .then(res=>{
-       console.log('send new')})
+      postToShoppingCart(payload)
+    
      }) 
 
    }
@@ -137,32 +137,10 @@ export const deleteDB=(payload) =>{
    axios.patch('/shoppings/pay/'+payload._id,{
      
     paidOrders:payload.paidOrders
-    
-  },
+    },
   
- {headers:{'Authorization': `Bearer ${payload.token}`}} )
- .then(res=>console.log('update'))
-   
-        // axios.get('/shoppings/'+payload._id)
-        
-        // .then(res=>{
-         
-        //   if(res.data){
-        //    let orderNumber=res.data.notdone.orderNumber   
-        //    axios.patch('/shoppings/'+ payload._id,{
-        //     orderNumber,
-        //     cartContents:payload.shoppingCart,
-        //     paid:true ,
-        //     completed:false    
-        //    },
-
-        //    {headers:{'Authorization': `Bearer ${payload.token}`}} )
-           
-        //    .then(res=>console.log('paid'))
-        //    }})
-      
- 
-        
+    {headers:{'Authorization': `Bearer ${payload.token}`}} )
+   .then(res=>console.log('update'))
 }
  
 //change order to completed i DB
@@ -178,13 +156,13 @@ export const deleteDB=(payload) =>{
       
     },
     
-   {headers:{'Authorization': `Bearer ${payload.token}`}} )
-   .then(res=>console.log('update'))
+    {headers:{'Authorization': `Bearer ${payload.token}`}} )
+     .then(res=>console.log('update'))
    
-   axios.put('/users/messages/'+payload._id,{
+    axios.put('/users/messages/'+payload._id,{
     message:` ${payload.orderNumber} `
    })
-   .then(res=>console.log('message sent to user'))
+    .then(res=>console.log('message sent to user'))
  // Bring the last copy of Allorders
    dispatch(getAllCart(payload.token))
   }

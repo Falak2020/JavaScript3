@@ -71,7 +71,8 @@ html,body{
 
 .shop-icon{
   cursor: pointer;
-  color: gray;
+ 
+  font-size: 1.5rem;
 }
 .text-botom{
   position: absolute;
@@ -93,4 +94,10 @@ html,body{
 }
 .message{
   min-width: 400px;
+}
+.cart-btn{
+  background-color: rgb(209, 196, 172);
+}
+.cart-btn:hover{
+  box-shadow:2px 3px 10px 3px gray ;
 }

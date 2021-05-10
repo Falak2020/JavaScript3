@@ -7,6 +7,8 @@ const ProductsList = ({product}) => {
   
   const _id = useSelector(state => state.userReducer.userId)
   const token = useSelector(state => state.userReducer.token)
+  const userName = useSelector(state => state.userReducer.userName)
+
   const shoppingCart = useSelector(state => state.shoppingCart.shoppings)
   const dispatch = useDispatch()
 
@@ -15,7 +17,8 @@ const ProductsList = ({product}) => {
     let payload={
        _id:_id,
        cart: shoppingCart,
-       token:token
+       token:token,
+       userName
    }
    
     dispatch(addToCart(product))
@@ -40,7 +43,7 @@ const ProductsList = ({product}) => {
 
                             <Link  to ={`details/${product._id}`} className="btn btn-info"> More Details</Link>
                             
-                            <i className="fas fa-shopping-cart shop-icon "  onClick={AddtoCart}></i> 
+                           <button className=" btn cart-btn"  onClick={AddtoCart}><i className="fas fa-shopping-cart shop-icon "  ></i></button>  
                             
                           </div>   
                   </div>

@@ -8,7 +8,8 @@ let initState={
     regError:false,
     status:'log in',
     role:'user',
-    message:''
+    message:'',
+    userName:''
 }
 
 const loginReducer= (state = initState,action) =>{
@@ -22,6 +23,7 @@ const loginReducer= (state = initState,action) =>{
                 userId: action.payload.userId,
                 role: action.payload.role,
                 message: action.payload.notice,
+                userName:action.payload.username,
                 status: 'log out',
             }
            

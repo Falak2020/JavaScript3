@@ -24,8 +24,10 @@ exports.saveShoppings=(req,res)=>{
       orderNumber:Date.now(),
       cart:req.body.cartContents,
       paid:false,
-      completed:false
-    }
+      completed:false,
+      
+    },
+    userName:req.body.userName
     
    })
     collection.save()

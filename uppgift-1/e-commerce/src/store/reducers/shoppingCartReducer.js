@@ -9,6 +9,7 @@ let initState = {
    paidOrders:{},
    allOrders:{},
    paid:false,
+   completed:false,
    orderNumber:'',
    currentCart:[]
 }
@@ -74,6 +75,7 @@ const shoppingCart = (state = initState, action)=>{
           state.shoppings=action.payload.cart
           state.currentCart=action.payload
           state.paid=action.payload.paid
+          state.completed = action.payload.completed
           state.orderNumber=action.payload.orderNumber
           state.counter=cartAmount(state.shoppings)
           state.totalPrice=totalPrice(state.shoppings)

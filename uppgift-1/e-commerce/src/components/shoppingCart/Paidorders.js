@@ -1,22 +1,22 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import OrderDetails from './OrderDetails'
 import { useDispatch,useSelector } from 'react-redux'
 import { changeToCompleted } from '../../store/actions/shoppingAction'
-
+import { useHistory } from 'react-router-dom'
 const Paidorders = ({order,_id,doneOrder,paidOrders}) => {
   
     const dispatch = useDispatch()
+    const history = useHistory()
     const token = useSelector(state => state.userReducer.token)
     const role = useSelector(state => state.userReducer.role)
-   
     
      const ToCompleted=()=>{
-
+      
       let Obj={
      
         ...order,completed:true
       }
-
+     
       paidOrders = paidOrders.filter(item => item.orderNumber !== Obj.orderNumber)
       
         let payload={
@@ -28,8 +28,9 @@ const Paidorders = ({order,_id,doneOrder,paidOrders}) => {
       }
   
       dispatch(changeToCompleted(payload))
+      history.push('/allcarts')
       }
-
+      
     return (
         <div  >
           <div className="card mt-5 p-3">
@@ -37,7 +38,7 @@ const Paidorders = ({order,_id,doneOrder,paidOrders}) => {
              role==='admin'
              ?
              <div className="text-end">
-              <button  className ="btn btn-info "onClick={ToCompleted}>Complete order</button>  
+              <button   className ="btn btn-info "onClick={ToCompleted}  >Complete order</button>  
             </div>
             :
             ''

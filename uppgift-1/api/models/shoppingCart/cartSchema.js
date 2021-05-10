@@ -8,7 +8,8 @@ const CartSchema = mongoDb.Schema({
              orderNumber:{type:Date,default:Date.now()},
              cart:[],
              paid:{type:Boolean,default:false},
-             completed:{type:Boolean,default:false}
+             completed:{type:Boolean,default:false},
+           
             },
         required:true
     },
@@ -18,6 +19,8 @@ const CartSchema = mongoDb.Schema({
     done:{
         type:[]
     },
+    userName:{type:String},
+    
     date: {
         type: Date,
         default: Date.now()

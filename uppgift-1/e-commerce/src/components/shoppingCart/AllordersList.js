@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const AllordersList = ({order}) => {
+    
     return (
         <div>
            <ul className="list-unstyled">
@@ -10,22 +11,30 @@ const AllordersList = ({order}) => {
                     <thead>
                         <tr className="table-warning">
                             <th scope="col">User Id</th>
-                            <th scope="col">Complete Order</th>
+                            <th scope="col">Change To Complete</th>
+                            <th scope="col">Users Orders</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                           <td>{order._id}</td>
-                          {order.paid.length>0?  
-                          <td><Link to={{
-                            pathname: '/allordersdetail',
-                            state: {
-                                order: {order}
-                            }
-                            }} >click to complete </Link>
+                            
+                          <td>
+                            {order.paid.length>0?
+                            <Link to={{
+                                pathname: '/allordersdetail',
+                                state: {
+                                    order: {order}
+                                }
+                                }} >click to complete the order </Link> 
+                            :''}
                           </td>
-                           :''
-                        }
+
+                          <td><Link to={{
+                            pathname: '/usersorders',
+                            state:{ order: {order}}
+                            }} > Show all users orders </Link>
+                          </td> 
                           
                         </tr>     
                     </tbody>
