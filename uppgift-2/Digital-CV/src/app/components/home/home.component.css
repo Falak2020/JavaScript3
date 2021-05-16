@@ -1,0 +1,15 @@
+.photo-width{
+    width:300px;
+    
+}
+.square{
+    height: 500px;
+    background-color: #63a7ce;
+}
+.vh{
+  height: 75vh;  
+}
+h1{
+  color:#000080;
+  text-decoration: underline;
+}
