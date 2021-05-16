@@ -3,13 +3,20 @@
     
 }
 .square{
-    height: 500px;
+    height: 200px;
+    width: 200px;
     background-color: #63a7ce;
 }
 .vh{
   height: 75vh;  
 }
-h1{
-  color:#000080;
-  text-decoration: underline;
+h1,h2{
+  color:teal;
+  
+}
+img{
+  border-radius: 50%;
+}
+.bg{
+  background-color: teal;
 }
