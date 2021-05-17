@@ -17,7 +17,7 @@ export class ContactMeComponent  {
      lastName:['',[Validators.required, Validators.minLength(3)]],
      email:['',[Validators.required, Validators.email]],
      subject:['',[Validators.required]],
-     message:['',[Validators.required]]
+     message:['',[Validators.required,Validators.maxLength(500),Validators.pattern(/^\S.*$/ )]]
 
    })
 
@@ -31,7 +31,13 @@ export class ContactMeComponent  {
 
 
  onSub(){
+   console.log(this.contactForm)
   this.result=[`Ditt meddelande har skickats to the `+ this.email.value ]
+  // this.firstName.setValue('')
+  // this.lastName.setValue('')
+  // this.email.setValue('')
+  // this.subject.setValue('')
+  // this.message.setValue('')
  }
   
 }
