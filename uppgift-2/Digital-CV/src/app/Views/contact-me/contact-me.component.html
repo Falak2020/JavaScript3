@@ -1,0 +1,60 @@
+<h1 class="text-center h-color"> Contact Mig</h1>
+<hr class="my-5">
+<form (ngSubmit)="onSub()" [formGroup]="contactForm">
+  <div class="mb-3">
+      <label for="firstName" class="form-label" >First Name:</label>
+      <input 
+       type="text" 
+       id="firstName" 
+       class="form-control" 
+       formControlName="firstName"
+       [class.is-valid]="firstName.valid"
+       [class.is-invalid]="firstName.invalid && (firstName.dirty && firstName.touched)">
+       
+  </div>
+  <div class="mb-3">
+    <label for="lastName" class="form-label" >Last Name:</label>
+    <input 
+     type="text" 
+     id="lastName" 
+     class="form-control" 
+     formControlName="lastName"
+     [class.is-valid]="lastName.valid"
+     [class.is-invalid]="lastName.invalid && (lastName.dirty && lastName.touched)" >
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label" >Email:</label>
+    <input 
+     type="email" 
+     id="email" 
+     class="form-control" 
+     formControlName="email"
+     [class.is-valid]="email.valid"
+     [class.is-invalid]="email.invalid && (email.dirty && email.touched)" >
+  </div>
+  <div class="mb-3">
+    <label for="subject" class="form-label" >Subject:</label>
+    <input 
+     type="text" 
+     id="subject" 
+     class="form-control" 
+     formControlName="subject"
+     [class.is-valid]="subject.valid"
+     [class.is-invalid]="subject.invalid && (subject.dirty && subject.touched)" >
+  </div>
+  <div class="mb-3">
+    <label for="message" class="form-label" >Message:</label>
+    <textarea 
+     class="form-control"
+     name="message" 
+     id="message" 
+     cols="30" rows="10" 
+     formControlName="message"
+     [class.is-valid]="message.valid"
+     [class.is-invalid]="message.invalid && (message.dirty && message.touched)"> </textarea>
+  </div>
+
+  <button class="btn btn-success px-5" [disabled]="!contactForm.valid" [class.btn-light]="!contactForm.valid" >skicka</button>
+</form>
+
+<p class="h-color mt-5">{{result}} </p>
