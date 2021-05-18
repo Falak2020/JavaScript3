@@ -9,6 +9,7 @@ import { ExperiencesComponent } from './Views/experiences/experiences.component'
 import { SkillsComponent } from './Views/skills/skills.component';
 import { ContactMeComponent } from './Views/contact-me/contact-me.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ExperiencesComponent,
     SkillsComponent,
     ContactMeComponent,
+    FooterComponent,
    
   ],
   imports: [

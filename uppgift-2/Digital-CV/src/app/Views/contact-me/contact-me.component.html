@@ -1,46 +1,47 @@
-<h1 class="text-center h-color"> Contact Mig</h1>
+<h1 class="text-center h-color"> Kontact Mig</h1>
 <hr class="my-5">
 <form (ngSubmit)="onSub()" [formGroup]="contactForm">
-  <div class="mb-3">
-      <label for="firstName" class="form-label" >First Name:</label>
-      <input 
-       type="text" 
-       id="firstName" 
-       class="form-control" 
-       formControlName="firstName"
-       [class.is-valid]="firstName.valid"
-       [class.is-invalid]="firstName.invalid && (firstName.dirty || firstName.touched)">
-       <small  *ngIf="firstName.errors?.minlength" class="text-danger">Namnet måste vara minst 3 tecken </small>
-       <small *ngIf="firstName.errors?.required &&  (firstName.dirty || firstName.touched)" class="text-danger" >Ange ett giltigt namn </small>
-  </div>
-
-  <div class="mb-3">
-    <label for="lastName" class="form-label" >Last Name:</label>
-    <input 
-     type="text" 
-     id="lastName" 
-     class="form-control" 
-     formControlName="lastName"
-     [class.is-valid]="lastName.valid"
-     [class.is-invalid]="lastName.invalid && (lastName.dirty || lastName.touched)" >
-     <small class="text-danger" *ngIf="lastName.errors?.minlength">Namnet måste vara minst 3 tecken </small>
-     <small class="text-danger" *ngIf="lastName.errors?.required && (lastName.dirty || lastName.touched)">Ange ett giltigt namn </small>
-  </div>
-  <div class="mb-3">
-    <label for="email" class="form-label" >Email:</label>
-    <input 
-     type="email" 
-     id="email" 
-     class="form-control" 
-     formControlName="email"
-     [class.is-valid]="email.valid"
-     [class.is-invalid]="email.invalid && (email.dirty || email.touched)" >
-     <small class="text-danger" *ngIf="email.errors?.email">Ange ett giltigt email</small>
-     <small class="text-danger" *ngIf="email.errors?.required &&  (email.dirty || email.touched)">Ange ditt email</small>
+    <div class="row">
+       <div class="mb-3 col-md-6">
+        <label for="firstName" class="form-label" >Förnamn:</label>
+        <input 
+        type="text" 
+        id="firstName" 
+        class="form-control" 
+        formControlName="firstName"
+        [class.is-valid]="firstName.valid"
+        [class.is-invalid]="firstName.invalid && (firstName.dirty || firstName.touched)">
+        <small  *ngIf="firstName.errors?.minlength" class="text-danger">Namnet måste vara minst 3 tecken </small>
+        <small *ngIf="firstName.errors?.required &&  (firstName.dirty || firstName.touched)" class="text-danger" >Ange ett giltigt namn </small>
+      </div>
+      <div class="mb-3 col-md-6">
+        <label for="lastName" class="form-label" >Efternamn:</label>
+        <input 
+         type="text" 
+         id="lastName" 
+         class="form-control" 
+         formControlName="lastName"
+         [class.is-valid]="lastName.valid"
+         [class.is-invalid]="lastName.invalid && (lastName.dirty || lastName.touched)" >
+         <small class="text-danger" *ngIf="lastName.errors?.minlength">Namnet måste vara minst 3 tecken </small>
+         <small class="text-danger" *ngIf="lastName.errors?.required && (lastName.dirty || lastName.touched)">Ange ett giltigt namn </small>
+      </div> 
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label" >E-post:</label>
+        <input 
+        type="email" 
+        id="email" 
+        class="form-control" 
+        formControlName="email"
+        [class.is-valid]="email.valid"
+        [class.is-invalid]="email.invalid && (email.dirty || email.touched)" >
+        <small class="text-danger" *ngIf="email.errors?.email">Ange ett giltigt email</small>
+        <small class="text-danger" *ngIf="email.errors?.required &&  (email.dirty || email.touched)">Ange ditt email</small>
     
-  </div>
-  <div class="mb-3">
-    <label for="subject" class="form-label" >Subject:</label>
+   </div>
+   <div class="mb-3">
+    <label for="subject" class="form-label" >Ämne:</label>
     <input 
      type="text" 
      id="subject" 
@@ -51,7 +52,7 @@
      <small class="text-danger" *ngIf="subject.errors?.required &&  (subject.dirty || subject.touched)">Ditt subject krävs </small>
   </div>
   <div class="mb-3">
-    <label for="message" class="form-label" >Message:</label>
+    <label for="message" class="form-label" >Meddelande:</label>
     <textarea 
      class="form-control"
      name="message" 
@@ -65,7 +66,7 @@
      <small class="text-danger" *ngIf="message.errors?.pattern &&  (message.dirty || message.touched)">Ange ett giltig meddelande  </small>
   </div>
 
-  <button class="btn btn-success px-5"  >skicka</button>
+  <button class="btn btn-success px-5"  >skicka meddelande</button>
 </form>
 
 <p *ngIf="contactForm.valid" class="h-color mt-5">{{result}} </p>
