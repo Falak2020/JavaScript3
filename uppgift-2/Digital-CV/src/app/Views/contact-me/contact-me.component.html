@@ -63,10 +63,12 @@
      [class.is-valid]="message.valid"
      [class.is-invalid]="message.invalid && (message.dirty || message.touched)"> </textarea>
      <small class="text-danger" *ngIf="message.errors?.required &&  (message.dirty || message.touched)">Ditt meddelande krävs </small>
-     <small class="text-danger" *ngIf="message.errors?.pattern &&  (message.dirty || message.touched)">Ange ett giltig meddelande  </small>
+     <small class="text-danger" *ngIf="message.errors?.minlength &&  (message.dirty || message.touched)">Ange ett giltig meddelande </small>
+     <small class="text-danger" *ngIf="message.errors?.maxlength &&  (message.dirty || message.touched)">Ditt meddelande är för lång  </small>
+
   </div>
 
-  <button class="btn btn-success px-5"  >skicka meddelande</button>
+  <button class="btn btn-bg px-5 text-light"  >skicka meddelande</button>
 </form>
 
 <p *ngIf="contactForm.valid" class="h-color mt-5">{{result}} </p>
