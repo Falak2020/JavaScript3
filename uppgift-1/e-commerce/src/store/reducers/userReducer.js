@@ -9,7 +9,8 @@ let initState={
     status:'log in',
     role:'user',
     message:'',
-    userName:''
+    userName:'',
+    userEmail:''
 }
 
 const loginReducer= (state = initState,action) =>{
@@ -24,6 +25,7 @@ const loginReducer= (state = initState,action) =>{
                 role: action.payload.role,
                 message: action.payload.notice,
                 userName:action.payload.username,
+                userEmail:action.payload.userEmail,
                 status: 'log out',
             }
            
@@ -34,6 +36,7 @@ const loginReducer= (state = initState,action) =>{
                 token: null,
                 logError: action.payload,
                 status: 'log in',
+                
             }
         
 
@@ -51,6 +54,7 @@ const loginReducer= (state = initState,action) =>{
                 userId: action.payload,
                 role: 'user',
                 status: 'log in',
+                userEmail:'',
                 logError: false
             }
 

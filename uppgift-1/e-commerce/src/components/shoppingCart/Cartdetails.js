@@ -14,7 +14,7 @@ const Cartdetails = ({item}) => {
             _id:_id,
             cart: shoppingCart, 
             token:token,
-           
+            
         }
     const AddtoCart = () => { 
        

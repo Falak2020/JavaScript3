@@ -89,7 +89,8 @@ exports.login = (req, res) => {
                 username:user.firstName+" "+user.lastName,
                 userId:user._id,
                 role:user.role,
-                notice:user.messages
+                notice:user.messages,
+                userEmail:user.email
               })
 
             }

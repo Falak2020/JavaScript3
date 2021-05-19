@@ -101,3 +101,7 @@ html,body{
 .cart-btn:hover{
   box-shadow:2px 3px 10px 3px gray ;
 }
+
+.i-size{
+  font-size: 5rem;
+}

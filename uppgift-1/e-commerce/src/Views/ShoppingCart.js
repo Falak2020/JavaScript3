@@ -15,11 +15,14 @@ const ShoppingCart = () => {
     
     const token = useSelector(state=>state.userReducer.token)
     const _id = useSelector(state => state.userReducer.userId)
+    const userEmail = useSelector(state => state.userReducer.userEmail)
+
     const dispatch = useDispatch()
     const [paid, setPaid] = useState(false)
+    
     let Obj={
       
-      ...currentCart,paid:true
+      ...currentCart,paid:true,totalPrice
     }
     // User want to pay 
     const ToPaid=()=>{
@@ -29,14 +32,14 @@ const ShoppingCart = () => {
         paidOrders:[...paidOrders,Obj],
         token
     }
-      
+    localStorage.setItem('totalPrice',Obj.totalPrice)
       changeToPaid(payload) 
       setPaid(true)   
     } 
    // Guest Not user
     const pay=()=>{
       dispatch(distroyShoppingCart())
-      console.log('paid')
+      localStorage.setItem('totalPrice',Obj.totalPrice)
       setPaid(true) 
     }
    
@@ -44,19 +47,24 @@ const ShoppingCart = () => {
 
    const AfterPaid=(
      <div>
-       {paid?
-       <div className="text-center">
-         <h2>Your purchase has been paid </h2>
-         <div className="row">
-           <h3 className="col-6">total Price</h3>
-           <p className="col-6">{totalPrice}</p>
-           <h3 className="col-6">Payment method</h3>
-           <p className="col-6">Kort</p>
-         </div>
-          
+       {
+       paid?
+       <div className="text-center  ">
+         <i class="fas fa-check-circle fa-2x text-success"></i>
+         <h2 className="text-success mb-3">Your purchase has been paid </h2>
+         <p>A confirmation will be sent to your Email {userEmail}</p>
+         <table class="table ">
+           <tr className="row">
+             <td className="border col-6" ><p >total Price</p></td>
+             <td className="border col-6 text-primary" ><p >{localStorage.getItem('totalPrice')} kr</p></td>
+             
+           </tr>
+           <tr className="row">
+             <td  className="border col-6"><p >Payment method</p></td>
+             <td className="border col-6 text-primary" > <p >Kort</p></td>
+           </tr>
+          </table>
        </div>
-      
-
        :''
        }
        
@@ -65,6 +73,7 @@ const ShoppingCart = () => {
 
    ///////////////////////////
     useEffect(() => {
+      // localStorage.removeItem('totalPrice')
       if(_id)
       dispatch(getUserCart(_id))
     }, [currentCart])

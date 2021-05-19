@@ -17,6 +17,7 @@ import UserContextProvider  from './contexts/userContext';
 import { ProtectedRoute } from './Routes/ProtectedRoute';
 import { AdminProtectedRoute } from './Routes/AdminProtectedRoute';
 import AllordersDetail from './Views/Admin/AllordersDetail';
+import NotFound from './Views/NotFound';
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
            <Route  exact path="/allordersdetail"  component={AllordersDetail}/>
            <Route  exact path="/usersorders"  component={UsersOrders}/>
            <ProtectedRoute  exact path="/myorders"  component={Orders}/>
+           <Route path="*" component={NotFound} />
         </Switch> 
         
       </div>

@@ -29,8 +29,6 @@ const LoginForm = () => {
        if(user.email !== '' && user.password !== '')
         {
           dispatch(login(user)) 
-         
-         
           setEmail('')
           setPassword('')
           
