@@ -50,10 +50,10 @@ const ShoppingCart = () => {
        {
        paid?
        <div className="text-center  ">
-         <i class="fas fa-check-circle fa-2x text-success"></i>
+         <i className="fas fa-check-circle fa-2x text-success"></i>
          <h2 className="text-success mb-3">Your purchase has been paid </h2>
          <p>A confirmation will be sent to your Email {userEmail}</p>
-         <table class="table ">
+         <table className="table ">
            <tr className="row">
              <td className="border col-6" ><p >total Price</p></td>
              <td className="border col-6 text-primary" ><p >{localStorage.getItem('totalPrice')} kr</p></td>

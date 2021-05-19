@@ -166,6 +166,7 @@ export const deleteDB=(payload) =>{
    })
     .then(res=>console.log('message sent to user'))
  // Bring the last copy of Allorders
+  
    dispatch(getAllCart(payload.token))
   }
  }

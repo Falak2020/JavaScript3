@@ -8,7 +8,8 @@ const userS=mongoDb.Schema({
     created:{type:Date, default:Date.now},
     modified:{type:Date, default:Date.now},
     role:{type:String},
-    messages:''
+    messages:'',
+   
 })
 
 module.exports=mongoDb.model('User',userS)
