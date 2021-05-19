@@ -55,11 +55,12 @@ export const  getUserCart=(id)=>{
   }
   //
   export const postToShoppingCart=(payload) =>{
-   
+   console.log(payload)
     axios.post('/shoppings/add',{
       _id:payload._id,
       cartContents:payload.cart,
-      userName:payload.userName
+      userName:payload.userName,
+      
       },
       {headers:{'Authorization': `Bearer ${payload.token}`}})
    
@@ -86,6 +87,7 @@ export const  getUserCart=(id)=>{
                axios.patch('/shoppings/'+id,
                 { orderNumber,
                   cartContents:payload.cart,
+                  
                   paid:false,
                   completed:false
                 },
@@ -108,7 +110,7 @@ export const  getUserCart=(id)=>{
           
       }
       else{
-        // New Order 
+        // New Order the user is shopping for the first time
         postToShoppingCart(payload)
       
       } 

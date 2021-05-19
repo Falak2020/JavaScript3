@@ -56,6 +56,7 @@ exports.updateCart = (req, res) => {
       notdone:{
         orderNumber:req.body.orderNumber,
         cart:req.body.cartContents,
+        
         paid:req.body.paid,
         completed:req.body.completed
       },

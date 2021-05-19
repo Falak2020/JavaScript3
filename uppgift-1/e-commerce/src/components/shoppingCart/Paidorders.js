@@ -1,15 +1,16 @@
-import React,{useEffect} from 'react'
+import React,{useState} from 'react'
 import OrderDetails from './OrderDetails'
 import { useDispatch,useSelector } from 'react-redux'
 import { changeToCompleted } from '../../store/actions/shoppingAction'
-import { useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+
 const Paidorders = ({order,_id,doneOrder,paidOrders}) => {
   
     const dispatch = useDispatch()
-    const history = useHistory()
+   
     const token = useSelector(state => state.userReducer.token)
     const role = useSelector(state => state.userReducer.role)
-    
+    const[res,setRes] = useState(false)
      const ToCompleted=()=>{
       
       let Obj={
@@ -17,7 +18,7 @@ const Paidorders = ({order,_id,doneOrder,paidOrders}) => {
         ...order,completed:true
       }
      
-      paidOrders = paidOrders.filter(item => item.orderNumber !== Obj.orderNumber)
+      paidOrders = paidOrders.filter(item => item.orderNumber !== Obj.orderNumber) //Delete the completed order from paidorders
       
         let payload={
           _id,
@@ -28,8 +29,12 @@ const Paidorders = ({order,_id,doneOrder,paidOrders}) => {
       }
   
       dispatch(changeToCompleted(payload))
-      history.push('/allcarts')
+       setRes(true)
+      
       }
+      
+       
+     
       
     return (
         <div  >
@@ -38,14 +43,17 @@ const Paidorders = ({order,_id,doneOrder,paidOrders}) => {
              role==='admin'
              ?
              <div className="text-end">
-              <button   className ="btn btn-info "onClick={ToCompleted}  >Complete order</button>  
-            </div>
+              <button   className ="btn btn-info "onClick={ToCompleted}  >Complete order</button> 
+              { res? <h5 className="text-success mt-3">The order is completed now <Link to="/allcarts">Return to All orders</Link></h5>:''} 
+             </div>
+            
             :
             ''
            }
             
             
             <h3>Order Number:{order.orderNumber}</h3> 
+        
 
             {
              order.paid? <h4 className="text-success">status : paid</h4>:''
@@ -54,7 +62,7 @@ const Paidorders = ({order,_id,doneOrder,paidOrders}) => {
             {
              order.completed?<h4 className="text-success">completed</h4>:''   
             }
-          
+            
             <div className="d-flex flex-column flex-md-row justify-content-around align-items-center">
              {
                 

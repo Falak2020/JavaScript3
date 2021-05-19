@@ -1,8 +1,9 @@
-import React,{ useEffect } from 'react'
+import React,{ useEffect,useState } from 'react'
 import { useSelector,useDispatch } from 'react-redux'
 import Cartdetails from '../components/shoppingCart/Cartdetails'
 import {NavLink} from 'react-router-dom'
-import { changeToPaid,getUserCart } from '../store/actions/shoppingAction'
+import { changeToPaid,getUserCart,distroyShoppingCart } from '../store/actions/shoppingAction'
+
 const ShoppingCart = () => {
    
     const shoppingCart = useSelector(state => state.shoppingCart.shoppings)
@@ -11,31 +12,63 @@ const ShoppingCart = () => {
     const paidOrders = useSelector(state => state.shoppingCart.paidOrders)
 
     const totalPrice = useSelector(state => state.shoppingCart.totalPrice)
+    
     const token = useSelector(state=>state.userReducer.token)
     const _id = useSelector(state => state.userReducer.userId)
     const dispatch = useDispatch()
-   
+    const [paid, setPaid] = useState(false)
     let Obj={
       
       ...currentCart,paid:true
     }
-    
+    // User want to pay 
     const ToPaid=()=>{
-
+        
       let payload={
         _id,
         paidOrders:[...paidOrders,Obj],
         token
     }
       
-      changeToPaid(payload)
-     
-       
+      changeToPaid(payload) 
+      setPaid(true)   
     } 
+   // Guest Not user
+    const pay=()=>{
+      dispatch(distroyShoppingCart())
+      console.log('paid')
+      setPaid(true) 
+    }
+   
+   //After Paid
+
+   const AfterPaid=(
+     <div>
+       {paid?
+       <div className="text-center">
+         <h2>Your purchase has been paid </h2>
+         <div className="row">
+           <h3 className="col-6">total Price</h3>
+           <p className="col-6">{totalPrice}</p>
+           <h3 className="col-6">Payment method</h3>
+           <p className="col-6">Kort</p>
+         </div>
+          
+       </div>
+      
+
+       :''
+       }
+       
+     </div>
+   )
+
+   ///////////////////////////
     useEffect(() => {
       if(_id)
       dispatch(getUserCart(_id))
     }, [currentCart])
+
     return (
         <div>
             {
@@ -62,10 +95,20 @@ const ShoppingCart = () => {
             
             <div className="text-center ">
               {
-              (totalPrice>0) && <button className="btn btn-gray text-white w-50  mt-3 p-3 " onClick={ToPaid}>go to checkout</button>   
-              }  
+              (totalPrice>0 && _id) && <button className="btn btn-gray text-white w-50  mt-3 p-3 " onClick={ToPaid}>go to checkout</button>   
+                
+              } 
+             
             </div>
-        
+            <div className="text-center ">
+              {
+              (totalPrice>0 && !_id) && <button className="btn btn-gray text-white w-50  mt-3 p-3 " onClick={pay}>go to checkout</button> 
+              
+              } 
+             
+            </div> 
+            
+            {AfterPaid}
          </div>   
         </div>
     )

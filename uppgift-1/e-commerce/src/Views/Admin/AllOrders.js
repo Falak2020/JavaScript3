@@ -1,18 +1,20 @@
 import React,{ useEffect }  from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector,useDispatch } from 'react-redux'
 import AllordersList from '../../components/shoppingCart/AllordersList'
 import { useHistory } from 'react-router-dom'
+import { getAllCart } from '../../store/actions/shoppingAction'
 const AllOrders = () => {
     
     const allOrders = useSelector(state => state.shoppingCart.allOrders)
     const {role,token} = useSelector(state => state.userReducer)
     const history=useHistory()
-    
-    useEffect(() => {    
+    const dispatch = useDispatch()
 
-   if(role==='user')
+    useEffect(() => {    
+    dispatch(getAllCart(token))
+    if(role==='user')
          history.push('/login')
-    }, [role,token])
+    }, [role,token,allOrders])
     return (
        
         <div>

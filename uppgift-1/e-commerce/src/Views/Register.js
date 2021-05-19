@@ -27,7 +27,7 @@ const history= useHistory()
 ]
 
 const SelectComponent = () => (
-  <select className="w-25 p-2 form-select " value={role}  onChange={(e)=>setRole(e.value)}>
+  <select className="w-25 p-2 form-select " required value={role}  onChange={(e)=>setRole(e.value)}>
    {
      options.map((option) => (
            <option key={option.index} value={option.value}>{option.label}</option>
@@ -92,7 +92,7 @@ const SelectComponent = () => (
                   className="form-control"
                   placeholder="First Name"
                   ref={firstName}
-                  />
+                  required/>
               </div>
               <div className="col-md-6 mb-3">
                   <input 
@@ -100,7 +100,7 @@ const SelectComponent = () => (
                   className="form-control"
                   placeholder="Last Name"
                   ref={lastName}
-                  />
+                  required/>
               </div> 
            </div>
 
@@ -111,7 +111,7 @@ const SelectComponent = () => (
                 className="form-control"
                 placeholder="Email"
                 ref={email}
-                />
+                required/>
               </div>
           </div>
 
@@ -122,7 +122,7 @@ const SelectComponent = () => (
                 className="form-control"
                 placeholder="Password"
                 ref={password}
-                />
+                required/>
              </div>
          </div>
 
@@ -131,6 +131,22 @@ const SelectComponent = () => (
               {SelectComponent()}
               </div>
          </div> 
+         <div className="row ps-4">
+           <div className="col-md-6">
+           <div className="form-check my-4">
+            <input
+              className="form-check-input"
+              type="checkbox"
+              value=""
+              id="checkbox"
+              required
+            />
+            <label className="form-check-label" htmlFor="checkbox">
+              I have read and agree to the terms
+            </label>
+            </div>
+          </div>
+        </div>
 
          <div className="px-4 col-md-3">
            <button  type="submit" className="w-100  btn btn-gray  mt-5 text-white text-uppercase">Complete Registration</button>

@@ -9,10 +9,12 @@ const Cartdetails = ({item}) => {
     const _id = useSelector(state => state.userReducer.userId)
     const token = useSelector(state => state.userReducer.token)
     const shoppingCart = useSelector(state => state.shoppingCart.shoppings)
+    
      const payload={
             _id:_id,
-            cart: shoppingCart,
-            token:token
+            cart: shoppingCart, 
+            token:token,
+           
         }
     const AddtoCart = () => { 
        
