@@ -32,12 +32,10 @@ export class ContactMeComponent  {
 
  onSub(){
    console.log(this.contactForm)
-  this.result=[`Ditt meddelande har skickats from   `+ this.email.value ]
-  // this.firstName.setValue('')
-  // this.lastName.setValue('')
-  // this.email.setValue('')
-  // this.subject.setValue('')
-  // this.message.setValue('')
+  this.result=[`Hej ${this.firstName.value} ${this.lastName.value} ,ditt meddelande har skickats from   `+ this.email.value ]
+
+  this.contactForm.reset()
+  
  }
   
 }
