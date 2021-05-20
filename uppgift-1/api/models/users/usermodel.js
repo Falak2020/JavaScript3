@@ -90,7 +90,8 @@ exports.login = (req, res) => {
                 userId:user._id,
                 role:user.role,
                 notice:user.messages,
-                userEmail:user.email
+                userEmail:user.email,
+              
               })
 
             }
@@ -156,7 +157,8 @@ exports.updateUser = (req, res) => {
 
 exports.message = (req, res) => {
   
- 
+  
+  
   User.updateOne( { _id: req.params.id }, {
     messages:req.body.message,
     modified: Date.now()

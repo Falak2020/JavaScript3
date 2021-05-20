@@ -9,7 +9,6 @@ const userS=mongoDb.Schema({
     modified:{type:Date, default:Date.now},
     role:{type:String},
     messages:'',
-   
 })
 
 module.exports=mongoDb.model('User',userS)

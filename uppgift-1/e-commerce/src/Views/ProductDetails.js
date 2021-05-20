@@ -3,7 +3,7 @@ import{ useDispatch,useSelector} from 'react-redux'
 import { getProduct } from '../store/actions/productAction'
 import { addToCart } from '../store/actions/shoppingAction'
 import { postCart } from '../store/actions/shoppingAction'
-
+import {Link } from 'react-router-dom'
 
 
 const ProductDetails = (props) => {
@@ -54,7 +54,7 @@ const ProductDetails = (props) => {
                        <div className="col-lg-8 ">
                           <div className="card-body mt-5">
                              <h5 className="card-title">{product.name}</h5>
-                             <p className="card-text">
+                             <p className="card-text text-danger">
                                price: {product.price} kr
                              </p>
                              <p className="card-text">
@@ -66,7 +66,10 @@ const ProductDetails = (props) => {
                             <p className="card-text">
                                <small className="text-muted">{product.modified}</small>
                             </p>
+                            <button className="btn btn-warning me-5 " ><Link to="/" className="text-light">Back To Products</Link></button>
+
                             <button className="btn btn-primary" onClick = {AddtoCart}><i className="fas fa-shopping-cart me-1"></i>add to cart</button>
+                            
                          </div>
                     </div>
                   </div>

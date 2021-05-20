@@ -18,6 +18,7 @@ import { ProtectedRoute } from './Routes/ProtectedRoute';
 import { AdminProtectedRoute } from './Routes/AdminProtectedRoute';
 import AllordersDetail from './Views/Admin/AllordersDetail';
 import NotFound from './Views/NotFound';
+import AddProduct from './Views/AddProduct';
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
            <Route  exact path="/login"  component={Login}/>
            <Route  exact path="/register"  component={Register}/>
            <Route  exact path="/allordersdetail"  component={AllordersDetail}/>
+           <AdminProtectedRoute  exact path="/addProduct"  component={AddProduct}/>
            <Route  exact path="/usersorders"  component={UsersOrders}/>
            <ProtectedRoute  exact path="/myorders"  component={Orders}/>
            <Route path="*" component={NotFound} />

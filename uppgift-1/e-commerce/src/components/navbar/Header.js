@@ -85,7 +85,7 @@ const Header = () => {
  )
  ///////////////////////////////////
  const Notices = (
-  <div   className="nav-link nav-item dropdown nav-link ms-lg-5 active" aria-current="page" >
+  <div   className="nav-link nav-item dropdown nav-link  active" aria-current="page" >
   <span 
       
       className="nav-link dropdown-toggle d-inline hidden-arrow"
@@ -108,7 +108,22 @@ const Header = () => {
   </ul>   
 </div>
  )
-    return (
+
+ /////////////////////////////////
+ const addProduct=(
+   <div>
+     {
+      role==='admin'? 
+      <NavLink  to="/addProduct"  aria-current="page" className="nav-link    "><i class=" me-2 fas fa-plus-circle"></i>add Product</NavLink>
+        :
+      ''
+     }
+   </div>
+ )
+ 
+ ///////////////////////////////////////////
+ 
+ return (
       
       <nav className="navbar navbar-expand-lg navbar-light navbar-bg py-3">
        
@@ -143,6 +158,9 @@ const Header = () => {
               
               {/* Notices which come from admin */}
                  {Notices}
+
+              {/* Add new Product */}
+              {addProduct}
             </div>
           </div>
         </div>

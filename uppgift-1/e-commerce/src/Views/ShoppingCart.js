@@ -98,20 +98,20 @@ const ShoppingCart = () => {
             <div className="card p-3 ">
              
              {
-               (totalPrice>0) &&<strong className="  text-center">Total Price={totalPrice}</strong>
+               (totalPrice>0) &&<h3 className="text-center text-danger">Total Price={totalPrice} Kr</h3>
      
             }
             
             <div className="text-center ">
               {
-              (totalPrice>0 && _id) && <button className="btn btn-gray text-white w-50  mt-3 p-3 " onClick={ToPaid}>go to checkout</button>   
+              (totalPrice>0 && _id) && <button className="btn btn-warning text-dark w-50 mt-5 p-3 " onClick={ToPaid}><h5>go to checkout</h5></button>   
                 
               } 
              
             </div>
             <div className="text-center ">
               {
-              (totalPrice>0 && !_id) && <button className="btn btn-gray text-white w-50  mt-3 p-3 " onClick={pay}>go to checkout</button> 
+              (totalPrice>0 && !_id) && <button className="btn btn-warning  text-dark w-50  mt-5 p-3 " onClick={pay}> <h5>go to checkout</h5></button> 
               
               } 
              

@@ -10,7 +10,8 @@ let initState={
     role:'user',
     message:'',
     userName:'',
-    userEmail:''
+    userEmail:'',
+    
 }
 
 const loginReducer= (state = initState,action) =>{
@@ -27,6 +28,7 @@ const loginReducer= (state = initState,action) =>{
                 userName:action.payload.username,
                 userEmail:action.payload.userEmail,
                 status: 'log out',
+              
             }
            
         case actiontypes().user.logError:
