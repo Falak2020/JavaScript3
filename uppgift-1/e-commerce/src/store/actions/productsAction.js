@@ -27,3 +27,18 @@ export const setProducts = (payload) => {
        payload
     }
 }
+
+
+export const searchValue =(val)=>{
+ return dispatch =>{
+     dispatch(searchVal(val))
+ }
+}
+
+
+export const searchVal=(payload) => {
+    return{
+        type:actiontypes().products.searchVal,
+        payload
+     }
+}

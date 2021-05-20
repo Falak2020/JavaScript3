@@ -3,7 +3,8 @@ const actiontypes=()=>{
         products:{
             getProducts:'GET_PRODUCTS',
             loading:'LOADING',
-            setProducts:'SET_PRODUCTS'
+            setProducts:'SET_PRODUCTS',
+            searchVal:'SEARCH_VAL'
         },
 
         product:{

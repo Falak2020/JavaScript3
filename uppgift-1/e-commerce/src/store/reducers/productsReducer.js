@@ -2,7 +2,8 @@ import actiontypes from '../actiontypes'
 
 let initState = {
     products:null,
-    loading:true
+    loading:true,
+    filteredProducts:[]
 }
 
 const productsReducer = (state = initState, action)=>{
@@ -16,9 +17,15 @@ const productsReducer = (state = initState, action)=>{
       case actiontypes().products.setProducts:
           return {
               ...state, 
-              products:action.payload
+              products:action.payload,
+              filteredProducts:action.payload
             } 
-            
+      case actiontypes().products.searchVal:
+          return{
+              ...state,
+              filteredProducts:state.products.filter(product => product.name.toLowerCase().match(action.payload.toLowerCase()))
+          }
+        
       default:
           return state
         
