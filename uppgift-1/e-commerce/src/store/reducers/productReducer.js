@@ -2,7 +2,8 @@ import actiontypes from '../actiontypes'
 
 let initState = {
     product:null,
-    loading:true
+    loading:true,
+    result:false
 }
 
 const postsReducer = (state = initState, action)=>{
@@ -18,6 +19,11 @@ const postsReducer = (state = initState, action)=>{
               ...state, 
               product:action.payload
             } 
+      case actiontypes().product.setResult:
+          return{
+              ...state,
+              result:action.payload
+          }
             
       default:
           return state

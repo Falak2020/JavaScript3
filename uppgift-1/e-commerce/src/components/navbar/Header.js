@@ -7,6 +7,7 @@ import { logout } from '../../store/actions/userAction'
 import { distroyShoppingCart } from '../../store/actions/shoppingAction'
 import { readMsg } from '../../store/actions/userAction'
 import ReadMsg from '../ReadMsg'
+import bild from '../../assets/picatshu1.png'
 const Header = () => {
 
   const counter =  useSelector(state => state.shoppingCart.counter)
@@ -114,7 +115,7 @@ const Header = () => {
    <div>
      {
       role==='admin'? 
-      <NavLink  to="/addProduct"  aria-current="page" className="nav-link    "><i class=" me-2 fas fa-plus-circle"></i>add Product</NavLink>
+      <NavLink  to="/addProduct"  aria-current="page" className="nav-link    "><i className=" me-2 fas fa-plus-circle"></i>add Product</NavLink>
         :
       ''
      }
@@ -125,10 +126,11 @@ const Header = () => {
  
  return (
       
-      <nav className="navbar navbar-expand-lg navbar-light navbar-bg py-3">
+      <nav className="navbar navbar-expand-lg navbar-light navbar-bg ">
        
         <div className="container">
-          <NavLink  to="/"className="navbar-brand" >Pokemon.se</NavLink>
+         
+          <NavLink  to="/"className="navbar-brand" > <img src={bild} alt=""  className="img-style me-2"/> Pokemon.se</NavLink>
           <button
             className="navbar-toggler"
             type="button"
@@ -169,3 +171,4 @@ const Header = () => {
 }
 
 export default Header
+

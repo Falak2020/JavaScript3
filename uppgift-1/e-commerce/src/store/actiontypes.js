@@ -9,7 +9,8 @@ const actiontypes=()=>{
         product:{
            
             loading:'LOADING',
-            setProduct:'SET_PRODUCT'
+            setProduct:'SET_PRODUCT',
+            setResult:'SET_RESULT'
         },
         shoppingCart:{
             addToCart:'ADD_TO_CART',
