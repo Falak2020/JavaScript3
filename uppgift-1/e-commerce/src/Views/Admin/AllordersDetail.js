@@ -15,7 +15,7 @@ const AllordersDetail = (props) => {
     const PaidCart = (
         
         <div>
-          <div className="navbar-bg shadow  p-4 text-center mt-5 "><h2>Paid Orders</h2></div>
+          <div className="bg-warning shadow  p-4 text-center mt-5 "><h2>Paid Orders</h2></div>
           {
             paidOrders? 
            
@@ -41,7 +41,7 @@ const AllordersDetail = (props) => {
     // )
     return (
         <div className="mt-5 p-5">
-          <h4 >User Id: <span className="mark">{order._id}</span></h4> 
+          <h4  className="text-primary">User Id: <span className="text-dark">{order._id}</span></h4> 
 
             {PaidCart}
 

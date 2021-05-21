@@ -5,9 +5,9 @@ const OrderDetails = ({item}) => {
     
     return (
         <div>
-            <div className="card px-5 py-3 mt-5">
+            <div className="card px-5 py-3 mt-5 shadow navbar-bg">
               
-                    <div className=" align-items-center g-0 ">
+                    <div className=" align-items-center text-center g-0 ">
                         <div>
                             <img src={item.shop.image} alt="..." className="img-fluid order-img"/>
                         </div>

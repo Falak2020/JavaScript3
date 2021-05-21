@@ -28,8 +28,8 @@ const ProductsList = ({product}) => {
   }
     return (
              <div className="col col-lg-4 col-md-6 ">
-               <div  className="card  h-100 hover-shadow p-3">
-                   <img src={product.image} className=" img-height card-img-top " alt=""/>
+               <div  className="card  h-100 hover-shadow p-4">
+                   <img src={product.image} className=" img-height card-img-top" alt=""/>
                
                   <div className="card-body text-dark">
                           <h4 className="card-title text-decoration-underline ">{product.name}</h4>

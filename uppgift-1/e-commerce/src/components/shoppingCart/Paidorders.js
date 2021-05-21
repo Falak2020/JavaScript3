@@ -43,7 +43,7 @@ const Paidorders = ({order,_id,doneOrder,paidOrders}) => {
              role==='admin'
              ?
              <div className="text-end">
-              <button   className ="btn btn-info "onClick={ToCompleted}  >Complete order</button> 
+              <button   className ="btn btn-info "onClick={ToCompleted} disabled={res}>Complete order</button> 
               { res? <h5 className="text-success mt-3">The order is completed now <Link to="/allcarts">Return to All orders</Link></h5>:''} 
              </div>
             
@@ -52,11 +52,11 @@ const Paidorders = ({order,_id,doneOrder,paidOrders}) => {
            }
             
             
-            <h3>Order Number:{order.orderNumber}</h3> 
+            <p className="text-primary h5"> Order Number: <span className="text-dark">{order.orderNumber}</span></p> 
         
 
             {
-             order.paid? <h4 className="text-success">status : paid</h4>:''
+             order.paid? <p className="text-success h5"><i class="fas fa-check me-2"></i>paid</p>:''
             
             }
             {

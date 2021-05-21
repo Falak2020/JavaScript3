@@ -115,7 +115,7 @@ const Header = () => {
    <div>
      {
       role==='admin'? 
-      <NavLink  to="/addProduct"  aria-current="page" className="nav-link    "><i className=" me-2 fas fa-plus-circle"></i>add Product</NavLink>
+      <NavLink  to="/addProduct"  aria-current="page" className="nav-link    "><i className=" me-2 fas fa-plus-circle"></i>Add Product</NavLink>
         :
       ''
      }
@@ -123,7 +123,17 @@ const Header = () => {
  )
  
  ///////////////////////////////////////////
- 
+ const AllProducts=(
+  <div>
+  {
+   role==='admin'? 
+   <NavLink  to="/allProducts"  aria-current="page" className="nav-link  ms-2  ">All Product</NavLink>
+     :
+   ''
+  }
+</div>
+ )
+ /////////////////////////////////////////////////////
  return (
       
       <nav className="navbar navbar-expand-lg navbar-light navbar-bg ">
@@ -163,6 +173,9 @@ const Header = () => {
 
               {/* Add new Product */}
               {addProduct}
+
+              {/* Show all products */}
+              {AllProducts}
             </div>
           </div>
         </div>

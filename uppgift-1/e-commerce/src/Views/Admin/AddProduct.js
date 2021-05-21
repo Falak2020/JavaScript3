@@ -1,7 +1,7 @@
 import React ,{ useRef } from 'react'
-import {addProduct } from '../store/actions/productAction'
+import {addProduct } from '../../store/actions/productAction'
 import { useDispatch,useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
+
 const AddProduct = () => {
 //Product
     const productName=useRef()
@@ -14,7 +14,7 @@ const AddProduct = () => {
     const token = useSelector(state=>state.userReducer.token)
     const result = useSelector(state=>state.productReducer.result)
      
-    const history = useHistory()
+    
   
   // my Functions
     const AddNewProduct=(e)=>{

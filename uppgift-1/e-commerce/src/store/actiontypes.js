@@ -11,7 +11,8 @@ const actiontypes=()=>{
            
             loading:'LOADING',
             setProduct:'SET_PRODUCT',
-            setResult:'SET_RESULT'
+            setResult:'SET_RESULT',
+            deleteProduct:'DELETE_PRODUCT'
         },
         shoppingCart:{
             addToCart:'ADD_TO_CART',

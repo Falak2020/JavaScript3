@@ -22,10 +22,10 @@ const UsersOrders = (props) => {
     
     return (
         <div>
-            <div className="text-center mt-5 "><h2 className="py-4 navbar-bg shadow mb-5">Current Orders</h2>
+            <div className="text-center mt-5 "><h2 className="py-4 bg-warning shadow mb-5">Current Orders</h2>
             
                 { shoppingCart.length>0?shoppingCart.map(item => (<Cartdetails key={item.shop._id} item={item} />))
-                : <h3>Your shopping cart is empty</h3> 
+                : <h3>The shopping cart is empty</h3> 
                 
                 }
             
@@ -38,24 +38,24 @@ const UsersOrders = (props) => {
                     
                 </div>
             </div>
-            <div className="text-center mt-5 py-5"><h2 className="navbar-bg shadow py-4">Paid Orders</h2>
+            <div className="text-center mt-5 py-5"><h2 className="bg-warning shadow py-4">Paid Orders</h2>
             {
             paidOrders.length>0? 
            
               paidOrders.map(order=>(<Paidorders key={order.orderNumber} order={order} doneOrder={orders} _id={_id}/>))
               
             
-            : <h3 className="text-center p-5 ">Your have not any paid orders</h3>   
+            : <h3 className="text-center p-5 ">There are not any paid orders</h3>   
           }
             </div>
             
 
-           <div className="navbar-bg shadow p-4 text-center mt-5 "><h2>Completed Orders</h2></div>
+           <div className="bg-warning shadow p-4 text-center mt-5 "><h2>Completed Orders</h2></div>
             {      
                orders.length>0?
                
                orders.map(order => (<Order key ={order.orderNumber} order={order} />))
-               :''
+               :'The user does not have any completed orders'
             }
         </div>
     )
