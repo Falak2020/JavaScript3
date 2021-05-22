@@ -57,7 +57,8 @@ const loginReducer= (state = initState,action) =>{
                 role: 'user',
                 status: 'log in',
                 userEmail:'',
-                logError: false
+                logError: false,
+                userName:''
             }
 
 

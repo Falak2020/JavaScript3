@@ -15,6 +15,8 @@ const Header = () => {
   const role = useSelector(state => state.userReducer.role)
   const notice = useSelector(state => state.userReducer.message)
   const _id = useSelector(state => state.userReducer.userId)
+  const userName = useSelector(state => state.userReducer.userName)
+
   
   const dispatch = useDispatch()
   
@@ -61,7 +63,9 @@ const Header = () => {
       aria-expanded="false"
       >
     
-        <span className="ms-1"><i className={userStatus.name} style={{color:userStatus.color}}></i> User Acount</span> 
+        <span >
+          <i className={userStatus.name} style={{color:userStatus.color}}></i> 
+          {userName? <span className="ms-1">{userName}</span> :<span className="ms-1" >User Acount</span>}</span> 
   </span>
   <ul  className="dropdown-menu p-3 " aria-labelledby="navbarDropdown">
       <li  className="text-center border  mb-2 dropdown-item" >
