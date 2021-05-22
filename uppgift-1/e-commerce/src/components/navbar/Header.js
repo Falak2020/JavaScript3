@@ -140,7 +140,7 @@ const Header = () => {
        
         <div className="container">
          
-          <NavLink  to="/"className="navbar-brand" > <img src={bild} alt=""  className="img-style me-2"/> Pokemon.se</NavLink>
+          <div className="navbar-brand" > <img src={bild} alt=""  className="img-style me-2"/> Pokemon.se</div>
           <button
             className="navbar-toggler"
             type="button"
