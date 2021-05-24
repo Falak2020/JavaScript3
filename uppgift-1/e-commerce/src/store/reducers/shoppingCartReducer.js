@@ -46,16 +46,14 @@ const shoppingCart = (state = initState, action)=>{
 
       case actiontypes().shoppingCart.remove:
         {
-    
-
+        
           let exists=state.shoppings.find(item=>item.shop._id === action.payload)
-          
+        
           exists.quantity===1
           ?
            state.shoppings=state.shoppings.filter(item => item.shop._id !== action.payload)
           : 
           exists.quantity -= 1
-          
           
           state.counter=cartAmount(state.shoppings)
           state.totalPrice=totalPrice(state.shoppings)

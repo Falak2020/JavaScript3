@@ -1,7 +1,7 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { useDispatch, useSelector} from 'react-redux'
 
-import { postCart,deleteDB ,addToCart, removeFromCart,deleteAll } from '../../store/actions/shoppingAction'
+import { postCart,getUserCart,addToCart, removeFromCart,deleteAll } from '../../store/actions/shoppingAction'
 const Cartdetails = ({item}) => {
 
     const dispatch = useDispatch()
@@ -16,41 +16,48 @@ const Cartdetails = ({item}) => {
             token:token,
             
         }
+//when i click +  
     const AddtoCart = () => { 
        
-        
          dispatch(addToCart(item.shop))
-
-         if(_id){
-            dispatch(postCart(payload))
-         }
-        
+         dispatch(postCart(payload))
     }
-
+//when i click -
     const Sub=()=>{
-       
-        dispatch(removeFromCart(item.shop._id))
       
-        if(_id){
-           
-                if(shoppingCart.length===1)
-                  deleteDB(payload)
-                else
-                  dispatch(postCart(payload))
-         }
+           dispatch(removeFromCart(item.shop._id))
+           if(shoppingCart.length===1)
+           {
+            let payload1={
+                _id:_id,
+                cart: [], 
+                token:token,
+                
+            }  
+            dispatch(postCart(payload1))
+           }
+           else
+           dispatch(postCart(payload))
     }
+
+    // when I click  trash icom
     const Delete=()=>{
-        
-        dispatch(deleteAll(item.shop._id))
       
-        if(_id){
-           
-                if(shoppingCart.length===1)
-                  deleteDB(payload)
-                else
-                  dispatch(postCart(payload))
-         }
+        dispatch(deleteAll(item.shop._id))
+        if(shoppingCart.length===1)
+        {
+         let payload1={
+             _id:_id,
+             cart: [], 
+             token:token,
+             
+         }  
+         dispatch(postCart(payload1))
+        }
+       else
+       dispatch(postCart(payload))
     }
+    
     return (
        
         <div>

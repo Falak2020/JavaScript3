@@ -51,34 +51,61 @@ exports.saveShoppings=(req,res)=>{
 
 exports.updateCart = (req, res) => {
   // let id1= new ObjectId(req.params.id)
+ if(req.body.cartContents.length>0){
   
-    Card.updateOne( { _id:req.params.id }, {
-      notdone:{
-        orderNumber:req.body.orderNumber,
-        cart:req.body.cartContents,
-        
-        paid:req.body.paid,
-        completed:req.body.completed
-      },
+  Card.updateOne( { _id:req.params.id }, {
+    notdone:{
+      orderNumber:req.body.orderNumber,
+      cart:req.body.cartContents,
       
-      modified: Date.now()
+      paid:req.body.paid,
+      completed:req.body.completed
+    }, 
+    modified: Date.now()
+    })
+    .then(() => {
+      res.status(200).json({
+        statusCode: 200,
+        status: true,
+        message: 'The shopping cart is updated'
       })
-      .then(() => {
-        res.status(200).json({
-          statusCode: 200,
-          status: true,
-          message: 'The shopping cart is updated'
-        })
+    })
+    .catch(() => {
+      res.status(500).json({
+        statusCode: 500,
+        status: false,
+        message: 'Failed to update the shopping cart'
       })
-      .catch(() => {
-        res.status(500).json({
-          statusCode: 500,
-          status: false,
-          message: 'Failed to update the shopping cart'
-        })
-      })
+    })
+  
+ }
+ else{
+  
+  Card.updateOne( { _id:req.params.id }, {
+    notdone:{
     
-    }
+      cart:[] 
+    },
+    
+    modified: Date.now()
+    })
+    .then(() => {
+      res.status(200).json({
+        statusCode: 200,
+        status: true,
+        message: 'The shopping cart is updated'
+      })
+    })
+    .catch(() => {
+      res.status(500).json({
+        statusCode: 500,
+        status: false,
+        message: 'Failed to update the shopping cart'
+      })
+
+ })
+}   
+}
 
 
     exports.deleteOrder=(req,res)=>{
@@ -138,7 +165,7 @@ exports.paidOrder = (req, res) => {
   Card.updateOne( { _id:req.params.id }, {
     notdone:{cart:[]},
     
-    paid: [...req.body.paidOrders]
+    paid: req.body.paidOrders
       
     ,
       

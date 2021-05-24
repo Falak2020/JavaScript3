@@ -17,10 +17,18 @@ const Home = () => {
 
    dispatch(searchValue(search.current.value))
   }
-
+  
+  const Loading =(
+   
+    <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+   
+  )
 
    useEffect(() => {
-      dispatch(getProducts())
+     setTimeout(() => {
+       dispatch(getProducts())
+     },2000);
+      
        
    }, [dispatch])
     return (
@@ -32,7 +40,7 @@ const Home = () => {
         </div>
         <div className="row row-cols-1 row-cols-md-2 g-4">      
           {
-            loading?<h1>...Loading</h1>
+            loading?<div className="d-flex ms-auto">{Loading}</div>
             :
             
                   filteredProducts && filteredProducts.map(product=>(<ProductsList  key = {product._id} product = {product} />)) 

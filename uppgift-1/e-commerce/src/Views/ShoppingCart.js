@@ -22,20 +22,38 @@ const ShoppingCart = () => {
     
     let Obj={
       
-      ...currentCart,paid:true,totalPrice
+      ...currentCart,paid:true,completed:false,totalPrice
     }
     // User want to pay 
     const ToPaid=()=>{
-        
-      let payload={
+      if(paidOrders.length>0){
+        let payload={
         _id,
         paidOrders:[...paidOrders,Obj],
         token
+        }
+        changeToPaid(payload) 
+        setPaid(true)   
+
+      }
+      
+      else{
+        let payload={
+          _id,
+          paidOrders:Obj,
+          token
+          }
+          changeToPaid(payload) 
+          setPaid(true)   
+      }
+      
+      
+   
+        localStorage.setItem('totalPrice',Obj.totalPrice)
+      
     }
-    localStorage.setItem('totalPrice',Obj.totalPrice)
-      changeToPaid(payload) 
-      setPaid(true)   
-    } 
+    
+      
    // Guest Not user
     const pay=()=>{
       dispatch(distroyShoppingCart())
@@ -74,9 +92,9 @@ const ShoppingCart = () => {
    ///////////////////////////
     useEffect(() => {
       // localStorage.removeItem('totalPrice')
-      if(_id)
+   
       dispatch(getUserCart(_id))
-    }, [currentCart])
+    }, [paid])
 
     return (
         <div>

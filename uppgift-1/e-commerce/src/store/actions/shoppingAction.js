@@ -23,6 +23,8 @@ export const deleteAll= id =>{
     }
 }
 
+
+
 // BRING ALL ORDERS FOR THE USER FROM DB
 
 export const  getUserCart=(id)=>{
@@ -55,7 +57,7 @@ export const  getUserCart=(id)=>{
   }
   //
   export const postToShoppingCart=(payload) =>{
-   console.log(payload)
+ 
     axios.post('/shoppings/add',{
       _id:payload._id,
       cartContents:payload.cart,
@@ -72,6 +74,7 @@ export const  getUserCart=(id)=>{
 //Send users shopping cart to DB
 
  export const postCart = (payload)=>{
+  
      return dispatch =>{
 
         let id = payload._id 
@@ -82,17 +85,17 @@ export const  getUserCart=(id)=>{
           
       if(res.data.notdone){
         // order is already existed
+        console.log(payload.cart)
          if(res.data.notdone.orderNumber){
                let orderNumber=res.data.notdone.orderNumber
                axios.patch('/shoppings/'+id,
                 { orderNumber,
                   cartContents:payload.cart,
-                  
                   paid:false,
                   completed:false
                 },
                {headers:{'Authorization': `Bearer ${payload.token}`}} )
-                .then(res=>console.log('update'))
+                .then(res=>console.log('update one'))
             }
 
             // New Order
@@ -105,7 +108,7 @@ export const  getUserCart=(id)=>{
                 completed:false
               },
              {headers:{'Authorization': `Bearer ${payload.token}`}} )
-              .then(res=>console.log('update'))
+              .then(res=>console.log('update two'))
             }
           
       }
@@ -142,7 +145,7 @@ export const deleteDB=(payload) =>{
     },
   
     {headers:{'Authorization': `Bearer ${payload.token}`}} )
-   .then(res=>console.log('update'))
+   .then(res=>console.log('update to paid'))
 }
  
 //change order to completed i DB
