@@ -63,7 +63,7 @@ const Paidorders = ({order,_id,doneOrder,paidOrders}) => {
              order.completed?<h4 className="text-success">completed</h4>:''   
             }
             
-            <div className="d-flex flex-column flex-md-row justify-content-around align-items-center">
+            <div className="d-flex flex-column flex-md-row justify-content-between align-items-center">
              {
                 
                 order.cart.map(item =>(<OrderDetails key={item.shop._id} item={item} />))

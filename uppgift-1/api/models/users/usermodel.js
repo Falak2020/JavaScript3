@@ -161,6 +161,7 @@ exports.message = (req, res) => {
   
   User.updateOne( { _id: req.params.id }, {
     messages:req.body.message,
+   
     modified: Date.now()
   })
   .then(() => {

@@ -40,7 +40,7 @@ const AllordersDetail = (props) => {
     //   </div> 
     // )
     return (
-        <div className="mt-5 p-5">
+        <div className="mt-5 ">
           <h4  className="text-primary">User Id: <span className="text-dark">{order._id}</span></h4> 
 
             {PaidCart}
