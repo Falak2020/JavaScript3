@@ -1,5 +1,4 @@
 import React from 'react'
-import Order from '../../components/shoppingCart/Order'
 
 import Paidorders from '../../components/shoppingCart/Paidorders'
 

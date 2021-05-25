@@ -48,7 +48,7 @@ const SelectComponent = () => (
  {
    e.preventDefault()
 
-   if(firstName.current.value !=='' && lastName.current.value !== '' && email.current.value !== '' && password.current.value !== '')
+   if(firstName.current.value !=='' && lastName.current.value !== '' && email.current.value !== '' && password.current.value !== ''&& role !=='')
    {
     
     let _user={
@@ -58,7 +58,7 @@ const SelectComponent = () => (
       password:password.current.value,
       role
     }
-    console.log(_user)
+    
    
      dispatch(signUp(_user))
  
@@ -78,7 +78,7 @@ const SelectComponent = () => (
 
  useEffect(() => {
   if(token){
-    console.log(token)
+    
       history.push('/')
   }
   

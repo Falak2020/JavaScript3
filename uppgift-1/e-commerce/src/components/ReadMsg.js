@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 const ReadMsg = () => {
   
-     const notice = useSelector(state => state.userReducer.message)
+    
      const userMsg = useSelector(state => state.userReducer.userMsg)
      
     
