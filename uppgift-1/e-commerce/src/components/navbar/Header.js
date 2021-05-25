@@ -68,13 +68,19 @@ const Header = () => {
           {userName? <span className="ms-1">{userName}</span> :<span className="ms-1" >User Acount</span>}</span> 
   </span>
   <ul  className="dropdown-menu p-3 " aria-labelledby="navbarDropdown">
-      <li  className="text-center border  mb-2 dropdown-item" >
+      <li  className="text-center   mb-2 dropdown-item" >
         {
         status==='log in'?<Link  to='/login' className="text-dark py-2 px-5" >{status}</Link>
         :<div className="text-dark py-2 px-5" onClick={logOut} >{status}</div>
         }
-        </li>
-      <li  className="text-center dropdown-item"><Link   to='/register' className="text-dark  py-2 px-5 " >Sign up</Link></li>
+      </li>
+      
+      <li  className="text-center dropdown-item mb-2"><Link   to='/register' className="text-dark  py-2 px-5 " >Sign up</Link></li>
+      
+      <li><hr className="dropdown-divider" /></li>
+      
+      <li  className="text-center dropdown-item mb-2"><Link   to='/mymessages' className="text-dark  py-2 px-5 " >My Messages</Link></li>
+
       <li><hr className="dropdown-divider" /></li>
       {
         role==='admin'?''

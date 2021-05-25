@@ -20,6 +20,8 @@ import AllordersDetail from './Views/Admin/AllordersDetail';
 import NotFound from './Views/NotFound';
 import AddProduct from './Views/Admin/AddProduct';
 import AllProducts from './Views/Admin/AllProducts';
+import ReadMsg from './components/ReadMsg';
+
 
 
 
@@ -46,6 +48,8 @@ function App() {
            <AdminProtectedRoute  exact path="/allProducts"  component={AllProducts}/>
            <Route  exact path="/usersorders"  component={UsersOrders}/>
            <ProtectedRoute  exact path="/myorders"  component={Orders}/>
+           <ProtectedRoute  exact path="/mymessages"  component={ReadMsg}/>
+
            <Route path="*" component={NotFound} />
         </Switch> 
         

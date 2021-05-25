@@ -11,7 +11,7 @@ let initState={
     message:'',
     userName:'',
     userEmail:'',
-    
+    userMsg:[]
 }
 
 const loginReducer= (state = initState,action) =>{
@@ -27,6 +27,7 @@ const loginReducer= (state = initState,action) =>{
                 message: action.payload.notice,
                 userName:action.payload.username,
                 userEmail:action.payload.userEmail,
+                userMsg:action.payload.userMsg,
                 status: 'log out',
               
             }

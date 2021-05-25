@@ -164,11 +164,20 @@ export const deleteDB=(payload) =>{
     {headers:{'Authorization': `Bearer ${payload.token}`}} )
      .then(res=>console.log('update'))
    
-    axios.put('/users/messages/'+payload._id,{
+    axios.patch('/users/messages/'+payload._id,{
     message:` ${payload.orderNumber} `,
     
    })
     .then(res=>console.log('message sent to user'))
+
+//////////////////////////////////////////////
+
+    axios.patch('/users/usermessages/'+payload._id,{
+      message:` ${payload.orderNumber} `,
+      
+     })
+      .then(res=>console.log('message sent to user'))
+      
  // Bring the last copy of Allorders
   
    dispatch(getAllCart(payload.token))

@@ -10,6 +10,8 @@ const Paidorders = ({order,_id,doneOrder,paidOrders}) => {
    
     const token = useSelector(state => state.userReducer.token)
     const role = useSelector(state => state.userReducer.role)
+   
+
     const[res,setRes] = useState(false)
      const ToCompleted=()=>{
       
@@ -17,7 +19,8 @@ const Paidorders = ({order,_id,doneOrder,paidOrders}) => {
      
         ...order,completed:true
       }
-     
+      
+      
       paidOrders = paidOrders.filter(item => item.orderNumber !== Obj.orderNumber) //Delete the completed order from paidorders
       
         let payload={
@@ -25,7 +28,8 @@ const Paidorders = ({order,_id,doneOrder,paidOrders}) => {
           cart:[...doneOrder,Obj],
           paidOrders,
           token:token,
-          orderNumber:Obj.orderNumber
+          orderNumber:Obj.orderNumber,
+         
       }
   
       dispatch(changeToCompleted(payload))

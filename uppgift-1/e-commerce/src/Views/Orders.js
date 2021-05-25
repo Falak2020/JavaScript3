@@ -19,8 +19,8 @@ const Orders = () => {
     }, [dispatch])
     
     return (
-        <div>
-            <div className="text-center mt-5 "><h2 className="py-4 bg-warning shadow mb-5">Current Orders</h2>
+        <div className="bg-light">
+            <div className="text-center mt-5"><h2 className="py-4 navbar-bg shadow mb-5">Current Orders</h2>
             
                 { shoppingCart.length>0?shoppingCart.map(item => (<Cartdetails key={item.shop._id} item={item} />))
                 : <h3>Your shopping cart is empty</h3> 
@@ -41,7 +41,7 @@ const Orders = () => {
                     </div>
                 </div>
             </div>
-            <div className=" mt-5 py-5"><h2 className="bg-warning shadow py-4 text-center">Paid Orders</h2>
+            <div className=" mt-5 py-5"><h2 className="navbar-bg shadow py-4 text-center">Paid Orders</h2>
             {
             paidOrders.length>0? 
            
@@ -53,7 +53,7 @@ const Orders = () => {
             </div>
             
 
-           <div className="bg-warning shadow p-4 text-center mt-5 "><h2>Completed Orders</h2></div>
+           <div className="navbar-bg shadow p-4 text-center mt-5 "><h2>Completed Orders</h2></div>
             {      
                orders.length>0?
                

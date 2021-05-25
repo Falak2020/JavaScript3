@@ -104,7 +104,7 @@ export const logout=()=>{
 
 export const readMsg = (_id) => {
     return dispatch => {
-      axios.put('/users/messages/'+_id,{
+      axios.patch('/users/messages/'+_id,{
       message:''
      
      })

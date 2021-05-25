@@ -91,6 +91,7 @@ exports.login = (req, res) => {
                 role:user.role,
                 notice:user.messages,
                 userEmail:user.email,
+                userMsg:user.userMsg
               
               })
 
@@ -157,11 +158,11 @@ exports.updateUser = (req, res) => {
 
 exports.message = (req, res) => {
   
-  
-  
+  /////////////////////////////////////////
+
+
   User.updateOne( { _id: req.params.id }, {
     messages:req.body.message,
-   
     modified: Date.now()
   })
   .then(() => {
@@ -179,4 +180,18 @@ exports.message = (req, res) => {
     })
   })
 
+}
+
+exports.updateUserMsg=(req,res)=>{
+  User.updateOne(
+    { _id:req.params.id  }, 
+    { $push: { userMsg: req.body.message } },
+  )
+  .then(() => {
+    res.status(200).json({
+      statusCode: 200,
+      status: true,
+      message: 'user updated'
+    })
+  })
 }
