@@ -27,7 +27,12 @@ const history= useHistory()
 ]
 
 const SelectComponent = () => (
-  <select className="w-25 p-2 form-select " required value={role}  onChange={(e)=>setRole(e.value)}>
+  <select className="w-25 p-2 form-select "  value={role}  onChange={(e)=>
+  {
+    console.log(e.target.value)
+    setRole(e.target.value)}
+  }>
+  
    {
      options.map((option) => (
            <option key={option.index} value={option.value}>{option.label}</option>
@@ -53,6 +58,7 @@ const SelectComponent = () => (
       password:password.current.value,
       role
     }
+    console.log(_user)
    
      dispatch(signUp(_user))
  

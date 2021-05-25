@@ -71,17 +71,21 @@ const Header = () => {
       <li  className="text-center   mb-2 dropdown-item" >
         {
         status==='log in'?<Link  to='/login' className="text-dark py-2 px-5" >{status}</Link>
-        :<div className="text-dark py-2 px-5" onClick={logOut} >{status}</div>
+        :<div className="text-dark py-2 px-5 cursor-pointer" onClick={logOut} >{status}</div>
         }
       </li>
       
       <li  className="text-center dropdown-item mb-2"><Link   to='/register' className="text-dark  py-2 px-5 " >Sign up</Link></li>
       
       <li><hr className="dropdown-divider" /></li>
-      
-      <li  className="text-center dropdown-item mb-2"><Link   to='/mymessages' className="text-dark  py-2 px-5 " >My Messages</Link></li>
+      {
+         role==='admin'?''
+         :
+         <li  className="text-center dropdown-item mb-2"><Link   to='/mymessages' className="text-dark  py-2 px-5 " >My Messages</Link></li>
 
-      <li><hr className="dropdown-divider" /></li>
+      }
+      
+      
       {
         role==='admin'?''
         :

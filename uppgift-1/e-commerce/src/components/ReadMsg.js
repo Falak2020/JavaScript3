@@ -16,7 +16,7 @@ const ReadMsg = () => {
                userMsg.length>0?
                userMsg.map(order=> 
                 <ul className="list-group">
-                  <li className="list-group-item mb-3">
+                  <li className="list-group-item mb-3" key={order}>
                     <p >Your order which has the number 
                        <span className="text-primary">{[order]}</span> is completed now
                     </p>   

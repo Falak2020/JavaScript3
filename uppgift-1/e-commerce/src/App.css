@@ -22,7 +22,9 @@ html,body{
    
 
  }
-
+.cursor-pointer{
+  cursor: pointer;
+}
 
  .page-container {
   position: relative;
