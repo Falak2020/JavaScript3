@@ -21,7 +21,10 @@ const ProductDetails = (props) => {
     const shoppingCart = useSelector(state => state.shoppingCart.shoppings)
 
     useEffect(() => {
-        dispatch(getProduct(id))
+       
+         dispatch(getProduct(id))  
+      
+       
     }, [dispatch])
 
     //Functions
@@ -41,11 +44,17 @@ const ProductDetails = (props) => {
       
       
     }
+
+    const Loading =(
+   
+      <div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+     
+    )
     return (
        
         <div className="d-flex align-items-center p-5">
             {
-             loading?<h1>Loading ...</h1>:product&&
+             loading?<div >{Loading}</div>:product&&
                 <div className="card mt-5 p-5 " >
                    <div className="row g-0">
                        <div className="col-lg-4 ">
