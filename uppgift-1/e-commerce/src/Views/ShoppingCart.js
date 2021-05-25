@@ -77,7 +77,7 @@ const ShoppingCart = () => {
            <tbody>
              <tr>
                 <th scope="row" className="h5" >Total price</th>
-                <td className="col-6 text-primary" ><p >{localStorage.getItem('totalPrice')} kr</p></td>
+                <td className="col-6 text-primary" ><p >{localStorage.getItem('totalPrice')} SEK</p></td>
              </tr>  
             <tr>
               <th scope="row"  className="h5">Payment method</th>
@@ -132,7 +132,7 @@ const ShoppingCart = () => {
             <div className="card p-3 ">
              
              {
-               (totalPrice>0) &&<h3 className="text-center text-danger">Total Price={totalPrice} Kr</h3>
+               (totalPrice>0) &&<h3 className="text-center text-danger">Total Price={totalPrice} SEK</h3>
      
             }
             

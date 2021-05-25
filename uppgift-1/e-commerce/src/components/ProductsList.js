@@ -34,7 +34,7 @@ const ProductsList = ({product}) => {
                   <div className="card-body text-dark">
                           <h4 className="card-title text-decoration-underline ">{product.name}</h4>
                           <p className="text-danger ">
-                            {product.price} kr
+                            {product.price} SEK
                           </p>
                           <p className="card-text mb-5">
                             {product.short}

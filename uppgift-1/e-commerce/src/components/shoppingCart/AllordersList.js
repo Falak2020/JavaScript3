@@ -7,7 +7,7 @@ const AllordersList = ({order}) => {
         <div>
            <ul className="list-unstyled">
                <li >
-                 <table className="table">
+                 <table className="table ">
                     <thead>
                         <tr className="table-warning">
                             <th scope="col">User Id</th>

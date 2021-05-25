@@ -55,7 +55,7 @@ const ProductDetails = (props) => {
                           <div className="card-body mt-5">
                              <h5 className="card-title">{product.name}</h5>
                              <p className="card-text text-danger">
-                               price: {product.price} kr
+                               price: {product.price} SEK
                              </p>
                              <p className="card-text">
                                 {product.short}

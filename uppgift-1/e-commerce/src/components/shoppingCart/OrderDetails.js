@@ -14,7 +14,7 @@ const OrderDetails = ({item}) => {
                         <div className="ms-3">
                             <div className=" mt-3">
                                 <h5 >{item.shop.name}</h5>
-                                <small className="text-danger">({item.quantity}st X {item.shop.price}Kr) </small> 
+                                <small className="text-danger">({item.quantity}st X {item.shop.price}SEK) </small> 
                                 
                             </div>
                         </div>  
