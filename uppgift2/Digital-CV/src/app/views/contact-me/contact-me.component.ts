@@ -16,7 +16,7 @@ export class ContactMeComponent  {
      firstName:['',[Validators.required, Validators.minLength(3)]],
      lastName:['',[Validators.required, Validators.minLength(3)]],
      email:['',[Validators.required, Validators.email]],
-     subject:['',[Validators.required]],
+     subject:['',[Validators.required,Validators.minLength(3)]],
      message:['',[Validators.required,Validators.maxLength(500),Validators.minLength(3)]]
 
    })

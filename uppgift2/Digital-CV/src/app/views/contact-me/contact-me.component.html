@@ -50,6 +50,7 @@
      [class.is-valid]="subject.valid"
      [class.is-invalid]="subject.invalid && (subject.dirty || subject.touched)" >
      <small class="text-danger" *ngIf="subject.errors?.required &&  (subject.dirty || subject.touched)">Ditt subject krävs </small>
+     <small class="text-danger" *ngIf="subject.errors?.minlength &&  (subject.dirty || subject.touched)">Subject måste vara minst 3 tecken  </small>
   </div>
   <div class="mb-3">
     <label for="message" class="form-label" >Meddelande:</label>
