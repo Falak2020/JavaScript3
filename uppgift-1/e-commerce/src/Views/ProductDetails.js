@@ -62,20 +62,18 @@ const ProductDetails = (props) => {
                        </div>
                        <div className="col-lg-8 ">
                           <div className="card-body mt-5">
-                             <h5 className="card-title">{product.name}</h5>
-                             <p className="card-text text-danger">
-                               price: {product.price} SEK
+                             <h3 className="card-title ">{product.name}</h3>
+                             <p className="card-text text-danger my-4">
+                               Price : {product.price} SEK
                              </p>
-                             <p className="card-text">
-                                {product.short}
-                             </p>
+                             <h4 className="text-primary">Discription : </h4>
                              <p className="card-text">
                                 {product.desc}
                             </p>
                             <p className="card-text">
                                <small className="text-muted">{product.modified}</small>
                             </p>
-                            <button className="btn btn-warning me-5 " ><Link to="/" className="text-light">Back To Products</Link></button>
+                            <button className="btn btn-warning me-5 mb-3 mb-md-0 " ><Link to="/" className="text-light">Back To Products</Link></button>
 
                             <button className="btn btn-primary" onClick = {AddtoCart}><i className="fas fa-shopping-cart me-1"></i>add to cart</button>
                             
