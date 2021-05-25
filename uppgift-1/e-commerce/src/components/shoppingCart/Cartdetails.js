@@ -1,7 +1,7 @@
-import React,{useEffect} from 'react'
+import React from 'react'
 import { useDispatch, useSelector} from 'react-redux'
 
-import { postCart,getUserCart,addToCart, removeFromCart,deleteAll } from '../../store/actions/shoppingAction'
+import { postCart,addToCart, removeFromCart,deleteAll } from '../../store/actions/shoppingAction'
 const Cartdetails = ({item}) => {
 
     const dispatch = useDispatch()

@@ -24,6 +24,7 @@ const ShoppingCart = () => {
       
       ...currentCart,paid:true,completed:false,totalPrice
     }
+    
     // User want to pay 
     const ToPaid=()=>{
       if(paidOrders.length>0){
@@ -54,11 +55,12 @@ const ShoppingCart = () => {
     }
     
       
-   // Guest Not user
+   // Guest Not user want to pay
     const pay=()=>{
       dispatch(distroyShoppingCart())
       localStorage.setItem('totalPrice',Obj.totalPrice)
       setPaid(true) 
+      
     }
    
    //After Paid
@@ -71,6 +73,20 @@ const ShoppingCart = () => {
          <i className="fas fa-check-circle fa-2x text-success"></i>
          <h2 className="text-success mb-3">Your purchase has been paid </h2>
          <p>A confirmation will be sent to your Email {userEmail}</p>
+         <table className="table table-bordered border-primary">
+           <tbody>
+             <tr>
+                <th scope="row" className="h5" >Total price</th>
+                <td className="col-6 text-primary" ><p >{localStorage.getItem('totalPrice')} kr</p></td>
+             </tr>  
+            <tr>
+              <th scope="row"  className="h5">Payment method</th>
+              <td className=" col-6 text-primary" > <p >Kort</p></td>
+            </tr>
+  </tbody>
+</table>
+
+{/*   
          <table className="table ">
            <tr className="row">
              <td className="border col-6" ><p >total Price</p></td>
@@ -81,20 +97,20 @@ const ShoppingCart = () => {
              <td  className="border col-6"><p >Payment method</p></td>
              <td className="border col-6 text-primary" > <p >Kort</p></td>
            </tr>
-          </table>
+          </table> */}
        </div>
        :''
        }
        
      </div>
    )
-
+  
    ///////////////////////////
     useEffect(() => {
       // localStorage.removeItem('totalPrice')
-   
-      dispatch(getUserCart(_id))
-    }, [paid])
+      if(_id)
+       dispatch(getUserCart(_id))
+    }, [paid,_id,dispatch])
 
     return (
         <div>
@@ -134,7 +150,7 @@ const ShoppingCart = () => {
               } 
              
             </div> 
-            
+           
             {AfterPaid}
          </div>   
         </div>

@@ -14,7 +14,7 @@ const AllOrders = () => {
     dispatch(getAllCart(token))
     if(role==='user')
          history.push('/login')
-    }, [role,token,allOrders])
+    }, [role,token,allOrders,history,dispatch])
     return (
        
         <div>

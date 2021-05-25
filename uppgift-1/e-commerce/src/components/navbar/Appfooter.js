@@ -16,7 +16,7 @@ const Appfooter = () => {
                 </div>
                 <div className="text-center p-3" >
                 © 2021 Copyright:
-                <a className="text-dark" href="#"> Pokemon.se</a>
+                <a className="text-dark" href="/#"> Pokemon.se</a>
                 </div>
             </footer>
        

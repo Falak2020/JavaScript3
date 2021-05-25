@@ -10,14 +10,14 @@ const Order = ({order}) => {
             <div className="card mt-5 p-3">
                 <h4 className="text-primary">Order Number: <span className="text-dark">{order.orderNumber}</span></h4> 
                 {
-                 order.paid? <h4 className="text-success"><i class="fas fa-check me-2"></i>paid</h4>:''
+                 order.paid? <h4 className="text-success"><i className="fas fa-check me-2"></i>paid</h4>:''
                 
                 }
                 {
-                 order.completed?<h4 className="text-success"><i class="fas fa-check me-2"></i>completed</h4>:''   
+                 order.completed?<h4 className="text-success"><i className="fas fa-check me-2"></i>completed</h4>:''   
                 }
               
-                <div className="d-flex flex-column flex-md-row justify-content-around align-items-center">
+                <div className="d-flex flex-column flex-md-row justify-content-around align-items-center flex-wrap">
                  {
             
                     order.cart.map(item =>(<OrderDetails key={item.shop._id} item={item} />))

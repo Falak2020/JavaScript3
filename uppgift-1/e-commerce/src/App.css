@@ -132,6 +132,7 @@ html,body{
   height: 18px;
   border-radius: 20%;
   background: rgb(22, 13, 13);
+  
 }
 .lds-spinner div:nth-child(1) {
   transform: rotate(0deg);

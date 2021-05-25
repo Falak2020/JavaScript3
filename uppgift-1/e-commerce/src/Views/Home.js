@@ -7,7 +7,7 @@ import { getProducts,searchValue } from '../store/actions/productsAction'
 const Home = () => {
 
    const dispatch = useDispatch()
-   const products = useSelector(state => state.productsReducer.products)
+  //  const products = useSelector(state => state.productsReducer.products)
    const filteredProducts = useSelector(state => state.productsReducer.filteredProducts)
 
    const loading = useSelector(state => state.productsReducer.loading)
@@ -20,14 +20,14 @@ const Home = () => {
   
   const Loading =(
    
-    <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    <div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
    
   )
 
    useEffect(() => {
      setTimeout(() => {
        dispatch(getProducts())
-     },2000);
+     },1000);
       
        
    }, [dispatch])
@@ -43,7 +43,7 @@ const Home = () => {
             loading?<div className="d-flex ms-auto">{Loading}</div>
             :
             
-                  filteredProducts && filteredProducts.map(product=>(<ProductsList  key = {product._id} product = {product} />)) 
+              filteredProducts && filteredProducts.map(product=>(<ProductsList  key = {product._id} product = {product} />)) 
           }
         </div>
        

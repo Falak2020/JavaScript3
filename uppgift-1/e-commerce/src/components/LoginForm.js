@@ -36,13 +36,10 @@ const LoginForm = () => {
       }
       useEffect(() => {
         if(token){
-          role==='admin'?history.push('/allcarts'): history.push('/')
-            
-            
-            
+          role==='admin'?history.push('/allcarts'): history.push('/')        
         }
         
-    }, [token])
+    }, [token,role,history])
     return (
         <form className=" p-3" onSubmit = {handelSubmit} >
                 <input type="email" placeholder="Enter your email" className="form-control border mb-4" value={email} onChange={(e)=>setEmail(e.target.value)}/>

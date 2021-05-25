@@ -56,7 +56,7 @@ const Paidorders = ({order,_id,doneOrder,paidOrders}) => {
         
 
             {
-             order.paid? <p className="text-success h5"><i class="fas fa-check me-2"></i>paid</p>:''
+             order.paid? <p className="text-success h5"><i className="fas fa-check me-2"></i>paid</p>:''
             
             }
             {
