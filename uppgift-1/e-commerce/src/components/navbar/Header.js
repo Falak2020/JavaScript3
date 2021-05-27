@@ -109,11 +109,15 @@ const Header = () => {
       data-mdb-toggle="dropdown"
       aria-expanded="false"
      >
-    
         <span > 
         {
-          notice? <i className="fas fa-bell" ><span  className="pos-bell pt-1"  >1</span></i>
-           :''
+         (_id && (role==='user'))
+         ?
+          notice
+          ? <i class="fas fa-envelope "> </i> 
+           :<i class="far fa-envelope-open "></i>
+         
+          :''
         } 
         
         </span> 
