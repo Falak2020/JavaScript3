@@ -185,7 +185,7 @@ exports.message = (req, res) => {
 exports.updateUserMsg=(req,res)=>{
   User.updateOne(
     { _id:req.params.id  }, 
-    { $push: { userMsg: req.body.message } },
+    { $push: { userMsg: req.body.message} },
   )
   .then(() => {
     res.status(200).json({
