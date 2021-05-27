@@ -46,9 +46,9 @@ const ProductDetails = (props) => {
     }
 
     const Loading =(
-   
-      <div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-     
+      <div className="wrapper">
+         <div className="spinner"></div>
+      </div>
     )
     return (
        
